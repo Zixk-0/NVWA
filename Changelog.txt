@@ -1,0 +1,13 @@
+1.0.7:
+[ADDED] get_tags 更改 & 拍照/导入界面的tag选择。(当前完成前半：界面，未完成后半：数据库写入)  Tag choosing in the camera&import (currently the interface has been completed while the database writing has not).
+[FIXED] 修复导入完成第一次后再导入图片失败的问题。 Fix the bug that importing pictures failed after the first time.
+[CODECHANGED] 停止使用过时且不稳定的 Msgbox 方法。 Change Msgbox to Msgbox2Async.
+[CODECHANGED] 重写部分愚蠢的代码重复。 Rewrite some codes to avoid some code duplications.
+
+1.0.6:
+[ADDED] 添加学科 tag 的功能。 The sub of adding tags.
+[FIXED] DBload 引用 question_bank 的修正（虽然没看到它在其他地方用了）。 DBload uses subject_bank instead of question_bank.
+[CHANGED] 导入图片时文件名按时间命名（避免重名）。 Name files by time (to avoid possible duplicate file names) when adding pictures in record_import.
+
+1.0.5:
+[NOTE] 这是 change log 的开头，之前的忘了呢！！ The beginning. Earlier changes have been forgotten lol.

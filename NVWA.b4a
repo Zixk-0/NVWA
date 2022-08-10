@@ -1,0 +1,917 @@
+﻿Build1=Default,avanue.nvwa
+File1=add_tag.bal
+File10=review_main.bal
+File11=select_rule.bal
+File12=subjects.bal
+File13=subjects_imp.bal
+File14=subjects_rev.bal
+File2=import_empty.jpg
+File3=Layout.bal
+File4=main.bal
+File5=nvwa.db
+File6=record.bal
+File7=record_choice.bal
+File8=record_import.bal
+File9=review.bal
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+Library1=camera
+Library10=scrollview2d
+Library11=sql
+Library12=touchimageview
+Library13=xui
+Library14=xui views
+Library2=core
+Library3=dialogs2
+Library4=externalstorage
+Library5=javaobject
+Library6=mmtools
+Library7=phone
+Library8=reflection
+Library9=runtimepermissions
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~AddPermission(android.permission.READ_EXTERNAL_STORAGE) ''读取储存~\n~AddPermission(android.permission.WRITE_EXTERNAL_STORAGE)  ''写入储存~\n~AddPermission(android.permission.CAMERA) ''相机~\n~~\n~'End of default text.~\n~
+Module1=CameraExClass
+Module2=Starter
+NumberOfFiles=14
+NumberOfLibraries=14
+NumberOfModules=2
+Version=11.8
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: NVWA
+	#VersionCode: 10007
+	#VersionName: 1.0.7
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: landscape
+	#CanInstallToExternalStorage: True
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+	Private frontCamera As Boolean = False
+	Private Storage As ExternalStorage
+	Private Parents_Dir As ExternalFile
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private camEx As CameraExClass
+	Dim TouchImageView1 As TouchImageView
+	Dim ID As String
+	Dim SQL1 As SQL
+	Dim cursor1 As Cursor
+	Dim now As Long
+	Public rp As RuntimePermissions
+	Public tag_subject As String
+	
+	Dim Panel1 As Panel
+	Dim btnTakePicture As Button
+	'Dim VideoFileDir As String 
+	Private MyTaskIndex As Int
+	Public rp As RuntimePermissions
+	Dim q_count As Label
+	Dim Q_Name , A_Name,T_Name  As String
+	Dim random_num  As Int
+	Dim ImageView1 As ImageView
+	Dim Current_ID As Int
+	Dim Current_Time_Create As String
+	Dim Current_Time_Modify As String
+	Dim Current_Time_Delete As String
+	Dim Current_Valid As Int
+	Dim Current_Subject As String
+	Dim Current_Leval As Int
+	Dim Current_Grade As Int
+	Dim Current_Tags As String
+	Dim Current_Question_Image As String
+	Dim Current_Answer_Image As String
+	Dim Current_Correct_Times As Int
+	Dim Current_Incorrect_Times As Int
+	Dim Current_Last_Time As String
+	Dim QA_S As Int
+	Dim rule_never_do As Int = 1
+	Dim rule_correct As Int = 0
+	Dim rule_incorrect As Int =1
+	Dim tags As String
+	
+	'有关文件选择
+	Dim FileDialog1 As FileDialog
+	Dim QuesFilePath As String = File.DirRootExternal
+	Dim QuesFileName As String = " "
+	Dim AnsFilePath As String = File.DirRootExternal
+	Dim AnsFileName As String = " "
+	Dim BitmapQues As Bitmap
+	Dim BitmapAns As Bitmap
+	
+	'图片滚动
+	Private ScrAns As ScrollView2D
+	Private ScrQues As ScrollView2D
+	
+	
+	Private btnImpAns As Button
+	Private btnImpComplete As Button
+	Private btnImpQues As Button
+	
+	'添加标签
+	Private add_tag_biology As RadioButton
+	Private add_tag_chemistry As RadioButton
+	Private add_tag_chinese As RadioButton
+	Private add_tag_english As RadioButton
+	Private add_tag_maths As RadioButton
+	Private add_tag_physics As RadioButton
+	'Dim add_tag_tagname As String
+	Private add_tag_edit As EditText
+	
+	Dim FT As FileTools
+	
+	Dim options As B4XListTemplate
+	Private TagDialog As B4XDialog
+	Private Base As B4XView
+	Private InputTag As B4XInputTemplate
+
+End Sub
+
+Private Sub now_string As String
+	now  = DateTime.Now
+	Dim nows As String
+	DateTime.DateFormat = "YYYYMMdd."
+	 
+	DateTime.SetTimeZone(8)
+	nows = DateTime.Date(now) & DateTime.Time(now)
+	Return nows
+End Sub
+
+Sub DBload
+	'LVDb.Clear'need to clear the list
+	'cursor1 = SQL1.ExecQuery("SELECT * FROM question_bank")
+	cursor1 = SQL1.ExecQuery("SELECT * FROM " & tag_subject & "_bank")
+	'For i = 0 To cursor1.RowCount - 1
+	'	cursor1.Position = i
+'		LVDb.AddSingleLine(cursor1.GetString("ID")& "|" &cursor1.GetString("Username")& " | " & cursor1.GetString("Password"))
+'		LVDb.SingleLineLayout.ItemHeight = 40
+'		LVDb.SingleLineLayout.Label.TextSize = 20
+'		LVDb.SingleLineLayout.label.TextColor = Colors.Black
+'		LVDb.SingleLineLayout.label.Color = Colors.White
+'	Next
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	If FirstTime Then
+		
+		Storage.Initialize (Me, "Storage")
+		Parents_Dir.Initialize
+		Base = Activity
+		TagDialog.Initialize (Base)
+		TagDialog.Title = "选择题目类别"
+		options.Initialize
+		options.AllowMultiSelection = True
+		options.Resize(300dip,200dip)
+		InputTag.Initialize
+		
+		Activity.LoadLayout("main")
+		'Storage.SelectDir(True)
+		'Msgbox(Parents_Dir.Name,"INF")
+		'Dim new_dir = Storage.CreateNewDir (Parents_Dir,"Test")
+		'Wait For Storage_ExternalFolderAvailable
+		
+		
+		rp.CheckAndRequest(rp.PERMISSION_READ_EXTERNAL_STORAGE) ''动态申请储存读取权限
+		rp.CheckAndRequest(rp.PERMISSION_WRITE_EXTERNAL_STORAGE) ''动态申请储存写入权限
+		rp.GetAllSafeDirsExternal ("")
+		If File.Exists(File.DirDefaultExternal ,"nvwa.db") = False Then
+			Try
+				File.Copy(File.DirAssets,"nvwa.db",File.DirDefaultExternal,"nvwa.db")
+			Catch
+				Msgbox2Async("Copy error", "ERR", "OK", "", "", Null, True)
+			End Try
+			Msgbox2Async("nvwa not exits", "DEST", "OK", "", "", Null, True)
+		End If
+
+		If SQL1.IsInitialized = False Then
+			Try
+				SQL1.Initialize(File.DirDefaultExternal, "nvwa.db", False)
+			Catch
+				Msgbox2Async("DB Init Error", "ERR", "OK", "", "", Null, True)
+			End Try
+			
+		End If
+		
+		'DBload
+		'Dim sss As String
+		'sss=File.GetSafeDirDefaultExternal("nvwa")
+		'Msgbox(File.GetSafeDirDefaultExternal("")," ")
+		
+		'Msgbox(File.DirRootExternal,"Dir")
+		'Msgbox(File.DirDefaultExternal,"Dir")  ' .../Android/data/avanue.nvwa/file
+		'VideoFileDir = rp.GetSafeDirDefaultExternal("")
+	End If
+End Sub
+
+Sub Activity_Resume
+	
+	'camera1.Initialize(Panel1, "Camera1")
+End Sub
+
+Sub Activity_PermissionResult (Permission As String, Result As Boolean)
+	If Result=False Then
+		Msgbox2Async("Permission Denied", "PD", "OK", "", "", Null, True)
+	Else
+		CallSubDelayed(Me, "permission_done")
+		'Msgbox("Permission OK","P")
+	End If
+	Log(Permission)
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	If camEx.IsInitialized Then
+		camEx.Release
+	End If
+End Sub
+
+Private Sub quit_Click
+	ExitApplication
+End Sub
+
+Private Sub record_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_choice")
+End Sub
+
+Private Sub back_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("main")
+End Sub
+
+Sub Camera1_Ready (Success As Boolean)
+	If Success Then
+		camEx.SetJpegQuality(90)
+		camEx.SetContinuousAutoFocus
+		camEx.CommitParameters
+		camEx.StartPreview
+		Log(camEx.GetPreviewSize)
+	Else
+		ToastMessageShow("Cannot open camera.", True)
+	End If
+End Sub
+
+
+Sub Camera1_FocusDone(Success As Boolean)
+	Msgbox2Async("Mamera focus down", "FD", "OK", "", "", Null, True)
+	If Success Then
+		Msgbox2Async("Camera focus down", "Focus DONE", "OK", "", "", Null, True)
+	End If
+End Sub
+
+Sub get_tags(subject As String)
+Do While True '添加tag会保持循环，选择完tag会退出循环
+	Dim DuplicateTest As Boolean = False
+	cursor1 = SQL1.ExecQuery("SELECT * FROM tags where Subject =  '"& subject &"' ")
+	'Msgbox(cursor1.RowCount,"INF")
+	If cursor1.RowCount < 1 Then
+		Msgbox2Async("当前科目还没有任何tag", "INFO", "OK", "", "", Null, True)
+	End If
+	Dim i As Int
+	Dim tag(cursor1.RowCount) As String
+	For i = 0 To cursor1.RowCount - 1
+		cursor1.Position = i
+		tag(i) = cursor1.GetString("tag_name")
+	Next
+		
+	options.Initialize
+	options.AllowMultiSelection = True
+	options.Resize(300dip,200dip)
+	options.Options = tag
+	'options.SelectedItems = Array()
+	Wait For (TagDialog.ShowTemplate(options, "OK", "ADD", "CANCEL")) Complete (Result As Int)
+	Select Result
+	Case xui.DialogResponse_Positive
+		TagDialog.Show($"选择的类别： ${options.SelectedItems}"$, "OK", "", "")
+		Return
+		'以后这里应当输出选择的tag
+		Exit
+	Case xui.DialogResponse_Negative
+		InputTag.Initialize
+		InputTag.lblTitle.Text = "添加标签"
+		Wait For (TagDialog.ShowTemplate(InputTag, "OK", "", "CANCEL")) Complete (Result As Int)
+		If Result = xui.DialogResponse_Positive Then 
+			If InputTag.Text = "" Then
+				Msgbox2Async("还没有填标签名称呢！！", "ERR", "OK", "", "", Null, True)
+				Continue
+			Else
+				cursor1 = SQL1.ExecQuery("SELECT * FROM tags WHERE subject = '" & tag_subject & "'")
+				For i = 0 To cursor1.RowCount - 1
+					cursor1.Position = i
+					If InputTag.Text = cursor1.GetString("tag_name") Then
+						Msgbox2Async("标签名重了！！", "ERR", "OK", "", "", Null, True)
+						DuplicateTest = True
+						Continue
+					End If
+				Next
+			End If
+			If Not(DuplicateTest) Then
+				SQL1.ExecNonQuery("INSERT INTO tags (tag_name,subject) VALUES ('" & InputTag.Text & "','" & tag_subject &"')")
+				ToastMessageShow( tag_subject & " label '" & InputTag.Text & "' added successfully", False)
+			End If
+		End If
+	Case xui.DialogResponse_Cancel
+		Return
+		Exit
+	End Select
+Loop
+End Sub
+
+'Sub AddTagsDialog
+'	
+'End Sub
+
+Sub CameraClick
+	'xui.MsgboxAsync(tag_subject,"SUBJECT")
+	Activity.RemoveAllViews
+	'Msgbox(now_string,"Time")
+	Activity.LoadLayout ("record")
+	Try
+		InitializeCamera
+	Catch
+		Msgbox2Async("camera init err", "err", "OK", "", "", Null, True)
+	End Try
+	q_count.Text = "总题数：" & refresh_count(tag_subject)
+	'Msgbox(get_tags(tag_subject),"tags")
+	
+	'Dim tempcheckbox  As CheckBox
+	'tempcheckbox.Initialize("tempcheckbox")
+	'tempcheckbox.Text ="TEMP"
+	
+	'tempcheckbox.Visible = True
+	
+	'Activity.Addview(tempcheckbox, 90%x,1%y,10%x,10%y)
+	
+	'Camera1_Ready(True)
+	
+End Sub
+
+Private Sub chinese_Click
+	tag_subject= "chinese"
+	CameraClick
+End Sub
+
+Private Sub maths_Click
+	tag_subject= "maths"
+	CameraClick
+End Sub
+
+Private Sub english_Click
+	tag_subject= "english"
+	CameraClick
+End Sub
+
+Private Sub physics_Click
+	tag_subject= "physics"
+	CameraClick
+End Sub
+
+Private Sub chemistry_Click
+	tag_subject= "chemistry"
+	CameraClick
+End Sub
+
+Private Sub biology_Click
+	tag_subject= "biology"
+	CameraClick
+End Sub
+
+'这里是录入
+
+Private Sub record_camera_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout ("subjects")
+End Sub
+
+Private Sub record_import_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("subjects_imp")
+End Sub
+
+Private Sub chinese_imp_Click
+	tag_subject= "chinese"
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_import")
+	QuesFileName = " "
+	AnsFileName = " "
+End Sub
+
+Private Sub maths_imp_Click
+	tag_subject= "maths"
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_import")
+	QuesFileName = " "
+	AnsFileName = " "
+End Sub
+
+Private Sub english_imp_Click
+	tag_subject= "english"
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_import")
+	QuesFileName = " "
+	AnsFileName = " "
+End Sub
+
+Private Sub physics_imp_Click
+	tag_subject= "physics"
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_import")
+	QuesFileName = " "
+	AnsFileName = " "
+End Sub
+
+Private Sub chemistry_imp_Click
+	tag_subject= "chemistry"
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_import")
+	QuesFileName = " "
+	AnsFileName = " "
+End Sub
+
+Private Sub biology_imp_Click
+	tag_subject= "biology"
+	Activity.RemoveAllViews
+	Activity.LoadLayout("record_import")
+	QuesFileName = " "
+	AnsFileName = " "
+End Sub
+
+Private Sub btnImpQues_Click
+	Dim Answ As Int
+	
+	FileDialog1.FilePath = QuesFilePath '弹出选择窗口
+	Answ = FileDialog1.Show("Databases","Load","Cancel","",Null)
+
+	Select Answ
+		Case DialogResponse.POSITIVE
+			QuesFileName = FileDialog1.ChosenName
+			QuesFilePath = FileDialog1.FilePath
+			BitmapQues.Initialize(QuesFilePath, QuesFileName)
+			ScrQues.Panel.SetBackgroundImage(BitmapQues)
+			ScrQues.Panel.Height = Floor(BitmapQues.Height / 5) * 1dip '按图片尺寸适配缩放&滑动
+			ScrQues.Panel.Width = Floor(BitmapQues.Width / 5) * 1dip
+		Case DialogResponse.CANCEL
+	End Select
+	
+End Sub
+
+Private Sub btnImpAns_Click
+	Dim Answ As Int
+	
+	FileDialog1.FilePath = AnsFilePath
+	Answ = FileDialog1.Show("Databases","Load","Cancel","",Null)
+
+	Select Answ
+		Case DialogResponse.POSITIVE
+			AnsFileName = FileDialog1.ChosenName
+			AnsFilePath = FileDialog1.FilePath
+			ScrAns.Panel.SetBackgroundImage(LoadBitmap(AnsFilePath, AnsFileName))
+			BitmapAns.Initialize(AnsFilePath, AnsFileName)
+			ScrAns.Panel.SetBackgroundImage(BitmapAns)
+			ScrAns.Panel.Height = Floor(BitmapAns.Height / 5) * 1dip
+			ScrAns.Panel.Width = Floor(BitmapAns.Width / 5) * 1dip
+		Case DialogResponse.CANCEL
+	End Select
+	
+End Sub
+
+Private Sub btnImpComplete_Click
+	If QuesFileName = " " Or AnsFileName = " " Then
+		Msgbox2Async("没选完呢！！", "ERR", "OK", "", "", Null, True)
+		Return
+	End If
+	Dim td As String
+	td = now_string
+	Dim level As Int
+	level = 1
+	Dim NewID As Int = 0
+	cursor1 = SQL1.ExecQuery("SELECT ID FROM " & tag_subject & "_bank")
+	NewID = cursor1.RowCount + 1 ' add 1 to the ID number to make a new ID field
+		
+'	'复制文件并防重名
+'	Dim QuesFileNameOld As String = QuesFileName
+'	Dim AnsFileNameOld As String = AnsFileName
+'	Dim filelist As List = File.ListFiles(File.DirDefaultExternal)
+'	For i = 0 To filelist.Size - 1
+'		If QuesFileName = filelist.Get(i) Then
+'			Private add As Int
+'			For i = 0 To filelist.Size - 1
+'				If QuesFileNameOld & "_" & add = filelist.Get(i) Then
+'					add = add + 1
+'					i = 0
+'				End If
+'			Next
+'			QuesFileName = QuesFileName & "_" & add
+'			Exit
+'		End If
+'	Next
+'	File.Copy(QuesFilePath,QuesFileNameOld,File.DirDefaultExternal,QuesFileName)
+'	For i = 0 To filelist.Size - 1
+'		If AnsFileName = filelist.Get(i) Then
+'			Private add As Int
+'			For i = 0 To filelist.Size - 1
+'				If AnsFileNameOld & "_" & add = filelist.Get(i) Then
+'					add = add + 1
+'					i = 0
+'				End If
+'			Next
+'			AnsFileName = AnsFileName & "_" & add
+'			Exit
+'		End If
+'	Next
+'	File.Copy(AnsFilePath,AnsFileNameOld,File.DirDefaultExternal,AnsFileName)
+
+	'写入数据库
+	Dim QuesFileNameNew As String = td & "_1." & FT.FileExtension(QuesFileName)
+	Dim AnsFileNameNew As String = td & "_2." & FT.FileExtension(AnsFileName)
+	Try
+		File.Copy(QuesFilePath,QuesFileName,File.DirDefaultExternal,QuesFileNameNew)
+		File.Copy(AnsFilePath,AnsFileName,File.DirDefaultExternal,AnsFileNameNew)
+	Catch
+		Msgbox2Async("未能成功复制文件", "ERR", "OK", "", "", Null, True)
+		Log(LastException)
+	End Try
+	SQL1.ExecNonQuery("INSERT INTO " & tag_subject & "_bank" & " (ID,Time_Create,Valid,Level,Question_Image,Answer_Image)  VALUES('" & NewID & "','" & td & "','"& td & "','"& level &"','"& QuesFileNameNew &"','"& AnsFileNameNew &"')")
+	
+	get_tags(tag_subject)'添加标签
+	
+	'初始化
+	QuesFileName = " "
+	AnsFileName = " "
+	QuesFileNameNew = " "
+	AnsFileNameNew = " "
+'	ScrQues.Panel.RemoveView 
+'	ScrAns.Panel.RemoveView
+	ScrQues.Panel.SetBackgroundImage(LoadBitmap(File.DirAssets,"import_empty.jpg")) '烂招
+	ScrAns.Panel.SetBackgroundImage(LoadBitmap(File.DirAssets,"import_empty.jpg"))
+	ScrQues.Panel.Height = 220dip
+	ScrQues.Panel.Width = 220dip
+	ScrAns.Panel.Height = 220dip
+	ScrAns.Panel.Width = 220dip
+End Sub
+
+
+
+Sub Camera1_PictureTaken (Data() As Byte)
+	
+	Dim out As OutputStream
+
+	'out = File.OpenOutput(File.DirDefaultExternal, now_string & ".jpg", False)
+	camEx.SavePictureToFile(Data, File.DirDefaultExternal, T_Name & ".jpg")
+	camEx.StartPreview 'restart preview
+	'Msgbox(T_Name,"MSG")
+	ToastMessageShow("Image saved: " & File.Combine(File.DirDefaultExternal, T_Name & ".jpg"), True)
+	btnTakePicture.Enabled = True
+	
+End Sub
+
+
+
+Sub btnTakePicture_Click
+	
+	Q_Name = now_string
+	T_Name = Q_Name
+	camEx.TakePicture
+End Sub
+
+
+Private Sub InitializeCamera
+	rp.CheckAndRequest(rp.PERMISSION_CAMERA)
+	Wait For Activity_PermissionResult (Permission As String, Result As Boolean)
+	If Result Then
+		camEx.Initialize(Panel1, frontCamera, Me, "Camera1")
+		frontCamera = camEx.Front
+	Else
+		ToastMessageShow("No permission!!!", True)
+	End If
+End Sub
+
+Private Sub btnFlash_Click
+	Dim f() As Float = camEx.GetFocusDistances
+	Log(f(0) & ", " & f(1) & ", " & f(2))
+	Dim flashModes As List = camEx.GetSupportedFlashModes
+	If flashModes.IsInitialized = False Then
+		ToastMessageShow("Flash not supported.", False)
+		Return
+	End If
+	Dim flash As String = flashModes.Get((flashModes.IndexOf(camEx.GetFlashMode) + 1) Mod flashModes.Size)
+	camEx.SetFlashMode(flash)
+	ToastMessageShow(flash, False)
+	camEx.CommitParameters
+	
+End Sub
+
+Private Sub refresh_count(subs As String) As Int 
+	cursor1 = SQL1.ExecQuery("SELECT * FROM " & subs & "_bank")
+	Return cursor1.RowCount
+End Sub
+
+Private Sub answer_Click
+	A_Name = now_string
+	T_Name = A_Name
+	camEx.TakePicture
+End Sub
+
+Private Sub submit_Click
+	If  A_Name = "" Or Q_Name = "" Then
+		Msgbox2Async("请先拍题目再拍答案", "ERR", "OK", "", "", Null, True)
+		Return 
+	End If
+	Dim table_name As String
+	table_name = tag_subject & "_bank" 
+	Dim td As String
+	td = now_string
+	Dim level As Int
+	level = 1
+	Dim NewID As Int = 0
+	cursor1 = SQL1.ExecQuery("SELECT ID FROM " & table_name)
+'	If cursor1.RowCount > 0 Then
+'		For i = 0 To cursor1.RowCount - 1
+'			cursor1.Position = i
+'	
+'			
+'			NewID = cursor1.GetInt("ID")
+'		Next
+'
+'	End If
+	NewID = cursor1.RowCount + 1 ' add 1 to the ID number to make a new ID field
+
+	SQL1.ExecNonQuery("INSERT INTO " & table_name &"  (ID,Time_Create,Valid,Level,Question_Image,Answer_Image)  VALUES('" & NewID & "','" & td & "','"& td & "','"& level &"','"& Q_Name & ".jpg" &"','"& A_Name & ".jpg" &"')")
+	
+	get_tags(tag_subject)'添加标签
+	
+	A_Name = ""
+	Q_Name = ""
+	'DBload
+	q_count.Text = "总题数：" & refresh_count(tag_subject)
+End Sub
+
+Private Sub cancel_Click
+	A_Name = ""
+	Q_Name = ""
+End Sub
+
+Private Sub r_return_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("subjects")
+End Sub
+
+Private Sub review_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("subjects_rev")
+	
+End Sub
+
+Sub RevClick
+	Activity.RemoveAllViews
+	Activity.LoadLayout("review")
+	Dim tn As String
+	tn = select_question(tag_subject)
+	If tn = "" Then
+		Msgbox2Async("没题啊", "ERR", "OK", "", "", Null, True)
+		Return
+	End If
+	
+	TouchImageView1.Initialize("TouchImageView1")
+	Activity.AddView(TouchImageView1, 0, 0, 100%x, 100%y)
+	Refresh_question(random_num)
+End Sub
+
+Private Sub chinese_rev_Click
+	tag_subject= "chinese"
+	RevClick
+End Sub
+
+Private Sub maths_rev_Click
+	tag_subject= "maths"
+	RevClick
+End Sub
+
+Private Sub english_rev_Click
+	tag_subject= "english"
+	RevClick
+End Sub
+
+Private Sub physics_rev_Click
+	tag_subject= "physics"
+	RevClick
+End Sub
+
+Private Sub chemistry_rev_Click
+	tag_subject= "chemistry"
+	RevClick
+End Sub
+
+Private Sub biology_rev_Click
+	tag_subject= "biology"
+	RevClick
+End Sub
+
+Private Sub correct_Click
+	Dim tn As String 
+	Dim table_name As String
+	table_name = tag_subject & "_bank"
+	
+	'TouchImageView1.Initialize("TouchImageView1")
+	Current_Correct_Times = Current_Correct_Times +1
+	SQL1.ExecNonQuery("UPDATE '"& table_name &"' SET Correct_Times = '" & Current_Correct_Times & "' WHERE  ID = '" & Current_ID &"' ")
+	tn = select_question(tag_subject)
+	'Msgbox(tn,"Question")
+	If tn = "" Then 
+		Return
+	End If
+	Refresh_question(random_num)
+End Sub
+
+private Sub select_question(subject As String) As String
+	Dim table_name As String
+	table_name = subject & "_bank"
+	cursor1 = SQL1.ExecQuery("SELECT * FROM " & table_name)
+	'Msgbox(cursor1.RowCount,"INF")
+	If cursor1.RowCount < 1 Then
+		Msgbox2Async("找不到题目呢", "ERR", "OK", "", "", Null, True)
+		Return ("")
+	End If
+	random_num = Rnd(0,cursor1.RowCount)
+	cursor1.Position = random_num
+	'Msgbox(random_num,"Question Num")
+	Current_ID = cursor1.GetInt("ID")
+	Current_Correct_Times = cursor1.GetInt("Correct_Times")
+	Current_Last_Time = cursor1.GetString("Last_Time")
+	'Msgbox(Current_Correct_Times,"Correct_Times")
+	Return(cursor1.GetString("Question_Image"))
+
+End Sub
+
+Private Sub Refresh_question(cn As Int)
+	Dim Question_file As String
+
+	TouchImageView1.MinScale=0.25			'	default is 0.5
+	TouchImageView1.MaxScale=2				'	default is 1.5
+	TouchImageView1.TranslatePadding=128dip	'	default is 64dip
+	
+	Question_file = File.Combine(File.DirDefaultExternal, cursor1.GetString("Question_Image"))
+	'Msgbox(Question_file,"Question File")
+	
+	Dim Bitmap1 As Bitmap
+	Bitmap1.Initialize(File.DirDefaultExternal,cursor1.GetString("Question_Image"))
+	
+	TouchImageView1.SetBitmap(Bitmap1)
+	'ImageView1.Bitmap = LoadBitmap(File.DirDefaultExternal,cursor1.GetString("Question_Image"))
+	QA_S = 0
+End Sub
+
+
+Private Sub incorrect_Click
+	Dim tn As String
+	Dim table_name As String
+	table_name = tag_subject & "_bank"
+	'TouchImageView1.Initialize("TouchImageView1")
+	Current_Incorrect_Times = Current_Incorrect_Times +1
+	SQL1.ExecNonQuery("UPDATE '"& table_name &"' SET Incorrect_Times = '" & Current_Incorrect_Times & "' WHERE  ID = '" & Current_ID &"' ")
+	
+	tn = select_question(tag_subject)
+	'Msgbox(tn,"Question")
+	Refresh_question(random_num)
+End Sub
+
+Private Sub switch_qa_Click
+	Dim Bitmap1 As Bitmap
+	If QA_S =0 Then 
+		QA_S = 1 
+		Bitmap1.Initialize(File.DirDefaultExternal,cursor1.GetString("Answer_Image"))
+		Else 
+		QA_S = 0
+		Bitmap1.Initialize(File.DirDefaultExternal,cursor1.GetString("Question_Image"))
+	End If
+	TouchImageView1.SetBitmap(Bitmap1)
+End Sub
+
+Private Sub back_rev_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("subjects_rev")
+End Sub
+
+
+
+
+
+Private Sub change_rules_Click
+	cursor1 = SQL1.ExecQuery("SELECT * FROM " & tag_subject & "_bank")
+	'Msgbox(cursor1.RowCount,"INF")
+	If cursor1.RowCount < 1 Then
+		Msgbox2Async("找不到题目呢", "ERR", "OK", "", "", Null, True)
+		Return ("")
+	End If
+	
+	random_num = Rnd(0,cursor1.RowCount)
+	cursor1.Position = random_num
+	'Msgbox(random_num,"Question Num")
+	Current_ID = cursor1.GetInt("ID")
+	Current_Correct_Times = cursor1.GetInt("Correct_Times")
+	Current_Last_Time = cursor1.GetString("Last_Time")
+	'Msgbox(Current_Correct_Times,"Correct_Times")
+	Return(cursor1.GetString("Question_Image"))
+	Activity.RemoveAllViews
+	Activity.LoadLayout("select_rule")
+	
+End Sub
+
+Private Sub back_rule_Click
+	
+	Activity.RemoveAllViews
+	Activity.LoadLayout("review")
+End Sub
+
+'有关添加标签
+
+Private Sub addtag_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("add_tag")
+	add_tag_chinese.Checked = True
+	add_tag_maths.Checked = False
+	add_tag_english.Checked = False
+	add_tag_physics.Checked = False
+	add_tag_chemistry.Checked = False
+	add_tag_biology.Checked = False
+	tag_subject = "chinese"
+End Sub
+
+Private Sub add_tag_chinese_CheckedChange(Checked As Boolean)
+	If Checked = True Then
+		tag_subject = "chinese"
+	End If
+End Sub
+
+Private Sub add_tag_maths_CheckedChange(Checked As Boolean)
+	If Checked = True Then
+		tag_subject = "maths"
+	End If
+End Sub
+
+Private Sub add_tag_english_CheckedChange(Checked As Boolean)
+	If Checked = True Then
+		tag_subject = "english"
+	End If
+End Sub
+
+Private Sub add_tag_physics_CheckedChange(Checked As Boolean)
+	If Checked = True Then
+		tag_subject = "physics"
+	End If
+End Sub
+
+Private Sub add_tag_chemistry_CheckedChange(Checked As Boolean)
+	If Checked = True Then
+		tag_subject = "chemistry"
+	End If
+End Sub
+
+Private Sub add_tag_biology_CheckedChange(Checked As Boolean)
+	If Checked = True Then
+		tag_subject = "biology"
+	End If
+End Sub
+
+Private Sub add_tag_add_Click
+	'Dim tag_duplicate As Boolean = False
+	If add_tag_edit.Text = "" Then
+		Msgbox2Async("还没有填标签名称呢！！", "ERR", "OK", "", "", Null, True)
+		Return
+	Else
+		cursor1 = SQL1.ExecQuery("SELECT * FROM tags WHERE subject = '" & tag_subject & "'")
+		For i = 0 To cursor1.RowCount - 1 
+			cursor1.Position = i
+			If add_tag_edit.Text = cursor1.GetString("tag_name") Then
+				Msgbox2Async("标签名重了！！", "ERR", "OK", "", "", Null, True)
+				Return
+			End If
+		Next
+	End If
+	SQL1.ExecNonQuery("INSERT INTO tags (tag_name,subject) VALUES ('" & add_tag_edit.Text & "','" & tag_subject &"')")
+		ToastMessageShow( tag_subject & " label '" & add_tag_edit.Text & "' added successfully", False)
+	add_tag_edit.Text = ""
+End Sub
+
