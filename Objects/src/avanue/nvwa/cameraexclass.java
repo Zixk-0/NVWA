@@ -10,7 +10,7 @@ public class cameraexclass extends B4AClass.ImplB4AClass implements BA.SubDelega
     private static java.util.HashMap<String, java.lang.reflect.Method> htSubs;
     private void innerInitialize(BA _ba) throws Exception {
         if (ba == null) {
-            ba = new anywheresoftware.b4a.ShellBA(_ba, this, htSubs, "avanue.nvwa.cameraexclass");
+            ba = new BA(_ba, this, htSubs, "avanue.nvwa.cameraexclass");
             if (htSubs == null) {
                 ba.loadHtSubs(this.getClass());
                 htSubs = ba.htSubs;
@@ -23,13 +23,18 @@ public class cameraexclass extends B4AClass.ImplB4AClass implements BA.SubDelega
             ba.raiseEvent2(null, true, "class_globals", false);
     }
 
- 
-    public void  innerInitializeHelper(anywheresoftware.b4a.BA _ba) throws Exception{
-        innerInitialize(_ba);
-    }
-    public Object callSub(String sub, Object sender, Object[] args) throws Exception {
-        return BA.SubDelegator.SubNotFound;
-    }
+ public anywheresoftware.b4a.keywords.Common __c = null;
+public Object _nativecam = null;
+public anywheresoftware.b4a.objects.CameraW _cam = null;
+public anywheresoftware.b4a.agraham.reflection.Reflection _r = null;
+public Object _target = null;
+public String _event = "";
+public boolean _front = false;
+public Object _parameters = null;
+public b4a.example.dateutils _dateutils = null;
+public avanue.nvwa.main _main = null;
+public avanue.nvwa.starter _starter = null;
+public avanue.nvwa.xuiviewsutils _xuiviewsutils = null;
 public static class _camerainfoandid{
 public boolean IsInitialized;
 public Object CameraInfo;
@@ -56,533 +61,101 @@ Height = 0;
 		public String toString() {
 			return BA.TypeToString(this, false);
 		}}
-public anywheresoftware.b4a.keywords.Common __c = null;
-public Object _nativecam = null;
-public anywheresoftware.b4a.objects.CameraW _cam = null;
-public anywheresoftware.b4a.agraham.reflection.Reflection _r = null;
-public Object _target = null;
-public String _event = "";
-public boolean _front = false;
-public Object _parameters = null;
-public b4a.example.dateutils _dateutils = null;
-public avanue.nvwa.main _main = null;
-public avanue.nvwa.starter _starter = null;
-public avanue.nvwa.xuiviewsutils _xuiviewsutils = null;
-public String  _release(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "release", false))
-	 {return ((String) Debug.delegate(ba, "release", null));}
-RDebugUtils.currentLine=4784128;
- //BA.debugLineNum = 4784128;BA.debugLine="Public Sub Release";
-RDebugUtils.currentLine=4784129;
- //BA.debugLineNum = 4784129;BA.debugLine="cam.Release";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .Release();
-RDebugUtils.currentLine=4784130;
- //BA.debugLineNum = 4784130;BA.debugLine="End Sub";
-return "";
-}
-public String  _takepicture(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "takepicture", false))
-	 {return ((String) Debug.delegate(ba, "takepicture", null));}
-RDebugUtils.currentLine=4521984;
- //BA.debugLineNum = 4521984;BA.debugLine="Public Sub TakePicture";
-RDebugUtils.currentLine=4521985;
- //BA.debugLineNum = 4521985;BA.debugLine="cam.TakePicture";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .TakePicture();
-RDebugUtils.currentLine=4521986;
- //BA.debugLineNum = 4521986;BA.debugLine="End Sub";
-return "";
-}
-public float[]  _getfocusdistances(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getfocusdistances", false))
-	 {return ((float[]) Debug.delegate(ba, "getfocusdistances", null));}
-float[] _f = null;
-RDebugUtils.currentLine=6422528;
- //BA.debugLineNum = 6422528;BA.debugLine="Public Sub GetFocusDistances As Float()";
-RDebugUtils.currentLine=6422529;
- //BA.debugLineNum = 6422529;BA.debugLine="Dim F(3) As Float";
-_f = new float[(int) (3)];
-;
-RDebugUtils.currentLine=6422530;
- //BA.debugLineNum = 6422530;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6422531;
- //BA.debugLineNum = 6422531;BA.debugLine="r.RunMethod4(\"getFocusDistances\", Array As Object";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod4("getFocusDistances",new Object[]{(Object)(_f)},new String[]{"[F"});
-RDebugUtils.currentLine=6422532;
- //BA.debugLineNum = 6422532;BA.debugLine="Return F";
-if (true) return _f;
-RDebugUtils.currentLine=6422533;
- //BA.debugLineNum = 6422533;BA.debugLine="End Sub";
-return null;
-}
-public anywheresoftware.b4a.objects.collections.List  _getsupportedflashmodes(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedflashmodes", false))
-	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(ba, "getsupportedflashmodes", null));}
-RDebugUtils.currentLine=5701632;
- //BA.debugLineNum = 5701632;BA.debugLine="Public Sub GetSupportedFlashModes As List";
-RDebugUtils.currentLine=5701633;
- //BA.debugLineNum = 5701633;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5701634;
- //BA.debugLineNum = 5701634;BA.debugLine="Return r.RunMethod(\"getSupportedFlashModes\")";
-if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedFlashModes")));
-RDebugUtils.currentLine=5701635;
- //BA.debugLineNum = 5701635;BA.debugLine="End Sub";
-return null;
-}
-public String  _getflashmode(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getflashmode", false))
-	 {return ((String) Debug.delegate(ba, "getflashmode", null));}
-RDebugUtils.currentLine=5636096;
- //BA.debugLineNum = 5636096;BA.debugLine="Public Sub GetFlashMode As String";
-RDebugUtils.currentLine=5636097;
- //BA.debugLineNum = 5636097;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5636098;
- //BA.debugLineNum = 5636098;BA.debugLine="Return r.RunMethod(\"getFlashMode\")";
-if (true) return BA.ObjectToString(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getFlashMode"));
-RDebugUtils.currentLine=5636099;
- //BA.debugLineNum = 5636099;BA.debugLine="End Sub";
-return "";
-}
-public String  _setflashmode(avanue.nvwa.cameraexclass __ref,String _mode) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setflashmode", false))
-	 {return ((String) Debug.delegate(ba, "setflashmode", new Object[] {_mode}));}
-RDebugUtils.currentLine=5570560;
- //BA.debugLineNum = 5570560;BA.debugLine="Public Sub SetFlashMode(Mode As String)";
-RDebugUtils.currentLine=5570561;
- //BA.debugLineNum = 5570561;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5570562;
- //BA.debugLineNum = 5570562;BA.debugLine="r.RunMethod2(\"setFlashMode\", Mode, \"java.lang.Str";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setFlashMode",_mode,"java.lang.String");
-RDebugUtils.currentLine=5570563;
- //BA.debugLineNum = 5570563;BA.debugLine="End Sub";
-return "";
-}
-public String  _commitparameters(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "commitparameters", false))
-	 {return ((String) Debug.delegate(ba, "commitparameters", null));}
-RDebugUtils.currentLine=5046272;
- //BA.debugLineNum = 5046272;BA.debugLine="Public Sub CommitParameters";
-RDebugUtils.currentLine=5046274;
- //BA.debugLineNum = 5046274;BA.debugLine="r.target = nativeCam";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._nativecam /*Object*/ ;
-RDebugUtils.currentLine=5046275;
- //BA.debugLineNum = 5046275;BA.debugLine="r.RunMethod4(\"setParameters\", Array As Object(par";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod4("setParameters",new Object[]{__ref._parameters /*Object*/ },new String[]{"android.hardware.Camera$Parameters"});
-RDebugUtils.currentLine=5046280;
- //BA.debugLineNum = 5046280;BA.debugLine="End Sub";
-return "";
-}
-public String  _savepicturetofile(avanue.nvwa.cameraexclass __ref,byte[] _data,String _dir,String _filename) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "savepicturetofile", false))
-	 {return ((String) Debug.delegate(ba, "savepicturetofile", new Object[] {_data,_dir,_filename}));}
-anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper _out = null;
-RDebugUtils.currentLine=4849664;
- //BA.debugLineNum = 4849664;BA.debugLine="Public Sub SavePictureToFile(Data() As Byte, Dir A";
-RDebugUtils.currentLine=4849665;
- //BA.debugLineNum = 4849665;BA.debugLine="Dim out As OutputStream = File.OpenOutput(Dir, Fi";
-_out = new anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper();
-_out = __c.File.OpenOutput(_dir,_filename,__c.False);
-RDebugUtils.currentLine=4849666;
- //BA.debugLineNum = 4849666;BA.debugLine="out.WriteBytes(Data, 0, Data.Length)";
-_out.WriteBytes(_data,(int) (0),_data.length);
-RDebugUtils.currentLine=4849667;
- //BA.debugLineNum = 4849667;BA.debugLine="out.Close";
-_out.Close();
-RDebugUtils.currentLine=4849668;
- //BA.debugLineNum = 4849668;BA.debugLine="End Sub";
-return "";
-}
-public String  _startpreview(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "startpreview", false))
-	 {return ((String) Debug.delegate(ba, "startpreview", null));}
-RDebugUtils.currentLine=4653056;
- //BA.debugLineNum = 4653056;BA.debugLine="Public Sub StartPreview";
-RDebugUtils.currentLine=4653057;
- //BA.debugLineNum = 4653057;BA.debugLine="cam.StartPreview";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .StartPreview();
-RDebugUtils.currentLine=4653058;
- //BA.debugLineNum = 4653058;BA.debugLine="End Sub";
-return "";
-}
-public String  _setjpegquality(avanue.nvwa.cameraexclass __ref,int _quality) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setjpegquality", false))
-	 {return ((String) Debug.delegate(ba, "setjpegquality", new Object[] {_quality}));}
-RDebugUtils.currentLine=5505024;
- //BA.debugLineNum = 5505024;BA.debugLine="Public Sub SetJpegQuality(Quality As Int)";
-RDebugUtils.currentLine=5505025;
- //BA.debugLineNum = 5505025;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5505026;
- //BA.debugLineNum = 5505026;BA.debugLine="r.RunMethod2(\"setJpegQuality\", Quality, \"java.lan";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setJpegQuality",BA.NumberToString(_quality),"java.lang.int");
-RDebugUtils.currentLine=5505027;
- //BA.debugLineNum = 5505027;BA.debugLine="End Sub";
-return "";
-}
-public String  _setcontinuousautofocus(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setcontinuousautofocus", false))
-	 {return ((String) Debug.delegate(ba, "setcontinuousautofocus", null));}
-anywheresoftware.b4a.objects.collections.List _modes = null;
-RDebugUtils.currentLine=6291456;
- //BA.debugLineNum = 6291456;BA.debugLine="Public Sub SetContinuousAutoFocus";
-RDebugUtils.currentLine=6291457;
- //BA.debugLineNum = 6291457;BA.debugLine="Dim modes As List = GetSupportedFocusModes";
-_modes = new anywheresoftware.b4a.objects.collections.List();
-_modes = __ref._getsupportedfocusmodes /*anywheresoftware.b4a.objects.collections.List*/ (null);
-RDebugUtils.currentLine=6291458;
- //BA.debugLineNum = 6291458;BA.debugLine="If modes.IndexOf(\"continuous-picture\") > -1 Then";
-if (_modes.IndexOf((Object)("continuous-picture"))>-1) { 
-RDebugUtils.currentLine=6291459;
- //BA.debugLineNum = 6291459;BA.debugLine="SetFocusMode(\"continuous-picture\")";
-__ref._setfocusmode /*String*/ (null,"continuous-picture");
- }else 
-{RDebugUtils.currentLine=6291460;
- //BA.debugLineNum = 6291460;BA.debugLine="Else If modes.IndexOf(\"continuous-video\") > -1 Th";
-if (_modes.IndexOf((Object)("continuous-video"))>-1) { 
-RDebugUtils.currentLine=6291461;
- //BA.debugLineNum = 6291461;BA.debugLine="SetFocusMode(\"continuous-video\")";
-__ref._setfocusmode /*String*/ (null,"continuous-video");
- }else {
-RDebugUtils.currentLine=6291463;
- //BA.debugLineNum = 6291463;BA.debugLine="Log(\"Continuous focus mode is not available\")";
-__c.LogImpl("26291463","Continuous focus mode is not available",0);
- }}
-;
-RDebugUtils.currentLine=6291465;
- //BA.debugLineNum = 6291465;BA.debugLine="End Sub";
-return "";
-}
-public avanue.nvwa.cameraexclass._camerasize  _getpreviewsize(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getpreviewsize", false))
-	 {return ((avanue.nvwa.cameraexclass._camerasize) Debug.delegate(ba, "getpreviewsize", null));}
-avanue.nvwa.cameraexclass._camerasize _cs = null;
-RDebugUtils.currentLine=6029312;
- //BA.debugLineNum = 6029312;BA.debugLine="Public Sub GetPreviewSize As CameraSize";
-RDebugUtils.currentLine=6029313;
- //BA.debugLineNum = 6029313;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6029314;
- //BA.debugLineNum = 6029314;BA.debugLine="r.target = r.RunMethod(\"getPreviewSize\")";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getPreviewSize");
-RDebugUtils.currentLine=6029315;
- //BA.debugLineNum = 6029315;BA.debugLine="Dim cs As CameraSize";
-_cs = new avanue.nvwa.cameraexclass._camerasize();
-RDebugUtils.currentLine=6029316;
- //BA.debugLineNum = 6029316;BA.debugLine="cs.Width = r.GetField(\"width\")";
-_cs.Width /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("width")));
-RDebugUtils.currentLine=6029317;
- //BA.debugLineNum = 6029317;BA.debugLine="cs.Height = r.GetField(\"height\")";
-_cs.Height /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("height")));
-RDebugUtils.currentLine=6029318;
- //BA.debugLineNum = 6029318;BA.debugLine="Return cs";
-if (true) return _cs;
-RDebugUtils.currentLine=6029319;
- //BA.debugLineNum = 6029319;BA.debugLine="End Sub";
-return null;
-}
-public String  _initialize(avanue.nvwa.cameraexclass __ref,anywheresoftware.b4a.BA _ba,anywheresoftware.b4a.objects.PanelWrapper _panel1,boolean _frontcamera,Object _targetmodule,String _eventname) throws Exception{
-__ref = this;
-innerInitialize(_ba);
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "initialize", false))
-	 {return ((String) Debug.delegate(ba, "initialize", new Object[] {_ba,_panel1,_frontcamera,_targetmodule,_eventname}));}
-int _id = 0;
-RDebugUtils.currentLine=4259840;
- //BA.debugLineNum = 4259840;BA.debugLine="Public Sub Initialize (Panel1 As Panel, FrontCamer";
-RDebugUtils.currentLine=4259841;
- //BA.debugLineNum = 4259841;BA.debugLine="target = TargetModule";
-__ref._target /*Object*/  = _targetmodule;
-RDebugUtils.currentLine=4259842;
- //BA.debugLineNum = 4259842;BA.debugLine="event = EventName";
-__ref._event /*String*/  = _eventname;
-RDebugUtils.currentLine=4259843;
- //BA.debugLineNum = 4259843;BA.debugLine="Front = FrontCamera";
-__ref._front /*boolean*/  = _frontcamera;
-RDebugUtils.currentLine=4259844;
- //BA.debugLineNum = 4259844;BA.debugLine="Dim id As Int";
-_id = 0;
-RDebugUtils.currentLine=4259845;
- //BA.debugLineNum = 4259845;BA.debugLine="id = FindCamera(Front).id";
-_id = __ref._findcamera /*avanue.nvwa.cameraexclass._camerainfoandid*/ (null,__ref._front /*boolean*/ ).Id /*int*/ ;
-RDebugUtils.currentLine=4259846;
- //BA.debugLineNum = 4259846;BA.debugLine="If id = -1 Then";
-if (_id==-1) { 
-RDebugUtils.currentLine=4259847;
- //BA.debugLineNum = 4259847;BA.debugLine="Front = Not(Front) 'try different camera";
-__ref._front /*boolean*/  = __c.Not(__ref._front /*boolean*/ );
-RDebugUtils.currentLine=4259848;
- //BA.debugLineNum = 4259848;BA.debugLine="id = FindCamera(Front).id";
-_id = __ref._findcamera /*avanue.nvwa.cameraexclass._camerainfoandid*/ (null,__ref._front /*boolean*/ ).Id /*int*/ ;
-RDebugUtils.currentLine=4259849;
- //BA.debugLineNum = 4259849;BA.debugLine="If id = -1 Then";
-if (_id==-1) { 
-RDebugUtils.currentLine=4259850;
- //BA.debugLineNum = 4259850;BA.debugLine="ToastMessageShow(\"No camera found.\", True)";
-__c.ToastMessageShow(BA.ObjectToCharSequence("No camera found."),__c.True);
-RDebugUtils.currentLine=4259851;
- //BA.debugLineNum = 4259851;BA.debugLine="Return";
-if (true) return "";
- };
- };
-RDebugUtils.currentLine=4259854;
- //BA.debugLineNum = 4259854;BA.debugLine="cam.Initialize2(Panel1, \"camera\", id)";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .Initialize2(ba,(android.view.ViewGroup)(_panel1.getObject()),"camera",_id);
-RDebugUtils.currentLine=4259855;
- //BA.debugLineNum = 4259855;BA.debugLine="End Sub";
-return "";
-}
-public String  _camera_focusdone(avanue.nvwa.cameraexclass __ref,boolean _success) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "camera_focusdone", false))
-	 {return ((String) Debug.delegate(ba, "camera_focusdone", new Object[] {_success}));}
-RDebugUtils.currentLine=6684672;
- //BA.debugLineNum = 6684672;BA.debugLine="Private Sub Camera_FocusDone (Success As Boolean)";
-RDebugUtils.currentLine=6684673;
- //BA.debugLineNum = 6684673;BA.debugLine="If Success Then";
+public String  _camera_focusdone(boolean _success) throws Exception{
+ //BA.debugLineNum = 320;BA.debugLine="Private Sub Camera_FocusDone (Success As Boolean)";
+ //BA.debugLineNum = 321;BA.debugLine="If Success Then";
 if (_success) { 
-RDebugUtils.currentLine=6684674;
- //BA.debugLineNum = 6684674;BA.debugLine="TakePicture";
-__ref._takepicture /*String*/ (null);
+ //BA.debugLineNum = 322;BA.debugLine="TakePicture";
+_takepicture();
  }else {
-RDebugUtils.currentLine=6684676;
- //BA.debugLineNum = 6684676;BA.debugLine="Log(\"AutoFocus error.\")";
-__c.LogImpl("26684676","AutoFocus error.",0);
+ //BA.debugLineNum = 324;BA.debugLine="Log(\"AutoFocus error.\")";
+__c.LogImpl("16750212","AutoFocus error.",0);
  };
-RDebugUtils.currentLine=6684678;
- //BA.debugLineNum = 6684678;BA.debugLine="End Sub";
+ //BA.debugLineNum = 326;BA.debugLine="End Sub";
 return "";
 }
-public String  _camera_picturetaken(avanue.nvwa.cameraexclass __ref,byte[] _data) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "camera_picturetaken", false))
-	 {return ((String) Debug.delegate(ba, "camera_picturetaken", new Object[] {_data}));}
-RDebugUtils.currentLine=4587520;
- //BA.debugLineNum = 4587520;BA.debugLine="Private Sub Camera_PictureTaken (Data() As Byte)";
-RDebugUtils.currentLine=4587521;
- //BA.debugLineNum = 4587521;BA.debugLine="CallSub2(target, event & \"_PictureTaken\", Data)";
-__c.CallSubNew2(ba,__ref._target /*Object*/ ,__ref._event /*String*/ +"_PictureTaken",(Object)(_data));
-RDebugUtils.currentLine=4587522;
- //BA.debugLineNum = 4587522;BA.debugLine="End Sub";
+public String  _camera_picturetaken(byte[] _data) throws Exception{
+ //BA.debugLineNum = 108;BA.debugLine="Private Sub Camera_PictureTaken (Data() As Byte)";
+ //BA.debugLineNum = 109;BA.debugLine="CallSub2(target, event & \"_PictureTaken\", Data)";
+__c.CallSubNew2(ba,_target,_event+"_PictureTaken",(Object)(_data));
+ //BA.debugLineNum = 110;BA.debugLine="End Sub";
 return "";
 }
-public String  _camera_ready(avanue.nvwa.cameraexclass __ref,boolean _success) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "camera_ready", false))
-	 {return ((String) Debug.delegate(ba, "camera_ready", new Object[] {_success}));}
-RDebugUtils.currentLine=4456448;
- //BA.debugLineNum = 4456448;BA.debugLine="Private Sub Camera_Ready (Success As Boolean)";
-RDebugUtils.currentLine=4456449;
- //BA.debugLineNum = 4456449;BA.debugLine="If Success Then";
+public String  _camera_ready(boolean _success) throws Exception{
+ //BA.debugLineNum = 85;BA.debugLine="Private Sub Camera_Ready (Success As Boolean)";
+ //BA.debugLineNum = 86;BA.debugLine="If Success Then";
 if (_success) { 
-RDebugUtils.currentLine=4456450;
- //BA.debugLineNum = 4456450;BA.debugLine="r.target = cam";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = (Object)(__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ );
-RDebugUtils.currentLine=4456451;
- //BA.debugLineNum = 4456451;BA.debugLine="nativeCam = r.GetField(\"camera\")";
-__ref._nativecam /*Object*/  = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("camera");
-RDebugUtils.currentLine=4456452;
- //BA.debugLineNum = 4456452;BA.debugLine="r.target = nativeCam";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._nativecam /*Object*/ ;
-RDebugUtils.currentLine=4456453;
- //BA.debugLineNum = 4456453;BA.debugLine="parameters = r.RunMethod(\"getParameters\")";
-__ref._parameters /*Object*/  = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getParameters");
-RDebugUtils.currentLine=4456454;
- //BA.debugLineNum = 4456454;BA.debugLine="SetDisplayOrientation";
-__ref._setdisplayorientation /*String*/ (null);
+ //BA.debugLineNum = 87;BA.debugLine="r.target = cam";
+_r.Target = (Object)(_cam);
+ //BA.debugLineNum = 88;BA.debugLine="nativeCam = r.GetField(\"camera\")";
+_nativecam = _r.GetField("camera");
+ //BA.debugLineNum = 89;BA.debugLine="r.target = nativeCam";
+_r.Target = _nativecam;
+ //BA.debugLineNum = 90;BA.debugLine="parameters = r.RunMethod(\"getParameters\")";
+_parameters = _r.RunMethod("getParameters");
+ //BA.debugLineNum = 91;BA.debugLine="SetDisplayOrientation";
+_setdisplayorientation();
  }else {
-RDebugUtils.currentLine=4456456;
- //BA.debugLineNum = 4456456;BA.debugLine="Log(\"success = false, \" & LastException)";
-__c.LogImpl("24456456","success = false, "+BA.ObjectToString(__c.LastException(ba)),0);
+ //BA.debugLineNum = 93;BA.debugLine="Log(\"success = false, \" & LastException)";
+__c.LogImpl("14521992","success = false, "+BA.ObjectToString(__c.LastException(ba)),0);
  };
-RDebugUtils.currentLine=4456458;
- //BA.debugLineNum = 4456458;BA.debugLine="CallSub2(target, event & \"_ready\", Success)";
-__c.CallSubNew2(ba,__ref._target /*Object*/ ,__ref._event /*String*/ +"_ready",(Object)(_success));
-RDebugUtils.currentLine=4456459;
- //BA.debugLineNum = 4456459;BA.debugLine="End Sub";
+ //BA.debugLineNum = 95;BA.debugLine="CallSub2(target, event & \"_ready\", Success)";
+__c.CallSubNew2(ba,_target,_event+"_ready",(Object)(_success));
+ //BA.debugLineNum = 96;BA.debugLine="End Sub";
 return "";
 }
-public String  _setdisplayorientation(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setdisplayorientation", false))
-	 {return ((String) Debug.delegate(ba, "setdisplayorientation", null));}
-int _previewresult = 0;
-int _result = 0;
-int _degrees = 0;
-avanue.nvwa.cameraexclass._camerainfoandid _ci = null;
-int _orientation = 0;
-RDebugUtils.currentLine=4390912;
- //BA.debugLineNum = 4390912;BA.debugLine="Private Sub SetDisplayOrientation";
-RDebugUtils.currentLine=4390913;
- //BA.debugLineNum = 4390913;BA.debugLine="r.target = r.GetActivity";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = (Object)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetActivity(ba));
-RDebugUtils.currentLine=4390914;
- //BA.debugLineNum = 4390914;BA.debugLine="r.target = r.RunMethod(\"getWindowManager\")";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getWindowManager");
-RDebugUtils.currentLine=4390915;
- //BA.debugLineNum = 4390915;BA.debugLine="r.target = r.RunMethod(\"getDefaultDisplay\")";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getDefaultDisplay");
-RDebugUtils.currentLine=4390916;
- //BA.debugLineNum = 4390916;BA.debugLine="r.target = r.RunMethod(\"getRotation\")";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getRotation");
-RDebugUtils.currentLine=4390917;
- //BA.debugLineNum = 4390917;BA.debugLine="Dim previewResult, result, degrees As Int = r.tar";
-_previewresult = 0;
-_result = 0;
-_degrees = (int) ((double)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target))*90);
-RDebugUtils.currentLine=4390918;
- //BA.debugLineNum = 4390918;BA.debugLine="Dim ci As CameraInfoAndId = FindCamera(Front)";
-_ci = __ref._findcamera /*avanue.nvwa.cameraexclass._camerainfoandid*/ (null,__ref._front /*boolean*/ );
-RDebugUtils.currentLine=4390919;
- //BA.debugLineNum = 4390919;BA.debugLine="r.target = ci.CameraInfo";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = _ci.CameraInfo /*Object*/ ;
-RDebugUtils.currentLine=4390920;
- //BA.debugLineNum = 4390920;BA.debugLine="Dim orientation As Int = r.GetField(\"orientation\"";
-_orientation = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("orientation")));
-RDebugUtils.currentLine=4390921;
- //BA.debugLineNum = 4390921;BA.debugLine="If Front Then";
-if (__ref._front /*boolean*/ ) { 
-RDebugUtils.currentLine=4390922;
- //BA.debugLineNum = 4390922;BA.debugLine="previewResult = (orientation + degrees) Mod 360";
-_previewresult = (int) ((_orientation+_degrees)%360);
-RDebugUtils.currentLine=4390923;
- //BA.debugLineNum = 4390923;BA.debugLine="result = previewResult";
-_result = _previewresult;
-RDebugUtils.currentLine=4390924;
- //BA.debugLineNum = 4390924;BA.debugLine="previewResult = (360 - previewResult) Mod 360";
-_previewresult = (int) ((360-_previewresult)%360);
- }else {
-RDebugUtils.currentLine=4390926;
- //BA.debugLineNum = 4390926;BA.debugLine="previewResult = (orientation - degrees + 360) Mo";
-_previewresult = (int) ((_orientation-_degrees+360)%360);
-RDebugUtils.currentLine=4390927;
- //BA.debugLineNum = 4390927;BA.debugLine="result = previewResult";
-_result = _previewresult;
-RDebugUtils.currentLine=4390928;
- //BA.debugLineNum = 4390928;BA.debugLine="Log(previewResult)";
-__c.LogImpl("24390928",BA.NumberToString(_previewresult),0);
- };
-RDebugUtils.currentLine=4390930;
- //BA.debugLineNum = 4390930;BA.debugLine="r.target = nativeCam";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._nativecam /*Object*/ ;
-RDebugUtils.currentLine=4390931;
- //BA.debugLineNum = 4390931;BA.debugLine="r.RunMethod2(\"setDisplayOrientation\", previewResu";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setDisplayOrientation",BA.NumberToString(_previewresult),"java.lang.int");
-RDebugUtils.currentLine=4390932;
- //BA.debugLineNum = 4390932;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=4390933;
- //BA.debugLineNum = 4390933;BA.debugLine="r.RunMethod2(\"setRotation\", result, \"java.lang.in";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setRotation",BA.NumberToString(_result),"java.lang.int");
-RDebugUtils.currentLine=4390934;
- //BA.debugLineNum = 4390934;BA.debugLine="CommitParameters";
-__ref._commitparameters /*String*/ (null);
-RDebugUtils.currentLine=4390935;
- //BA.debugLineNum = 4390935;BA.debugLine="End Sub";
-return "";
-}
-public String  _class_globals(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-RDebugUtils.currentLine=4194304;
- //BA.debugLineNum = 4194304;BA.debugLine="Sub Class_Globals";
-RDebugUtils.currentLine=4194305;
- //BA.debugLineNum = 4194305;BA.debugLine="Private nativeCam As Object";
+public String  _class_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Class_Globals";
+ //BA.debugLineNum = 7;BA.debugLine="Private nativeCam As Object";
 _nativecam = new Object();
-RDebugUtils.currentLine=4194306;
- //BA.debugLineNum = 4194306;BA.debugLine="Private cam As Camera";
+ //BA.debugLineNum = 8;BA.debugLine="Private cam As Camera";
 _cam = new anywheresoftware.b4a.objects.CameraW();
-RDebugUtils.currentLine=4194307;
- //BA.debugLineNum = 4194307;BA.debugLine="Private r As Reflector";
+ //BA.debugLineNum = 9;BA.debugLine="Private r As Reflector";
 _r = new anywheresoftware.b4a.agraham.reflection.Reflection();
-RDebugUtils.currentLine=4194308;
- //BA.debugLineNum = 4194308;BA.debugLine="Private target As Object";
+ //BA.debugLineNum = 10;BA.debugLine="Private target As Object";
 _target = new Object();
-RDebugUtils.currentLine=4194309;
- //BA.debugLineNum = 4194309;BA.debugLine="Private event As String";
+ //BA.debugLineNum = 11;BA.debugLine="Private event As String";
 _event = "";
-RDebugUtils.currentLine=4194310;
- //BA.debugLineNum = 4194310;BA.debugLine="Public Front As Boolean";
+ //BA.debugLineNum = 12;BA.debugLine="Public Front As Boolean";
 _front = false;
-RDebugUtils.currentLine=4194311;
- //BA.debugLineNum = 4194311;BA.debugLine="Type CameraInfoAndId (CameraInfo As Object, Id As";
+ //BA.debugLineNum = 13;BA.debugLine="Type CameraInfoAndId (CameraInfo As Object, Id As";
 ;
-RDebugUtils.currentLine=4194312;
- //BA.debugLineNum = 4194312;BA.debugLine="Type CameraSize (Width As Int, Height As Int)";
+ //BA.debugLineNum = 14;BA.debugLine="Type CameraSize (Width As Int, Height As Int)";
 ;
-RDebugUtils.currentLine=4194313;
- //BA.debugLineNum = 4194313;BA.debugLine="Private parameters As Object";
+ //BA.debugLineNum = 15;BA.debugLine="Private parameters As Object";
 _parameters = new Object();
-RDebugUtils.currentLine=4194314;
- //BA.debugLineNum = 4194314;BA.debugLine="End Sub";
+ //BA.debugLineNum = 16;BA.debugLine="End Sub";
 return "";
 }
-public String  _closenow(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "closenow", false))
-	 {return ((String) Debug.delegate(ba, "closenow", null));}
-RDebugUtils.currentLine=6553600;
- //BA.debugLineNum = 6553600;BA.debugLine="Public Sub CloseNow";
-RDebugUtils.currentLine=6553601;
- //BA.debugLineNum = 6553601;BA.debugLine="cam.Release";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .Release();
-RDebugUtils.currentLine=6553602;
- //BA.debugLineNum = 6553602;BA.debugLine="r.target = cam";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = (Object)(__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ );
-RDebugUtils.currentLine=6553603;
- //BA.debugLineNum = 6553603;BA.debugLine="r.RunMethod2(\"releaseCameras\", True, \"java.lang.b";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("releaseCameras",BA.ObjectToString(__c.True),"java.lang.boolean");
-RDebugUtils.currentLine=6553604;
- //BA.debugLineNum = 6553604;BA.debugLine="End Sub";
+public String  _closenow() throws Exception{
+ //BA.debugLineNum = 309;BA.debugLine="Public Sub CloseNow";
+ //BA.debugLineNum = 310;BA.debugLine="cam.Release";
+_cam.Release();
+ //BA.debugLineNum = 311;BA.debugLine="r.target = cam";
+_r.Target = (Object)(_cam);
+ //BA.debugLineNum = 312;BA.debugLine="r.RunMethod2(\"releaseCameras\", True, \"java.lang.b";
+_r.RunMethod2("releaseCameras",BA.ObjectToString(__c.True),"java.lang.boolean");
+ //BA.debugLineNum = 313;BA.debugLine="End Sub";
 return "";
 }
-public Object  _facedetection_event(avanue.nvwa.cameraexclass __ref,String _methodname,Object[] _args) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "facedetection_event", false))
-	 {return ((Object) Debug.delegate(ba, "facedetection_event", new Object[] {_methodname,_args}));}
+public String  _commitparameters() throws Exception{
+ //BA.debugLineNum = 141;BA.debugLine="Public Sub CommitParameters";
+ //BA.debugLineNum = 143;BA.debugLine="r.target = nativeCam";
+_r.Target = _nativecam;
+ //BA.debugLineNum = 144;BA.debugLine="r.RunMethod4(\"setParameters\", Array As Object(par";
+_r.RunMethod4("setParameters",new Object[]{_parameters},new String[]{"android.hardware.Camera$Parameters"});
+ //BA.debugLineNum = 149;BA.debugLine="End Sub";
+return "";
+}
+public Object  _facedetection_event(String _methodname,Object[] _args) throws Exception{
 Object[] _faces = null;
 Object _f = null;
 anywheresoftware.b4j.object.JavaObject _jo = null;
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _facerect = null;
-RDebugUtils.currentLine=7340032;
- //BA.debugLineNum = 7340032;BA.debugLine="Private Sub FaceDetection_Event (MethodName As Str";
-RDebugUtils.currentLine=7340033;
- //BA.debugLineNum = 7340033;BA.debugLine="Dim faces() As Object = Args(0)";
+ //BA.debugLineNum = 374;BA.debugLine="Private Sub FaceDetection_Event (MethodName As Str";
+ //BA.debugLineNum = 375;BA.debugLine="Dim faces() As Object = Args(0)";
 _faces = (Object[])(_args[(int) (0)]);
-RDebugUtils.currentLine=7340034;
- //BA.debugLineNum = 7340034;BA.debugLine="For Each f As Object In faces";
+ //BA.debugLineNum = 376;BA.debugLine="For Each f As Object In faces";
 {
 final Object[] group2 = _faces;
 final int groupLen2 = group2.length
@@ -590,339 +163,254 @@ final int groupLen2 = group2.length
 ;
 for (; index2 < groupLen2;index2++){
 _f = group2[index2];
-RDebugUtils.currentLine=7340035;
- //BA.debugLineNum = 7340035;BA.debugLine="Dim jo As JavaObject = f";
+ //BA.debugLineNum = 377;BA.debugLine="Dim jo As JavaObject = f";
 _jo = new anywheresoftware.b4j.object.JavaObject();
 _jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_f));
-RDebugUtils.currentLine=7340036;
- //BA.debugLineNum = 7340036;BA.debugLine="Dim faceRect As Rect = jo.GetField(\"rect\")";
+ //BA.debugLineNum = 378;BA.debugLine="Dim faceRect As Rect = jo.GetField(\"rect\")";
 _facerect = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
 _facerect = (anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper(), (android.graphics.Rect)(_jo.GetField("rect")));
-RDebugUtils.currentLine=7340037;
- //BA.debugLineNum = 7340037;BA.debugLine="Log(faceRect)";
-__c.LogImpl("27340037",BA.ObjectToString(_facerect),0);
+ //BA.debugLineNum = 379;BA.debugLine="Log(faceRect)";
+__c.LogImpl("17405573",BA.ObjectToString(_facerect),0);
  }
 };
-RDebugUtils.currentLine=7340039;
- //BA.debugLineNum = 7340039;BA.debugLine="Return Null";
+ //BA.debugLineNum = 381;BA.debugLine="Return Null";
 if (true) return __c.Null;
-RDebugUtils.currentLine=7340040;
- //BA.debugLineNum = 7340040;BA.debugLine="End Sub";
+ //BA.debugLineNum = 382;BA.debugLine="End Sub";
 return null;
 }
-public avanue.nvwa.cameraexclass._camerainfoandid  _findcamera(avanue.nvwa.cameraexclass __ref,boolean _frontcamera) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "findcamera", false))
-	 {return ((avanue.nvwa.cameraexclass._camerainfoandid) Debug.delegate(ba, "findcamera", new Object[] {_frontcamera}));}
+public avanue.nvwa.cameraexclass._camerainfoandid  _findcamera(boolean _frontcamera) throws Exception{
 avanue.nvwa.cameraexclass._camerainfoandid _ci = null;
 Object _camerainfo = null;
 int _cameravalue = 0;
 int _numberofcameras = 0;
 int _i = 0;
-RDebugUtils.currentLine=4325376;
- //BA.debugLineNum = 4325376;BA.debugLine="Private Sub FindCamera (frontCamera As Boolean) As";
-RDebugUtils.currentLine=4325377;
- //BA.debugLineNum = 4325377;BA.debugLine="Dim ci As CameraInfoAndId";
+ //BA.debugLineNum = 35;BA.debugLine="Private Sub FindCamera (frontCamera As Boolean) As";
+ //BA.debugLineNum = 36;BA.debugLine="Dim ci As CameraInfoAndId";
 _ci = new avanue.nvwa.cameraexclass._camerainfoandid();
-RDebugUtils.currentLine=4325378;
- //BA.debugLineNum = 4325378;BA.debugLine="Dim cameraInfo As Object";
+ //BA.debugLineNum = 37;BA.debugLine="Dim cameraInfo As Object";
 _camerainfo = new Object();
-RDebugUtils.currentLine=4325379;
- //BA.debugLineNum = 4325379;BA.debugLine="Dim cameraValue As Int";
+ //BA.debugLineNum = 38;BA.debugLine="Dim cameraValue As Int";
 _cameravalue = 0;
-RDebugUtils.currentLine=4325380;
- //BA.debugLineNum = 4325380;BA.debugLine="Log(\"findCamera\")";
-__c.LogImpl("24325380","findCamera",0);
-RDebugUtils.currentLine=4325381;
- //BA.debugLineNum = 4325381;BA.debugLine="If frontCamera Then cameraValue = 1 Else cameraVa";
+ //BA.debugLineNum = 39;BA.debugLine="Log(\"findCamera\")";
+__c.LogImpl("14390916","findCamera",0);
+ //BA.debugLineNum = 40;BA.debugLine="If frontCamera Then cameraValue = 1 Else cameraVa";
 if (_frontcamera) { 
 _cameravalue = (int) (1);}
 else {
 _cameravalue = (int) (0);};
-RDebugUtils.currentLine=4325382;
- //BA.debugLineNum = 4325382;BA.debugLine="cameraInfo = r.CreateObject(\"android.hardware.Cam";
-_camerainfo = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .CreateObject("android.hardware.Camera$CameraInfo");
-RDebugUtils.currentLine=4325383;
- //BA.debugLineNum = 4325383;BA.debugLine="Dim numberOfCameras As Int = r.RunStaticMethod(\"a";
-_numberofcameras = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunStaticMethod("android.hardware.Camera","getNumberOfCameras",(Object[])(__c.Null),(String[])(__c.Null))));
-RDebugUtils.currentLine=4325384;
- //BA.debugLineNum = 4325384;BA.debugLine="Log(r.target)";
-__c.LogImpl("24325384",BA.ObjectToString(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target),0);
-RDebugUtils.currentLine=4325385;
- //BA.debugLineNum = 4325385;BA.debugLine="Log(numberOfCameras)";
-__c.LogImpl("24325385",BA.NumberToString(_numberofcameras),0);
-RDebugUtils.currentLine=4325386;
- //BA.debugLineNum = 4325386;BA.debugLine="For i = 0 To numberOfCameras - 1";
+ //BA.debugLineNum = 41;BA.debugLine="cameraInfo = r.CreateObject(\"android.hardware.Cam";
+_camerainfo = _r.CreateObject("android.hardware.Camera$CameraInfo");
+ //BA.debugLineNum = 42;BA.debugLine="Dim numberOfCameras As Int = r.RunStaticMethod(\"a";
+_numberofcameras = (int)(BA.ObjectToNumber(_r.RunStaticMethod("android.hardware.Camera","getNumberOfCameras",(Object[])(__c.Null),(String[])(__c.Null))));
+ //BA.debugLineNum = 43;BA.debugLine="Log(r.target)";
+__c.LogImpl("14390920",BA.ObjectToString(_r.Target),0);
+ //BA.debugLineNum = 44;BA.debugLine="Log(numberOfCameras)";
+__c.LogImpl("14390921",BA.NumberToString(_numberofcameras),0);
+ //BA.debugLineNum = 45;BA.debugLine="For i = 0 To numberOfCameras - 1";
 {
 final int step10 = 1;
 final int limit10 = (int) (_numberofcameras-1);
 _i = (int) (0) ;
 for (;_i <= limit10 ;_i = _i + step10 ) {
-RDebugUtils.currentLine=4325387;
- //BA.debugLineNum = 4325387;BA.debugLine="r.RunStaticMethod(\"android.hardware.Camera\", \"ge";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunStaticMethod("android.hardware.Camera","getCameraInfo",new Object[]{(Object)(_i),_camerainfo},new String[]{"java.lang.int","android.hardware.Camera$CameraInfo"});
-RDebugUtils.currentLine=4325389;
- //BA.debugLineNum = 4325389;BA.debugLine="r.target = cameraInfo";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = _camerainfo;
-RDebugUtils.currentLine=4325390;
- //BA.debugLineNum = 4325390;BA.debugLine="Log(\"facing: \" & r.GetField(\"facing\") & \", \" & c";
-__c.LogImpl("24325390","facing: "+BA.ObjectToString(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("facing"))+", "+BA.NumberToString(_cameravalue),0);
-RDebugUtils.currentLine=4325391;
- //BA.debugLineNum = 4325391;BA.debugLine="If r.GetField(\"facing\") = cameraValue Then";
-if ((__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("facing")).equals((Object)(_cameravalue))) { 
-RDebugUtils.currentLine=4325392;
- //BA.debugLineNum = 4325392;BA.debugLine="ci.cameraInfo = r.target";
-_ci.CameraInfo /*Object*/  = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target;
-RDebugUtils.currentLine=4325393;
- //BA.debugLineNum = 4325393;BA.debugLine="ci.Id = i";
+ //BA.debugLineNum = 46;BA.debugLine="r.RunStaticMethod(\"android.hardware.Camera\", \"ge";
+_r.RunStaticMethod("android.hardware.Camera","getCameraInfo",new Object[]{(Object)(_i),_camerainfo},new String[]{"java.lang.int","android.hardware.Camera$CameraInfo"});
+ //BA.debugLineNum = 48;BA.debugLine="r.target = cameraInfo";
+_r.Target = _camerainfo;
+ //BA.debugLineNum = 49;BA.debugLine="Log(\"facing: \" & r.GetField(\"facing\") & \", \" & c";
+__c.LogImpl("14390926","facing: "+BA.ObjectToString(_r.GetField("facing"))+", "+BA.NumberToString(_cameravalue),0);
+ //BA.debugLineNum = 50;BA.debugLine="If r.GetField(\"facing\") = cameraValue Then";
+if ((_r.GetField("facing")).equals((Object)(_cameravalue))) { 
+ //BA.debugLineNum = 51;BA.debugLine="ci.cameraInfo = r.target";
+_ci.CameraInfo /*Object*/  = _r.Target;
+ //BA.debugLineNum = 52;BA.debugLine="ci.Id = i";
 _ci.Id /*int*/  = _i;
-RDebugUtils.currentLine=4325394;
- //BA.debugLineNum = 4325394;BA.debugLine="Return ci";
+ //BA.debugLineNum = 53;BA.debugLine="Return ci";
 if (true) return _ci;
  };
  }
 };
-RDebugUtils.currentLine=4325397;
- //BA.debugLineNum = 4325397;BA.debugLine="ci.id = -1";
+ //BA.debugLineNum = 56;BA.debugLine="ci.id = -1";
 _ci.Id /*int*/  = (int) (-1);
-RDebugUtils.currentLine=4325398;
- //BA.debugLineNum = 4325398;BA.debugLine="Return ci";
+ //BA.debugLineNum = 57;BA.debugLine="Return ci";
 if (true) return _ci;
-RDebugUtils.currentLine=4325399;
- //BA.debugLineNum = 4325399;BA.debugLine="End Sub";
+ //BA.debugLineNum = 58;BA.debugLine="End Sub";
 return null;
 }
-public String  _focusandtakepicture(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "focusandtakepicture", false))
-	 {return ((String) Debug.delegate(ba, "focusandtakepicture", null));}
-RDebugUtils.currentLine=6619136;
- //BA.debugLineNum = 6619136;BA.debugLine="Public Sub FocusAndTakePicture";
-RDebugUtils.currentLine=6619137;
- //BA.debugLineNum = 6619137;BA.debugLine="cam.AutoFocus";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .AutoFocus();
-RDebugUtils.currentLine=6619138;
- //BA.debugLineNum = 6619138;BA.debugLine="End Sub";
+public String  _focusandtakepicture() throws Exception{
+ //BA.debugLineNum = 315;BA.debugLine="Public Sub FocusAndTakePicture";
+ //BA.debugLineNum = 316;BA.debugLine="cam.AutoFocus";
+_cam.AutoFocus();
+ //BA.debugLineNum = 317;BA.debugLine="End Sub";
 return "";
 }
-public String  _getcoloreffect(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getcoloreffect", false))
-	 {return ((String) Debug.delegate(ba, "getcoloreffect", null));}
-RDebugUtils.currentLine=5111808;
- //BA.debugLineNum = 5111808;BA.debugLine="Public Sub GetColorEffect As String";
-RDebugUtils.currentLine=5111809;
- //BA.debugLineNum = 5111809;BA.debugLine="Return GetParameter(\"effect\")";
-if (true) return __ref._getparameter /*String*/ (null,"effect");
-RDebugUtils.currentLine=5111810;
- //BA.debugLineNum = 5111810;BA.debugLine="End Sub";
+public String  _getcoloreffect() throws Exception{
+ //BA.debugLineNum = 151;BA.debugLine="Public Sub GetColorEffect As String";
+ //BA.debugLineNum = 152;BA.debugLine="Return GetParameter(\"effect\")";
+if (true) return _getparameter("effect");
+ //BA.debugLineNum = 153;BA.debugLine="End Sub";
 return "";
 }
-public String  _getparameter(avanue.nvwa.cameraexclass __ref,String _key) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getparameter", false))
-	 {return ((String) Debug.delegate(ba, "getparameter", new Object[] {_key}));}
-RDebugUtils.currentLine=4980736;
- //BA.debugLineNum = 4980736;BA.debugLine="Public Sub GetParameter(Key As String) As String";
-RDebugUtils.currentLine=4980737;
- //BA.debugLineNum = 4980737;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=4980738;
- //BA.debugLineNum = 4980738;BA.debugLine="Return r.RunMethod2(\"get\", Key, \"java.lang.String";
-if (true) return BA.ObjectToString(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("get",_key,"java.lang.String"));
-RDebugUtils.currentLine=4980739;
- //BA.debugLineNum = 4980739;BA.debugLine="End Sub";
+public int  _getexposurecompensation() throws Exception{
+ //BA.debugLineNum = 348;BA.debugLine="Public Sub getExposureCompensation As Int";
+ //BA.debugLineNum = 349;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 350;BA.debugLine="Return r.RunMethod(\"getExposureCompensation\")";
+if (true) return (int)(BA.ObjectToNumber(_r.RunMethod("getExposureCompensation")));
+ //BA.debugLineNum = 351;BA.debugLine="End Sub";
+return 0;
+}
+public String  _getflashmode() throws Exception{
+ //BA.debugLineNum = 202;BA.debugLine="Public Sub GetFlashMode As String";
+ //BA.debugLineNum = 203;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 204;BA.debugLine="Return r.RunMethod(\"getFlashMode\")";
+if (true) return BA.ObjectToString(_r.RunMethod("getFlashMode"));
+ //BA.debugLineNum = 205;BA.debugLine="End Sub";
 return "";
 }
-public int  _getexposurecompensation(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getexposurecompensation", false))
-	 {return ((Integer) Debug.delegate(ba, "getexposurecompensation", null));}
-RDebugUtils.currentLine=7012352;
- //BA.debugLineNum = 7012352;BA.debugLine="Public Sub getExposureCompensation As Int";
-RDebugUtils.currentLine=7012353;
- //BA.debugLineNum = 7012353;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=7012354;
- //BA.debugLineNum = 7012354;BA.debugLine="Return r.RunMethod(\"getExposureCompensation\")";
-if (true) return (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getExposureCompensation")));
-RDebugUtils.currentLine=7012355;
- //BA.debugLineNum = 7012355;BA.debugLine="End Sub";
+public float[]  _getfocusdistances() throws Exception{
+float[] _f = null;
+ //BA.debugLineNum = 296;BA.debugLine="Public Sub GetFocusDistances As Float()";
+ //BA.debugLineNum = 297;BA.debugLine="Dim F(3) As Float";
+_f = new float[(int) (3)];
+;
+ //BA.debugLineNum = 298;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 299;BA.debugLine="r.RunMethod4(\"getFocusDistances\", Array As Object";
+_r.RunMethod4("getFocusDistances",new Object[]{(Object)(_f)},new String[]{"[F"});
+ //BA.debugLineNum = 300;BA.debugLine="Return F";
+if (true) return _f;
+ //BA.debugLineNum = 301;BA.debugLine="End Sub";
+return null;
+}
+public int  _getmaxexposurecompensation() throws Exception{
+ //BA.debugLineNum = 363;BA.debugLine="Public Sub getMaxExposureCompensation As Int";
+ //BA.debugLineNum = 364;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 365;BA.debugLine="Return r.RunMethod(\"getMaxExposureCompensation\")";
+if (true) return (int)(BA.ObjectToNumber(_r.RunMethod("getMaxExposureCompensation")));
+ //BA.debugLineNum = 366;BA.debugLine="End Sub";
 return 0;
 }
-public int  _getmaxexposurecompensation(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getmaxexposurecompensation", false))
-	 {return ((Integer) Debug.delegate(ba, "getmaxexposurecompensation", null));}
-RDebugUtils.currentLine=7208960;
- //BA.debugLineNum = 7208960;BA.debugLine="Public Sub getMaxExposureCompensation As Int";
-RDebugUtils.currentLine=7208961;
- //BA.debugLineNum = 7208961;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=7208962;
- //BA.debugLineNum = 7208962;BA.debugLine="Return r.RunMethod(\"getMaxExposureCompensation\")";
-if (true) return (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getMaxExposureCompensation")));
-RDebugUtils.currentLine=7208963;
- //BA.debugLineNum = 7208963;BA.debugLine="End Sub";
+public int  _getmaxzoom() throws Exception{
+ //BA.debugLineNum = 333;BA.debugLine="Public Sub GetMaxZoom As Int";
+ //BA.debugLineNum = 334;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 335;BA.debugLine="Return r.RunMethod(\"getMaxZoom\")";
+if (true) return (int)(BA.ObjectToNumber(_r.RunMethod("getMaxZoom")));
+ //BA.debugLineNum = 336;BA.debugLine="End Sub";
 return 0;
 }
-public int  _getmaxzoom(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getmaxzoom", false))
-	 {return ((Integer) Debug.delegate(ba, "getmaxzoom", null));}
-RDebugUtils.currentLine=6815744;
- //BA.debugLineNum = 6815744;BA.debugLine="Public Sub GetMaxZoom As Int";
-RDebugUtils.currentLine=6815745;
- //BA.debugLineNum = 6815745;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6815746;
- //BA.debugLineNum = 6815746;BA.debugLine="Return r.RunMethod(\"getMaxZoom\")";
-if (true) return (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getMaxZoom")));
-RDebugUtils.currentLine=6815747;
- //BA.debugLineNum = 6815747;BA.debugLine="End Sub";
+public int  _getminexposurecompensation() throws Exception{
+ //BA.debugLineNum = 358;BA.debugLine="Public Sub getMinExposureCompensation As Int";
+ //BA.debugLineNum = 359;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 360;BA.debugLine="Return r.RunMethod(\"getMinExposureCompensation\")";
+if (true) return (int)(BA.ObjectToNumber(_r.RunMethod("getMinExposureCompensation")));
+ //BA.debugLineNum = 361;BA.debugLine="End Sub";
 return 0;
 }
-public int  _getminexposurecompensation(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getminexposurecompensation", false))
-	 {return ((Integer) Debug.delegate(ba, "getminexposurecompensation", null));}
-RDebugUtils.currentLine=7143424;
- //BA.debugLineNum = 7143424;BA.debugLine="Public Sub getMinExposureCompensation As Int";
-RDebugUtils.currentLine=7143425;
- //BA.debugLineNum = 7143425;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=7143426;
- //BA.debugLineNum = 7143426;BA.debugLine="Return r.RunMethod(\"getMinExposureCompensation\")";
-if (true) return (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getMinExposureCompensation")));
-RDebugUtils.currentLine=7143427;
- //BA.debugLineNum = 7143427;BA.debugLine="End Sub";
-return 0;
+public String  _getparameter(String _key) throws Exception{
+ //BA.debugLineNum = 136;BA.debugLine="Public Sub GetParameter(Key As String) As String";
+ //BA.debugLineNum = 137;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 138;BA.debugLine="Return r.RunMethod2(\"get\", Key, \"java.lang.String";
+if (true) return BA.ObjectToString(_r.RunMethod2("get",_key,"java.lang.String"));
+ //BA.debugLineNum = 139;BA.debugLine="End Sub";
+return "";
 }
-public avanue.nvwa.cameraexclass._camerasize  _getpicturesize(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getpicturesize", false))
-	 {return ((avanue.nvwa.cameraexclass._camerasize) Debug.delegate(ba, "getpicturesize", null));}
+public avanue.nvwa.cameraexclass._camerasize  _getpicturesize() throws Exception{
 avanue.nvwa.cameraexclass._camerasize _cs = null;
-RDebugUtils.currentLine=6094848;
- //BA.debugLineNum = 6094848;BA.debugLine="Public Sub GetPictureSize As CameraSize";
-RDebugUtils.currentLine=6094849;
- //BA.debugLineNum = 6094849;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6094850;
- //BA.debugLineNum = 6094850;BA.debugLine="r.target = r.RunMethod(\"getPictureSize\")";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getPictureSize");
-RDebugUtils.currentLine=6094851;
- //BA.debugLineNum = 6094851;BA.debugLine="Dim cs As CameraSize";
+ //BA.debugLineNum = 244;BA.debugLine="Public Sub GetPictureSize As CameraSize";
+ //BA.debugLineNum = 245;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 246;BA.debugLine="r.target = r.RunMethod(\"getPictureSize\")";
+_r.Target = _r.RunMethod("getPictureSize");
+ //BA.debugLineNum = 247;BA.debugLine="Dim cs As CameraSize";
 _cs = new avanue.nvwa.cameraexclass._camerasize();
-RDebugUtils.currentLine=6094852;
- //BA.debugLineNum = 6094852;BA.debugLine="cs.Width = r.GetField(\"width\")";
-_cs.Width /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("width")));
-RDebugUtils.currentLine=6094853;
- //BA.debugLineNum = 6094853;BA.debugLine="cs.Height = r.GetField(\"height\")";
-_cs.Height /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("height")));
-RDebugUtils.currentLine=6094854;
- //BA.debugLineNum = 6094854;BA.debugLine="Return cs";
+ //BA.debugLineNum = 248;BA.debugLine="cs.Width = r.GetField(\"width\")";
+_cs.Width /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("width")));
+ //BA.debugLineNum = 249;BA.debugLine="cs.Height = r.GetField(\"height\")";
+_cs.Height /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("height")));
+ //BA.debugLineNum = 250;BA.debugLine="Return cs";
 if (true) return _cs;
-RDebugUtils.currentLine=6094855;
- //BA.debugLineNum = 6094855;BA.debugLine="End Sub";
+ //BA.debugLineNum = 251;BA.debugLine="End Sub";
 return null;
 }
-public String  _getpreviewfpsrange(avanue.nvwa.cameraexclass __ref,int[] _range) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getpreviewfpsrange", false))
-	 {return ((String) Debug.delegate(ba, "getpreviewfpsrange", new Object[] {_range}));}
-RDebugUtils.currentLine=5898240;
- //BA.debugLineNum = 5898240;BA.debugLine="Public Sub GetPreviewFpsRange(Range() As Int)";
-RDebugUtils.currentLine=5898241;
- //BA.debugLineNum = 5898241;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5898242;
- //BA.debugLineNum = 5898242;BA.debugLine="r.RunMethod4(\"getPreviewFpsRange\", Array As Objec";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod4("getPreviewFpsRange",new Object[]{(Object)(_range)},new String[]{"[I"});
-RDebugUtils.currentLine=5898243;
- //BA.debugLineNum = 5898243;BA.debugLine="End Sub";
+public String  _getpreviewfpsrange(int[] _range) throws Exception{
+ //BA.debugLineNum = 224;BA.debugLine="Public Sub GetPreviewFpsRange(Range() As Int)";
+ //BA.debugLineNum = 225;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 226;BA.debugLine="r.RunMethod4(\"getPreviewFpsRange\", Array As Objec";
+_r.RunMethod4("getPreviewFpsRange",new Object[]{(Object)(_range)},new String[]{"[I"});
+ //BA.debugLineNum = 227;BA.debugLine="End Sub";
 return "";
 }
-public anywheresoftware.b4a.objects.collections.List  _getsupportedcoloreffects(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedcoloreffects", false))
-	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(ba, "getsupportedcoloreffects", null));}
-RDebugUtils.currentLine=5767168;
- //BA.debugLineNum = 5767168;BA.debugLine="Public Sub GetSupportedColorEffects As List";
-RDebugUtils.currentLine=5767169;
- //BA.debugLineNum = 5767169;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5767170;
- //BA.debugLineNum = 5767170;BA.debugLine="Return r.RunMethod(\"getSupportedColorEffects\")";
-if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedColorEffects")));
-RDebugUtils.currentLine=5767171;
- //BA.debugLineNum = 5767171;BA.debugLine="End Sub";
+public avanue.nvwa.cameraexclass._camerasize  _getpreviewsize() throws Exception{
+avanue.nvwa.cameraexclass._camerasize _cs = null;
+ //BA.debugLineNum = 235;BA.debugLine="Public Sub GetPreviewSize As CameraSize";
+ //BA.debugLineNum = 236;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 237;BA.debugLine="r.target = r.RunMethod(\"getPreviewSize\")";
+_r.Target = _r.RunMethod("getPreviewSize");
+ //BA.debugLineNum = 238;BA.debugLine="Dim cs As CameraSize";
+_cs = new avanue.nvwa.cameraexclass._camerasize();
+ //BA.debugLineNum = 239;BA.debugLine="cs.Width = r.GetField(\"width\")";
+_cs.Width /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("width")));
+ //BA.debugLineNum = 240;BA.debugLine="cs.Height = r.GetField(\"height\")";
+_cs.Height /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("height")));
+ //BA.debugLineNum = 241;BA.debugLine="Return cs";
+if (true) return _cs;
+ //BA.debugLineNum = 242;BA.debugLine="End Sub";
 return null;
 }
-public anywheresoftware.b4a.objects.collections.List  _getsupportedfocusmodes(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedfocusmodes", false))
-	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(ba, "getsupportedfocusmodes", null));}
-RDebugUtils.currentLine=6225920;
- //BA.debugLineNum = 6225920;BA.debugLine="Public Sub GetSupportedFocusModes As List";
-RDebugUtils.currentLine=6225921;
- //BA.debugLineNum = 6225921;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6225922;
- //BA.debugLineNum = 6225922;BA.debugLine="Return r.RunMethod(\"getSupportedFocusModes\")";
-if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedFocusModes")));
-RDebugUtils.currentLine=6225923;
- //BA.debugLineNum = 6225923;BA.debugLine="End Sub";
+public anywheresoftware.b4a.objects.collections.List  _getsupportedcoloreffects() throws Exception{
+ //BA.debugLineNum = 212;BA.debugLine="Public Sub GetSupportedColorEffects As List";
+ //BA.debugLineNum = 213;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 214;BA.debugLine="Return r.RunMethod(\"getSupportedColorEffects\")";
+if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedColorEffects")));
+ //BA.debugLineNum = 215;BA.debugLine="End Sub";
 return null;
 }
-public anywheresoftware.b4a.objects.collections.List  _getsupportedpictureformats(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedpictureformats", false))
-	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(ba, "getsupportedpictureformats", null));}
-RDebugUtils.currentLine=6488064;
- //BA.debugLineNum = 6488064;BA.debugLine="Public Sub GetSupportedPictureFormats As List";
-RDebugUtils.currentLine=6488065;
- //BA.debugLineNum = 6488065;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6488066;
- //BA.debugLineNum = 6488066;BA.debugLine="Return r.RunMethod(\"getSupportedPictureFormats\")";
-if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedPictureFormats")));
-RDebugUtils.currentLine=6488067;
- //BA.debugLineNum = 6488067;BA.debugLine="End Sub";
+public anywheresoftware.b4a.objects.collections.List  _getsupportedflashmodes() throws Exception{
+ //BA.debugLineNum = 207;BA.debugLine="Public Sub GetSupportedFlashModes As List";
+ //BA.debugLineNum = 208;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 209;BA.debugLine="Return r.RunMethod(\"getSupportedFlashModes\")";
+if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedFlashModes")));
+ //BA.debugLineNum = 210;BA.debugLine="End Sub";
 return null;
 }
-public avanue.nvwa.cameraexclass._camerasize[]  _getsupportedpicturessizes(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedpicturessizes", false))
-	 {return ((avanue.nvwa.cameraexclass._camerasize[]) Debug.delegate(ba, "getsupportedpicturessizes", null));}
+public anywheresoftware.b4a.objects.collections.List  _getsupportedfocusmodes() throws Exception{
+ //BA.debugLineNum = 275;BA.debugLine="Public Sub GetSupportedFocusModes As List";
+ //BA.debugLineNum = 276;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 277;BA.debugLine="Return r.RunMethod(\"getSupportedFocusModes\")";
+if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedFocusModes")));
+ //BA.debugLineNum = 278;BA.debugLine="End Sub";
+return null;
+}
+public anywheresoftware.b4a.objects.collections.List  _getsupportedpictureformats() throws Exception{
+ //BA.debugLineNum = 303;BA.debugLine="Public Sub GetSupportedPictureFormats As List";
+ //BA.debugLineNum = 304;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 305;BA.debugLine="Return r.RunMethod(\"getSupportedPictureFormats\")";
+if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedPictureFormats")));
+ //BA.debugLineNum = 306;BA.debugLine="End Sub";
+return null;
+}
+public avanue.nvwa.cameraexclass._camerasize[]  _getsupportedpicturessizes() throws Exception{
 anywheresoftware.b4a.objects.collections.List _list1 = null;
 avanue.nvwa.cameraexclass._camerasize[] _cs = null;
 int _i = 0;
-RDebugUtils.currentLine=5373952;
- //BA.debugLineNum = 5373952;BA.debugLine="Public Sub GetSupportedPicturesSizes As CameraSize";
-RDebugUtils.currentLine=5373953;
- //BA.debugLineNum = 5373953;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5373954;
- //BA.debugLineNum = 5373954;BA.debugLine="Dim list1 As List = r.RunMethod(\"getSupportedPict";
+ //BA.debugLineNum = 175;BA.debugLine="Public Sub GetSupportedPicturesSizes As CameraSize";
+ //BA.debugLineNum = 176;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 177;BA.debugLine="Dim list1 As List = r.RunMethod(\"getSupportedPict";
 _list1 = new anywheresoftware.b4a.objects.collections.List();
-_list1 = (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedPictureSizes")));
-RDebugUtils.currentLine=5373955;
- //BA.debugLineNum = 5373955;BA.debugLine="Dim cs(list1.Size) As CameraSize";
+_list1 = (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedPictureSizes")));
+ //BA.debugLineNum = 178;BA.debugLine="Dim cs(list1.Size) As CameraSize";
 _cs = new avanue.nvwa.cameraexclass._camerasize[_list1.getSize()];
 {
 int d0 = _cs.length;
@@ -931,67 +419,45 @@ _cs[i0] = new avanue.nvwa.cameraexclass._camerasize();
 }
 }
 ;
-RDebugUtils.currentLine=5373956;
- //BA.debugLineNum = 5373956;BA.debugLine="For i = 0 To list1.Size - 1";
+ //BA.debugLineNum = 179;BA.debugLine="For i = 0 To list1.Size - 1";
 {
 final int step4 = 1;
 final int limit4 = (int) (_list1.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit4 ;_i = _i + step4 ) {
-RDebugUtils.currentLine=5373957;
- //BA.debugLineNum = 5373957;BA.debugLine="r.target = list1.get(i)";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = _list1.Get(_i);
-RDebugUtils.currentLine=5373958;
- //BA.debugLineNum = 5373958;BA.debugLine="cs(i).Width = r.GetField(\"width\")";
-_cs[_i].Width /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("width")));
-RDebugUtils.currentLine=5373959;
- //BA.debugLineNum = 5373959;BA.debugLine="cs(i).Height = r.GetField(\"height\")";
-_cs[_i].Height /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("height")));
+ //BA.debugLineNum = 180;BA.debugLine="r.target = list1.get(i)";
+_r.Target = _list1.Get(_i);
+ //BA.debugLineNum = 181;BA.debugLine="cs(i).Width = r.GetField(\"width\")";
+_cs[_i].Width /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("width")));
+ //BA.debugLineNum = 182;BA.debugLine="cs(i).Height = r.GetField(\"height\")";
+_cs[_i].Height /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("height")));
  }
 };
-RDebugUtils.currentLine=5373961;
- //BA.debugLineNum = 5373961;BA.debugLine="Return cs";
+ //BA.debugLineNum = 184;BA.debugLine="Return cs";
 if (true) return _cs;
-RDebugUtils.currentLine=5373962;
- //BA.debugLineNum = 5373962;BA.debugLine="End Sub";
+ //BA.debugLineNum = 185;BA.debugLine="End Sub";
 return null;
 }
-public anywheresoftware.b4a.objects.collections.List  _getsupportedpreviewfpsrange(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedpreviewfpsrange", false))
-	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(ba, "getsupportedpreviewfpsrange", null));}
-RDebugUtils.currentLine=5832704;
- //BA.debugLineNum = 5832704;BA.debugLine="Public Sub GetSupportedPreviewFpsRange As List";
-RDebugUtils.currentLine=5832705;
- //BA.debugLineNum = 5832705;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5832706;
- //BA.debugLineNum = 5832706;BA.debugLine="Return r.RunMethod(\"getSupportedPreviewFpsRange\")";
-if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedPreviewFpsRange")));
-RDebugUtils.currentLine=5832707;
- //BA.debugLineNum = 5832707;BA.debugLine="End Sub";
+public anywheresoftware.b4a.objects.collections.List  _getsupportedpreviewfpsrange() throws Exception{
+ //BA.debugLineNum = 218;BA.debugLine="Public Sub GetSupportedPreviewFpsRange As List";
+ //BA.debugLineNum = 219;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 220;BA.debugLine="Return r.RunMethod(\"getSupportedPreviewFpsRange\")";
+if (true) return (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedPreviewFpsRange")));
+ //BA.debugLineNum = 221;BA.debugLine="End Sub";
 return null;
 }
-public avanue.nvwa.cameraexclass._camerasize[]  _getsupportedpreviewsizes(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getsupportedpreviewsizes", false))
-	 {return ((avanue.nvwa.cameraexclass._camerasize[]) Debug.delegate(ba, "getsupportedpreviewsizes", null));}
+public avanue.nvwa.cameraexclass._camerasize[]  _getsupportedpreviewsizes() throws Exception{
 anywheresoftware.b4a.objects.collections.List _list1 = null;
 avanue.nvwa.cameraexclass._camerasize[] _cs = null;
 int _i = 0;
-RDebugUtils.currentLine=5242880;
- //BA.debugLineNum = 5242880;BA.debugLine="Public Sub GetSupportedPreviewSizes As CameraSize(";
-RDebugUtils.currentLine=5242881;
- //BA.debugLineNum = 5242881;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5242882;
- //BA.debugLineNum = 5242882;BA.debugLine="Dim list1 As List = r.RunMethod(\"getSupportedPrev";
+ //BA.debugLineNum = 159;BA.debugLine="Public Sub GetSupportedPreviewSizes As CameraSize(";
+ //BA.debugLineNum = 160;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 161;BA.debugLine="Dim list1 As List = r.RunMethod(\"getSupportedPrev";
 _list1 = new anywheresoftware.b4a.objects.collections.List();
-_list1 = (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getSupportedPreviewSizes")));
-RDebugUtils.currentLine=5242883;
- //BA.debugLineNum = 5242883;BA.debugLine="Dim cs(list1.Size) As CameraSize";
+_list1 = (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(_r.RunMethod("getSupportedPreviewSizes")));
+ //BA.debugLineNum = 162;BA.debugLine="Dim cs(list1.Size) As CameraSize";
 _cs = new avanue.nvwa.cameraexclass._camerasize[_list1.getSize()];
 {
 int d0 = _cs.length;
@@ -1000,70 +466,77 @@ _cs[i0] = new avanue.nvwa.cameraexclass._camerasize();
 }
 }
 ;
-RDebugUtils.currentLine=5242884;
- //BA.debugLineNum = 5242884;BA.debugLine="For i = 0 To list1.Size - 1";
+ //BA.debugLineNum = 163;BA.debugLine="For i = 0 To list1.Size - 1";
 {
 final int step4 = 1;
 final int limit4 = (int) (_list1.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit4 ;_i = _i + step4 ) {
-RDebugUtils.currentLine=5242885;
- //BA.debugLineNum = 5242885;BA.debugLine="r.target = list1.get(i)";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = _list1.Get(_i);
-RDebugUtils.currentLine=5242886;
- //BA.debugLineNum = 5242886;BA.debugLine="cs(i).Width = r.GetField(\"width\")";
-_cs[_i].Width /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("width")));
-RDebugUtils.currentLine=5242887;
- //BA.debugLineNum = 5242887;BA.debugLine="cs(i).Height = r.GetField(\"height\")";
-_cs[_i].Height /*int*/  = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("height")));
+ //BA.debugLineNum = 164;BA.debugLine="r.target = list1.get(i)";
+_r.Target = _list1.Get(_i);
+ //BA.debugLineNum = 165;BA.debugLine="cs(i).Width = r.GetField(\"width\")";
+_cs[_i].Width /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("width")));
+ //BA.debugLineNum = 166;BA.debugLine="cs(i).Height = r.GetField(\"height\")";
+_cs[_i].Height /*int*/  = (int)(BA.ObjectToNumber(_r.GetField("height")));
  }
 };
-RDebugUtils.currentLine=5242889;
- //BA.debugLineNum = 5242889;BA.debugLine="Return cs";
+ //BA.debugLineNum = 168;BA.debugLine="Return cs";
 if (true) return _cs;
-RDebugUtils.currentLine=5242890;
- //BA.debugLineNum = 5242890;BA.debugLine="End Sub";
+ //BA.debugLineNum = 169;BA.debugLine="End Sub";
 return null;
 }
-public int  _getzoom(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "getzoom", false))
-	 {return ((Integer) Debug.delegate(ba, "getzoom", null));}
-RDebugUtils.currentLine=6881280;
- //BA.debugLineNum = 6881280;BA.debugLine="Public Sub getZoom() As Int";
-RDebugUtils.currentLine=6881281;
- //BA.debugLineNum = 6881281;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6881282;
- //BA.debugLineNum = 6881282;BA.debugLine="Return r.RunMethod(\"getZoom\")";
-if (true) return (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getZoom")));
-RDebugUtils.currentLine=6881283;
- //BA.debugLineNum = 6881283;BA.debugLine="End Sub";
+public int  _getzoom() throws Exception{
+ //BA.debugLineNum = 338;BA.debugLine="Public Sub getZoom() As Int";
+ //BA.debugLineNum = 339;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 340;BA.debugLine="Return r.RunMethod(\"getZoom\")";
+if (true) return (int)(BA.ObjectToNumber(_r.RunMethod("getZoom")));
+ //BA.debugLineNum = 341;BA.debugLine="End Sub";
 return 0;
 }
-public boolean  _iszoomsupported(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "iszoomsupported", false))
-	 {return ((Boolean) Debug.delegate(ba, "iszoomsupported", null));}
-RDebugUtils.currentLine=6750208;
- //BA.debugLineNum = 6750208;BA.debugLine="Public Sub IsZoomSupported As Boolean";
-RDebugUtils.currentLine=6750209;
- //BA.debugLineNum = 6750209;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6750210;
- //BA.debugLineNum = 6750210;BA.debugLine="Return r.RunMethod(\"isZoomSupported\")";
-if (true) return BA.ObjectToBoolean(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("isZoomSupported"));
-RDebugUtils.currentLine=6750211;
- //BA.debugLineNum = 6750211;BA.debugLine="End Sub";
+public String  _initialize(anywheresoftware.b4a.BA _ba,anywheresoftware.b4a.objects.PanelWrapper _panel1,boolean _frontcamera,Object _targetmodule,String _eventname) throws Exception{
+innerInitialize(_ba);
+int _id = 0;
+ //BA.debugLineNum = 18;BA.debugLine="Public Sub Initialize (Panel1 As Panel, FrontCamer";
+ //BA.debugLineNum = 19;BA.debugLine="target = TargetModule";
+_target = _targetmodule;
+ //BA.debugLineNum = 20;BA.debugLine="event = EventName";
+_event = _eventname;
+ //BA.debugLineNum = 21;BA.debugLine="Front = FrontCamera";
+_front = _frontcamera;
+ //BA.debugLineNum = 22;BA.debugLine="Dim id As Int";
+_id = 0;
+ //BA.debugLineNum = 23;BA.debugLine="id = FindCamera(Front).id";
+_id = _findcamera(_front).Id /*int*/ ;
+ //BA.debugLineNum = 24;BA.debugLine="If id = -1 Then";
+if (_id==-1) { 
+ //BA.debugLineNum = 25;BA.debugLine="Front = Not(Front) 'try different camera";
+_front = __c.Not(_front);
+ //BA.debugLineNum = 26;BA.debugLine="id = FindCamera(Front).id";
+_id = _findcamera(_front).Id /*int*/ ;
+ //BA.debugLineNum = 27;BA.debugLine="If id = -1 Then";
+if (_id==-1) { 
+ //BA.debugLineNum = 28;BA.debugLine="ToastMessageShow(\"No camera found.\", True)";
+__c.ToastMessageShow(BA.ObjectToCharSequence("No camera found."),__c.True);
+ //BA.debugLineNum = 29;BA.debugLine="Return";
+if (true) return "";
+ };
+ };
+ //BA.debugLineNum = 32;BA.debugLine="cam.Initialize2(Panel1, \"camera\", id)";
+_cam.Initialize2(ba,(android.view.ViewGroup)(_panel1.getObject()),"camera",_id);
+ //BA.debugLineNum = 33;BA.debugLine="End Sub";
+return "";
+}
+public boolean  _iszoomsupported() throws Exception{
+ //BA.debugLineNum = 328;BA.debugLine="Public Sub IsZoomSupported As Boolean";
+ //BA.debugLineNum = 329;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 330;BA.debugLine="Return r.RunMethod(\"isZoomSupported\")";
+if (true) return BA.ObjectToBoolean(_r.RunMethod("isZoomSupported"));
+ //BA.debugLineNum = 331;BA.debugLine="End Sub";
 return false;
 }
-public byte[]  _previewimagetojpeg(avanue.nvwa.cameraexclass __ref,byte[] _data,int _quality) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "previewimagetojpeg", false))
-	 {return ((byte[]) Debug.delegate(ba, "previewimagetojpeg", new Object[] {_data,_quality}));}
+public byte[]  _previewimagetojpeg(byte[] _data,int _quality) throws Exception{
 Object _size = null;
 Object _previewformat = null;
 int _width = 0;
@@ -1071,262 +544,281 @@ int _height = 0;
 Object _yuvimage = null;
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _rect1 = null;
 anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper _out = null;
-RDebugUtils.currentLine=6160384;
- //BA.debugLineNum = 6160384;BA.debugLine="Public Sub PreviewImageToJpeg(data() As Byte, qual";
-RDebugUtils.currentLine=6160385;
- //BA.debugLineNum = 6160385;BA.debugLine="Dim size, previewFormat As Object";
+ //BA.debugLineNum = 255;BA.debugLine="Public Sub PreviewImageToJpeg(data() As Byte, qual";
+ //BA.debugLineNum = 256;BA.debugLine="Dim size, previewFormat As Object";
 _size = new Object();
 _previewformat = new Object();
-RDebugUtils.currentLine=6160386;
- //BA.debugLineNum = 6160386;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6160387;
- //BA.debugLineNum = 6160387;BA.debugLine="size = r.RunMethod(\"getPreviewSize\")";
-_size = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getPreviewSize");
-RDebugUtils.currentLine=6160388;
- //BA.debugLineNum = 6160388;BA.debugLine="previewFormat = r.RunMethod(\"getPreviewFormat\")";
-_previewformat = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getPreviewFormat");
-RDebugUtils.currentLine=6160389;
- //BA.debugLineNum = 6160389;BA.debugLine="r.target = size";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = _size;
-RDebugUtils.currentLine=6160390;
- //BA.debugLineNum = 6160390;BA.debugLine="Dim width = r.GetField(\"width\"), height = r.GetFi";
-_width = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("width")));
-_height = (int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .GetField("height")));
-RDebugUtils.currentLine=6160391;
- //BA.debugLineNum = 6160391;BA.debugLine="Dim yuvImage As Object = r.CreateObject2(\"android";
-_yuvimage = __ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .CreateObject2("android.graphics.YuvImage",new Object[]{(Object)(_data),_previewformat,(Object)(_width),(Object)(_height),__c.Null},new String[]{"[B","java.lang.int","java.lang.int","java.lang.int","[I"});
-RDebugUtils.currentLine=6160394;
- //BA.debugLineNum = 6160394;BA.debugLine="r.target = yuvImage";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = _yuvimage;
-RDebugUtils.currentLine=6160395;
- //BA.debugLineNum = 6160395;BA.debugLine="Dim rect1 As Rect";
+ //BA.debugLineNum = 257;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 258;BA.debugLine="size = r.RunMethod(\"getPreviewSize\")";
+_size = _r.RunMethod("getPreviewSize");
+ //BA.debugLineNum = 259;BA.debugLine="previewFormat = r.RunMethod(\"getPreviewFormat\")";
+_previewformat = _r.RunMethod("getPreviewFormat");
+ //BA.debugLineNum = 260;BA.debugLine="r.target = size";
+_r.Target = _size;
+ //BA.debugLineNum = 261;BA.debugLine="Dim width = r.GetField(\"width\"), height = r.GetFi";
+_width = (int)(BA.ObjectToNumber(_r.GetField("width")));
+_height = (int)(BA.ObjectToNumber(_r.GetField("height")));
+ //BA.debugLineNum = 262;BA.debugLine="Dim yuvImage As Object = r.CreateObject2(\"android";
+_yuvimage = _r.CreateObject2("android.graphics.YuvImage",new Object[]{(Object)(_data),_previewformat,(Object)(_width),(Object)(_height),__c.Null},new String[]{"[B","java.lang.int","java.lang.int","java.lang.int","[I"});
+ //BA.debugLineNum = 265;BA.debugLine="r.target = yuvImage";
+_r.Target = _yuvimage;
+ //BA.debugLineNum = 266;BA.debugLine="Dim rect1 As Rect";
 _rect1 = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
-RDebugUtils.currentLine=6160396;
- //BA.debugLineNum = 6160396;BA.debugLine="rect1.Initialize(0, 0, r.RunMethod(\"getWidth\"), r";
-_rect1.Initialize((int) (0),(int) (0),(int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getWidth"))),(int)(BA.ObjectToNumber(__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod("getHeight"))));
-RDebugUtils.currentLine=6160397;
- //BA.debugLineNum = 6160397;BA.debugLine="Dim out As OutputStream";
+ //BA.debugLineNum = 267;BA.debugLine="rect1.Initialize(0, 0, r.RunMethod(\"getWidth\"), r";
+_rect1.Initialize((int) (0),(int) (0),(int)(BA.ObjectToNumber(_r.RunMethod("getWidth"))),(int)(BA.ObjectToNumber(_r.RunMethod("getHeight"))));
+ //BA.debugLineNum = 268;BA.debugLine="Dim out As OutputStream";
 _out = new anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper();
-RDebugUtils.currentLine=6160398;
- //BA.debugLineNum = 6160398;BA.debugLine="out.InitializeToBytesArray(100)";
+ //BA.debugLineNum = 269;BA.debugLine="out.InitializeToBytesArray(100)";
 _out.InitializeToBytesArray((int) (100));
-RDebugUtils.currentLine=6160399;
- //BA.debugLineNum = 6160399;BA.debugLine="r.RunMethod4(\"compressToJpeg\", Array As Object(re";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod4("compressToJpeg",new Object[]{(Object)(_rect1.getObject()),(Object)(_quality),(Object)(_out.getObject())},new String[]{"android.graphics.Rect","java.lang.int","java.io.OutputStream"});
-RDebugUtils.currentLine=6160401;
- //BA.debugLineNum = 6160401;BA.debugLine="Return out.ToBytesArray";
+ //BA.debugLineNum = 270;BA.debugLine="r.RunMethod4(\"compressToJpeg\", Array As Object(re";
+_r.RunMethod4("compressToJpeg",new Object[]{(Object)(_rect1.getObject()),(Object)(_quality),(Object)(_out.getObject())},new String[]{"android.graphics.Rect","java.lang.int","java.io.OutputStream"});
+ //BA.debugLineNum = 272;BA.debugLine="Return out.ToBytesArray";
 if (true) return _out.ToBytesArray();
-RDebugUtils.currentLine=6160402;
- //BA.debugLineNum = 6160402;BA.debugLine="End Sub";
+ //BA.debugLineNum = 273;BA.debugLine="End Sub";
 return null;
 }
-public String  _setcoloreffect(avanue.nvwa.cameraexclass __ref,String _effect) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setcoloreffect", false))
-	 {return ((String) Debug.delegate(ba, "setcoloreffect", new Object[] {_effect}));}
-RDebugUtils.currentLine=5177344;
- //BA.debugLineNum = 5177344;BA.debugLine="Public Sub SetColorEffect(Effect As String)";
-RDebugUtils.currentLine=5177345;
- //BA.debugLineNum = 5177345;BA.debugLine="SetParameter(\"effect\", Effect)";
-__ref._setparameter /*String*/ (null,"effect",_effect);
-RDebugUtils.currentLine=5177346;
- //BA.debugLineNum = 5177346;BA.debugLine="End Sub";
+public String  _release() throws Exception{
+ //BA.debugLineNum = 120;BA.debugLine="Public Sub Release";
+ //BA.debugLineNum = 121;BA.debugLine="cam.Release";
+_cam.Release();
+ //BA.debugLineNum = 122;BA.debugLine="End Sub";
 return "";
 }
-public String  _setparameter(avanue.nvwa.cameraexclass __ref,String _key,String _value) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setparameter", false))
-	 {return ((String) Debug.delegate(ba, "setparameter", new Object[] {_key,_value}));}
-RDebugUtils.currentLine=4915200;
- //BA.debugLineNum = 4915200;BA.debugLine="Public Sub SetParameter(Key As String, Value As St";
-RDebugUtils.currentLine=4915201;
- //BA.debugLineNum = 4915201;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=4915202;
- //BA.debugLineNum = 4915202;BA.debugLine="r.RunMethod3(\"set\", Key, \"java.lang.String\", Valu";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod3("set",_key,"java.lang.String",_value,"java.lang.String");
-RDebugUtils.currentLine=4915203;
- //BA.debugLineNum = 4915203;BA.debugLine="End Sub";
+public String  _savepicturetofile(byte[] _data,String _dir,String _filename) throws Exception{
+anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper _out = null;
+ //BA.debugLineNum = 125;BA.debugLine="Public Sub SavePictureToFile(Data() As Byte, Dir A";
+ //BA.debugLineNum = 126;BA.debugLine="Dim out As OutputStream = File.OpenOutput(Dir, Fi";
+_out = new anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper();
+_out = __c.File.OpenOutput(_dir,_filename,__c.False);
+ //BA.debugLineNum = 127;BA.debugLine="out.WriteBytes(Data, 0, Data.Length)";
+_out.WriteBytes(_data,(int) (0),_data.length);
+ //BA.debugLineNum = 128;BA.debugLine="out.Close";
+_out.Close();
+ //BA.debugLineNum = 129;BA.debugLine="End Sub";
 return "";
 }
-public String  _setfocusmode(avanue.nvwa.cameraexclass __ref,String _mode) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setfocusmode", false))
-	 {return ((String) Debug.delegate(ba, "setfocusmode", new Object[] {_mode}));}
-RDebugUtils.currentLine=6356992;
- //BA.debugLineNum = 6356992;BA.debugLine="Public Sub SetFocusMode(Mode As String)";
-RDebugUtils.currentLine=6356993;
- //BA.debugLineNum = 6356993;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6356994;
- //BA.debugLineNum = 6356994;BA.debugLine="r.RunMethod2(\"setFocusMode\", Mode, \"java.lang.Str";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setFocusMode",_mode,"java.lang.String");
-RDebugUtils.currentLine=6356995;
- //BA.debugLineNum = 6356995;BA.debugLine="End Sub";
+public String  _setcoloreffect(String _effect) throws Exception{
+ //BA.debugLineNum = 155;BA.debugLine="Public Sub SetColorEffect(Effect As String)";
+ //BA.debugLineNum = 156;BA.debugLine="SetParameter(\"effect\", Effect)";
+_setparameter("effect",_effect);
+ //BA.debugLineNum = 157;BA.debugLine="End Sub";
 return "";
 }
-public String  _setexposurecompensation(avanue.nvwa.cameraexclass __ref,int _v) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setexposurecompensation", false))
-	 {return ((String) Debug.delegate(ba, "setexposurecompensation", new Object[] {_v}));}
-RDebugUtils.currentLine=7077888;
- //BA.debugLineNum = 7077888;BA.debugLine="Public Sub setExposureCompensation(v As Int)";
-RDebugUtils.currentLine=7077889;
- //BA.debugLineNum = 7077889;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=7077890;
- //BA.debugLineNum = 7077890;BA.debugLine="r.RunMethod2(\"setExposureCompensation\", v, \"java.";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setExposureCompensation",BA.NumberToString(_v),"java.lang.int");
-RDebugUtils.currentLine=7077891;
- //BA.debugLineNum = 7077891;BA.debugLine="End Sub";
+public String  _setcontinuousautofocus() throws Exception{
+anywheresoftware.b4a.objects.collections.List _modes = null;
+ //BA.debugLineNum = 280;BA.debugLine="Public Sub SetContinuousAutoFocus";
+ //BA.debugLineNum = 281;BA.debugLine="Dim modes As List = GetSupportedFocusModes";
+_modes = new anywheresoftware.b4a.objects.collections.List();
+_modes = _getsupportedfocusmodes();
+ //BA.debugLineNum = 282;BA.debugLine="If modes.IndexOf(\"continuous-picture\") > -1 Then";
+if (_modes.IndexOf((Object)("continuous-picture"))>-1) { 
+ //BA.debugLineNum = 283;BA.debugLine="SetFocusMode(\"continuous-picture\")";
+_setfocusmode("continuous-picture");
+ }else if(_modes.IndexOf((Object)("continuous-video"))>-1) { 
+ //BA.debugLineNum = 285;BA.debugLine="SetFocusMode(\"continuous-video\")";
+_setfocusmode("continuous-video");
+ }else {
+ //BA.debugLineNum = 287;BA.debugLine="Log(\"Continuous focus mode is not available\")";
+__c.LogImpl("16356999","Continuous focus mode is not available",0);
+ };
+ //BA.debugLineNum = 289;BA.debugLine="End Sub";
 return "";
 }
-public String  _setfacedetectionlistener(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setfacedetectionlistener", false))
-	 {return ((String) Debug.delegate(ba, "setfacedetectionlistener", null));}
+public String  _setdisplayorientation() throws Exception{
+int _previewresult = 0;
+int _result = 0;
+int _degrees = 0;
+avanue.nvwa.cameraexclass._camerainfoandid _ci = null;
+int _orientation = 0;
+ //BA.debugLineNum = 60;BA.debugLine="Private Sub SetDisplayOrientation";
+ //BA.debugLineNum = 61;BA.debugLine="r.target = r.GetActivity";
+_r.Target = (Object)(_r.GetActivity(ba));
+ //BA.debugLineNum = 62;BA.debugLine="r.target = r.RunMethod(\"getWindowManager\")";
+_r.Target = _r.RunMethod("getWindowManager");
+ //BA.debugLineNum = 63;BA.debugLine="r.target = r.RunMethod(\"getDefaultDisplay\")";
+_r.Target = _r.RunMethod("getDefaultDisplay");
+ //BA.debugLineNum = 64;BA.debugLine="r.target = r.RunMethod(\"getRotation\")";
+_r.Target = _r.RunMethod("getRotation");
+ //BA.debugLineNum = 65;BA.debugLine="Dim previewResult, result, degrees As Int = r.tar";
+_previewresult = 0;
+_result = 0;
+_degrees = (int) ((double)(BA.ObjectToNumber(_r.Target))*90);
+ //BA.debugLineNum = 66;BA.debugLine="Dim ci As CameraInfoAndId = FindCamera(Front)";
+_ci = _findcamera(_front);
+ //BA.debugLineNum = 67;BA.debugLine="r.target = ci.CameraInfo";
+_r.Target = _ci.CameraInfo /*Object*/ ;
+ //BA.debugLineNum = 68;BA.debugLine="Dim orientation As Int = r.GetField(\"orientation\"";
+_orientation = (int)(BA.ObjectToNumber(_r.GetField("orientation")));
+ //BA.debugLineNum = 69;BA.debugLine="If Front Then";
+if (_front) { 
+ //BA.debugLineNum = 70;BA.debugLine="previewResult = (orientation + degrees) Mod 360";
+_previewresult = (int) ((_orientation+_degrees)%360);
+ //BA.debugLineNum = 71;BA.debugLine="result = previewResult";
+_result = _previewresult;
+ //BA.debugLineNum = 72;BA.debugLine="previewResult = (360 - previewResult) Mod 360";
+_previewresult = (int) ((360-_previewresult)%360);
+ }else {
+ //BA.debugLineNum = 74;BA.debugLine="previewResult = (orientation - degrees + 360) Mo";
+_previewresult = (int) ((_orientation-_degrees+360)%360);
+ //BA.debugLineNum = 75;BA.debugLine="result = previewResult";
+_result = _previewresult;
+ //BA.debugLineNum = 76;BA.debugLine="Log(previewResult)";
+__c.LogImpl("14456464",BA.NumberToString(_previewresult),0);
+ };
+ //BA.debugLineNum = 78;BA.debugLine="r.target = nativeCam";
+_r.Target = _nativecam;
+ //BA.debugLineNum = 79;BA.debugLine="r.RunMethod2(\"setDisplayOrientation\", previewResu";
+_r.RunMethod2("setDisplayOrientation",BA.NumberToString(_previewresult),"java.lang.int");
+ //BA.debugLineNum = 80;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 81;BA.debugLine="r.RunMethod2(\"setRotation\", result, \"java.lang.in";
+_r.RunMethod2("setRotation",BA.NumberToString(_result),"java.lang.int");
+ //BA.debugLineNum = 82;BA.debugLine="CommitParameters";
+_commitparameters();
+ //BA.debugLineNum = 83;BA.debugLine="End Sub";
+return "";
+}
+public String  _setexposurecompensation(int _v) throws Exception{
+ //BA.debugLineNum = 353;BA.debugLine="Public Sub setExposureCompensation(v As Int)";
+ //BA.debugLineNum = 354;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 355;BA.debugLine="r.RunMethod2(\"setExposureCompensation\", v, \"java.";
+_r.RunMethod2("setExposureCompensation",BA.NumberToString(_v),"java.lang.int");
+ //BA.debugLineNum = 356;BA.debugLine="End Sub";
+return "";
+}
+public String  _setfacedetectionlistener() throws Exception{
 anywheresoftware.b4j.object.JavaObject _jo = null;
 Object _e = null;
-RDebugUtils.currentLine=7274496;
- //BA.debugLineNum = 7274496;BA.debugLine="Public Sub SetFaceDetectionListener";
-RDebugUtils.currentLine=7274497;
- //BA.debugLineNum = 7274497;BA.debugLine="Dim jo As JavaObject = nativeCam";
+ //BA.debugLineNum = 368;BA.debugLine="Public Sub SetFaceDetectionListener";
+ //BA.debugLineNum = 369;BA.debugLine="Dim jo As JavaObject = nativeCam";
 _jo = new anywheresoftware.b4j.object.JavaObject();
-_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(__ref._nativecam /*Object*/ ));
-RDebugUtils.currentLine=7274498;
- //BA.debugLineNum = 7274498;BA.debugLine="Dim e As Object = jo.CreateEvent(\"android.hardwar";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_nativecam));
+ //BA.debugLineNum = 370;BA.debugLine="Dim e As Object = jo.CreateEvent(\"android.hardwar";
 _e = _jo.CreateEvent(ba,"android.hardware.Camera.FaceDetectionListener","FaceDetection",__c.Null);
-RDebugUtils.currentLine=7274499;
- //BA.debugLineNum = 7274499;BA.debugLine="jo.RunMethod(\"setFaceDetectionListener\", Array(e)";
+ //BA.debugLineNum = 371;BA.debugLine="jo.RunMethod(\"setFaceDetectionListener\", Array(e)";
 _jo.RunMethod("setFaceDetectionListener",new Object[]{_e});
-RDebugUtils.currentLine=7274500;
- //BA.debugLineNum = 7274500;BA.debugLine="End Sub";
+ //BA.debugLineNum = 372;BA.debugLine="End Sub";
 return "";
 }
-public String  _setpicturesize(avanue.nvwa.cameraexclass __ref,int _width,int _height) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setpicturesize", false))
-	 {return ((String) Debug.delegate(ba, "setpicturesize", new Object[] {_width,_height}));}
-RDebugUtils.currentLine=5439488;
- //BA.debugLineNum = 5439488;BA.debugLine="Public Sub SetPictureSize(Width As Int, Height As";
-RDebugUtils.currentLine=5439489;
- //BA.debugLineNum = 5439489;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5439490;
- //BA.debugLineNum = 5439490;BA.debugLine="r.RunMethod3(\"setPictureSize\", Width, \"java.lang.";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod3("setPictureSize",BA.NumberToString(_width),"java.lang.int",BA.NumberToString(_height),"java.lang.int");
-RDebugUtils.currentLine=5439491;
- //BA.debugLineNum = 5439491;BA.debugLine="End Sub";
+public String  _setflashmode(String _mode) throws Exception{
+ //BA.debugLineNum = 197;BA.debugLine="Public Sub SetFlashMode(Mode As String)";
+ //BA.debugLineNum = 198;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 199;BA.debugLine="r.RunMethod2(\"setFlashMode\", Mode, \"java.lang.Str";
+_r.RunMethod2("setFlashMode",_mode,"java.lang.String");
+ //BA.debugLineNum = 200;BA.debugLine="End Sub";
 return "";
 }
-public String  _setpreviewfpsrange(avanue.nvwa.cameraexclass __ref,int _minvalue,int _maxvalue) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setpreviewfpsrange", false))
-	 {return ((String) Debug.delegate(ba, "setpreviewfpsrange", new Object[] {_minvalue,_maxvalue}));}
-RDebugUtils.currentLine=5963776;
- //BA.debugLineNum = 5963776;BA.debugLine="Public Sub SetPreviewFpsRange(MinValue As Int, Max";
-RDebugUtils.currentLine=5963777;
- //BA.debugLineNum = 5963777;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5963778;
- //BA.debugLineNum = 5963778;BA.debugLine="r.RunMethod4(\"setPreviewFpsRange\", Array As Objec";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod4("setPreviewFpsRange",new Object[]{(Object)(_minvalue),(Object)(_maxvalue)},new String[]{"java.lang.int","java.lang.int"});
-RDebugUtils.currentLine=5963780;
- //BA.debugLineNum = 5963780;BA.debugLine="End Sub";
+public String  _setfocusmode(String _mode) throws Exception{
+ //BA.debugLineNum = 291;BA.debugLine="Public Sub SetFocusMode(Mode As String)";
+ //BA.debugLineNum = 292;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 293;BA.debugLine="r.RunMethod2(\"setFocusMode\", Mode, \"java.lang.Str";
+_r.RunMethod2("setFocusMode",_mode,"java.lang.String");
+ //BA.debugLineNum = 294;BA.debugLine="End Sub";
 return "";
 }
-public String  _setpreviewsize(avanue.nvwa.cameraexclass __ref,int _width,int _height) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setpreviewsize", false))
-	 {return ((String) Debug.delegate(ba, "setpreviewsize", new Object[] {_width,_height}));}
-RDebugUtils.currentLine=5308416;
- //BA.debugLineNum = 5308416;BA.debugLine="Public Sub SetPreviewSize(Width As Int, Height As";
-RDebugUtils.currentLine=5308417;
- //BA.debugLineNum = 5308417;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=5308418;
- //BA.debugLineNum = 5308418;BA.debugLine="r.RunMethod3(\"setPreviewSize\", Width, \"java.lang.";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod3("setPreviewSize",BA.NumberToString(_width),"java.lang.int",BA.NumberToString(_height),"java.lang.int");
-RDebugUtils.currentLine=5308419;
- //BA.debugLineNum = 5308419;BA.debugLine="End Sub";
+public String  _setjpegquality(int _quality) throws Exception{
+ //BA.debugLineNum = 192;BA.debugLine="Public Sub SetJpegQuality(Quality As Int)";
+ //BA.debugLineNum = 193;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 194;BA.debugLine="r.RunMethod2(\"setJpegQuality\", Quality, \"java.lan";
+_r.RunMethod2("setJpegQuality",BA.NumberToString(_quality),"java.lang.int");
+ //BA.debugLineNum = 195;BA.debugLine="End Sub";
 return "";
 }
-public String  _setzoom(avanue.nvwa.cameraexclass __ref,int _zoomvalue) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "setzoom", false))
-	 {return ((String) Debug.delegate(ba, "setzoom", new Object[] {_zoomvalue}));}
-RDebugUtils.currentLine=6946816;
- //BA.debugLineNum = 6946816;BA.debugLine="Public Sub setZoom(ZoomValue As Int)";
-RDebugUtils.currentLine=6946817;
- //BA.debugLineNum = 6946817;BA.debugLine="r.target = parameters";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .Target = __ref._parameters /*Object*/ ;
-RDebugUtils.currentLine=6946818;
- //BA.debugLineNum = 6946818;BA.debugLine="r.RunMethod2(\"setZoom\", ZoomValue, \"java.lang.int";
-__ref._r /*anywheresoftware.b4a.agraham.reflection.Reflection*/ .RunMethod2("setZoom",BA.NumberToString(_zoomvalue),"java.lang.int");
-RDebugUtils.currentLine=6946819;
- //BA.debugLineNum = 6946819;BA.debugLine="End Sub";
+public String  _setparameter(String _key,String _value) throws Exception{
+ //BA.debugLineNum = 131;BA.debugLine="Public Sub SetParameter(Key As String, Value As St";
+ //BA.debugLineNum = 132;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 133;BA.debugLine="r.RunMethod3(\"set\", Key, \"java.lang.String\", Valu";
+_r.RunMethod3("set",_key,"java.lang.String",_value,"java.lang.String");
+ //BA.debugLineNum = 134;BA.debugLine="End Sub";
 return "";
 }
-public String  _startfacedetection(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "startfacedetection", false))
-	 {return ((String) Debug.delegate(ba, "startfacedetection", null));}
+public String  _setpicturesize(int _width,int _height) throws Exception{
+ //BA.debugLineNum = 187;BA.debugLine="Public Sub SetPictureSize(Width As Int, Height As";
+ //BA.debugLineNum = 188;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 189;BA.debugLine="r.RunMethod3(\"setPictureSize\", Width, \"java.lang.";
+_r.RunMethod3("setPictureSize",BA.NumberToString(_width),"java.lang.int",BA.NumberToString(_height),"java.lang.int");
+ //BA.debugLineNum = 190;BA.debugLine="End Sub";
+return "";
+}
+public String  _setpreviewfpsrange(int _minvalue,int _maxvalue) throws Exception{
+ //BA.debugLineNum = 229;BA.debugLine="Public Sub SetPreviewFpsRange(MinValue As Int, Max";
+ //BA.debugLineNum = 230;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 231;BA.debugLine="r.RunMethod4(\"setPreviewFpsRange\", Array As Objec";
+_r.RunMethod4("setPreviewFpsRange",new Object[]{(Object)(_minvalue),(Object)(_maxvalue)},new String[]{"java.lang.int","java.lang.int"});
+ //BA.debugLineNum = 233;BA.debugLine="End Sub";
+return "";
+}
+public String  _setpreviewsize(int _width,int _height) throws Exception{
+ //BA.debugLineNum = 171;BA.debugLine="Public Sub SetPreviewSize(Width As Int, Height As";
+ //BA.debugLineNum = 172;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 173;BA.debugLine="r.RunMethod3(\"setPreviewSize\", Width, \"java.lang.";
+_r.RunMethod3("setPreviewSize",BA.NumberToString(_width),"java.lang.int",BA.NumberToString(_height),"java.lang.int");
+ //BA.debugLineNum = 174;BA.debugLine="End Sub";
+return "";
+}
+public String  _setzoom(int _zoomvalue) throws Exception{
+ //BA.debugLineNum = 343;BA.debugLine="Public Sub setZoom(ZoomValue As Int)";
+ //BA.debugLineNum = 344;BA.debugLine="r.target = parameters";
+_r.Target = _parameters;
+ //BA.debugLineNum = 345;BA.debugLine="r.RunMethod2(\"setZoom\", ZoomValue, \"java.lang.int";
+_r.RunMethod2("setZoom",BA.NumberToString(_zoomvalue),"java.lang.int");
+ //BA.debugLineNum = 346;BA.debugLine="End Sub";
+return "";
+}
+public String  _startfacedetection() throws Exception{
 anywheresoftware.b4j.object.JavaObject _jo = null;
-RDebugUtils.currentLine=7405568;
- //BA.debugLineNum = 7405568;BA.debugLine="Public Sub StartFaceDetection";
-RDebugUtils.currentLine=7405569;
- //BA.debugLineNum = 7405569;BA.debugLine="Dim jo As JavaObject = nativeCam";
+ //BA.debugLineNum = 386;BA.debugLine="Public Sub StartFaceDetection";
+ //BA.debugLineNum = 387;BA.debugLine="Dim jo As JavaObject = nativeCam";
 _jo = new anywheresoftware.b4j.object.JavaObject();
-_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(__ref._nativecam /*Object*/ ));
-RDebugUtils.currentLine=7405570;
- //BA.debugLineNum = 7405570;BA.debugLine="jo.RunMethod(\"startFaceDetection\", Null)";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_nativecam));
+ //BA.debugLineNum = 388;BA.debugLine="jo.RunMethod(\"startFaceDetection\", Null)";
 _jo.RunMethod("startFaceDetection",(Object[])(__c.Null));
-RDebugUtils.currentLine=7405571;
- //BA.debugLineNum = 7405571;BA.debugLine="End Sub";
+ //BA.debugLineNum = 389;BA.debugLine="End Sub";
 return "";
 }
-public String  _stopfacedetection(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "stopfacedetection", false))
-	 {return ((String) Debug.delegate(ba, "stopfacedetection", null));}
+public String  _startpreview() throws Exception{
+ //BA.debugLineNum = 112;BA.debugLine="Public Sub StartPreview";
+ //BA.debugLineNum = 113;BA.debugLine="cam.StartPreview";
+_cam.StartPreview();
+ //BA.debugLineNum = 114;BA.debugLine="End Sub";
+return "";
+}
+public String  _stopfacedetection() throws Exception{
 anywheresoftware.b4j.object.JavaObject _jo = null;
-RDebugUtils.currentLine=7471104;
- //BA.debugLineNum = 7471104;BA.debugLine="Public Sub StopFaceDetection";
-RDebugUtils.currentLine=7471105;
- //BA.debugLineNum = 7471105;BA.debugLine="Dim jo As JavaObject = nativeCam";
+ //BA.debugLineNum = 391;BA.debugLine="Public Sub StopFaceDetection";
+ //BA.debugLineNum = 392;BA.debugLine="Dim jo As JavaObject = nativeCam";
 _jo = new anywheresoftware.b4j.object.JavaObject();
-_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(__ref._nativecam /*Object*/ ));
-RDebugUtils.currentLine=7471106;
- //BA.debugLineNum = 7471106;BA.debugLine="jo.RunMethod(\"stopFaceDetection\", Null)";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_nativecam));
+ //BA.debugLineNum = 393;BA.debugLine="jo.RunMethod(\"stopFaceDetection\", Null)";
 _jo.RunMethod("stopFaceDetection",(Object[])(__c.Null));
-RDebugUtils.currentLine=7471107;
- //BA.debugLineNum = 7471107;BA.debugLine="End Sub";
+ //BA.debugLineNum = 394;BA.debugLine="End Sub";
 return "";
 }
-public String  _stoppreview(avanue.nvwa.cameraexclass __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="cameraexclass";
-if (Debug.shouldDelegate(ba, "stoppreview", false))
-	 {return ((String) Debug.delegate(ba, "stoppreview", null));}
-RDebugUtils.currentLine=4718592;
- //BA.debugLineNum = 4718592;BA.debugLine="Public Sub StopPreview";
-RDebugUtils.currentLine=4718593;
- //BA.debugLineNum = 4718593;BA.debugLine="cam.StopPreview";
-__ref._cam /*anywheresoftware.b4a.objects.CameraW*/ .StopPreview();
-RDebugUtils.currentLine=4718594;
- //BA.debugLineNum = 4718594;BA.debugLine="End Sub";
+public String  _stoppreview() throws Exception{
+ //BA.debugLineNum = 116;BA.debugLine="Public Sub StopPreview";
+ //BA.debugLineNum = 117;BA.debugLine="cam.StopPreview";
+_cam.StopPreview();
+ //BA.debugLineNum = 118;BA.debugLine="End Sub";
 return "";
+}
+public String  _takepicture() throws Exception{
+ //BA.debugLineNum = 104;BA.debugLine="Public Sub TakePicture";
+ //BA.debugLineNum = 105;BA.debugLine="cam.TakePicture";
+_cam.TakePicture();
+ //BA.debugLineNum = 106;BA.debugLine="End Sub";
+return "";
+}
+public Object callSub(String sub, Object sender, Object[] args) throws Exception {
+BA.senderHolder.set(sender);
+return BA.SubDelegator.SubNotFound;
 }
 }

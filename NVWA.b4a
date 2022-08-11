@@ -315,7 +315,7 @@ Do While True '添加tag会保持循环，选择完tag会退出循环
 		If Result = xui.DialogResponse_Positive Then 
 			If InputTag.Text = "" Then
 				Msgbox2Async("还没有填标签名称呢！！", "ERR", "OK", "", "", Null, True)
-				Continue
+				Exit
 			Else
 				cursor1 = SQL1.ExecQuery("SELECT * FROM tags WHERE subject = '" & tag_subject & "'")
 				For i = 0 To cursor1.RowCount - 1
@@ -323,7 +323,7 @@ Do While True '添加tag会保持循环，选择完tag会退出循环
 					If InputTag.Text = cursor1.GetString("tag_name") Then
 						Msgbox2Async("标签名重了！！", "ERR", "OK", "", "", Null, True)
 						DuplicateTest = True
-						Continue
+						Exit
 					End If
 				Next
 			End If

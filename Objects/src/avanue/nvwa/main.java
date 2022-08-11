@@ -34,7 +34,7 @@ public class main extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "avanue.nvwa", "avanue.nvwa.main");
+			processBA = new BA(this.getApplicationContext(), null, null, "avanue.nvwa", "avanue.nvwa.main");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,48 +335,6 @@ public class main extends Activity implements B4AActivity{
             
     }
 
-
-
-public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        b4a.example.dateutils._process_globals();
-		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-return vis;}
-
-private static BA killProgramHelper(BA ba) {
-    if (ba == null)
-        return null;
-    anywheresoftware.b4a.BA.SharedProcessBA sharedProcessBA = ba.sharedProcessBA;
-    if (sharedProcessBA == null || sharedProcessBA.activityBA == null)
-        return null;
-    return sharedProcessBA.activityBA.get();
-}
-public static void killProgram() {
-     {
-            Activity __a = null;
-            if (main.previousOne != null) {
-				__a = main.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(main.mostCurrent == null ? null : main.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
-BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
-}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
 public static boolean _frontcamera = false;
@@ -445,1382 +403,710 @@ public avanue.nvwa.b4xinputtemplate _inputtag = null;
 public b4a.example.dateutils _dateutils = null;
 public avanue.nvwa.starter _starter = null;
 public avanue.nvwa.xuiviewsutils _xuiviewsutils = null;
+
+public static boolean isAnyActivityVisible() {
+    boolean vis = false;
+vis = vis | (main.mostCurrent != null);
+return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=262145;
- //BA.debugLineNum = 262145;BA.debugLine="If FirstTime Then";
+ //BA.debugLineNum = 125;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 126;BA.debugLine="If FirstTime Then";
 if (_firsttime) { 
-RDebugUtils.currentLine=262147;
- //BA.debugLineNum = 262147;BA.debugLine="Storage.Initialize (Me, \"Storage\")";
-_storage._initialize /*String*/ (null,processBA,main.getObject(),"Storage");
-RDebugUtils.currentLine=262148;
- //BA.debugLineNum = 262148;BA.debugLine="Parents_Dir.Initialize";
+ //BA.debugLineNum = 128;BA.debugLine="Storage.Initialize (Me, \"Storage\")";
+_storage._initialize /*String*/ (processBA,main.getObject(),"Storage");
+ //BA.debugLineNum = 129;BA.debugLine="Parents_Dir.Initialize";
 _parents_dir.Initialize();
-RDebugUtils.currentLine=262149;
- //BA.debugLineNum = 262149;BA.debugLine="Base = Activity";
+ //BA.debugLineNum = 130;BA.debugLine="Base = Activity";
 mostCurrent._base = (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(mostCurrent._activity.getObject()));
-RDebugUtils.currentLine=262150;
- //BA.debugLineNum = 262150;BA.debugLine="TagDialog.Initialize (Base)";
-mostCurrent._tagdialog._initialize /*String*/ (null,mostCurrent.activityBA,mostCurrent._base);
-RDebugUtils.currentLine=262151;
- //BA.debugLineNum = 262151;BA.debugLine="TagDialog.Title = \"选择题目类别\"";
+ //BA.debugLineNum = 131;BA.debugLine="TagDialog.Initialize (Base)";
+mostCurrent._tagdialog._initialize /*String*/ (mostCurrent.activityBA,mostCurrent._base);
+ //BA.debugLineNum = 132;BA.debugLine="TagDialog.Title = \"选择题目类别\"";
 mostCurrent._tagdialog._title /*Object*/  = (Object)("选择题目类别");
-RDebugUtils.currentLine=262152;
- //BA.debugLineNum = 262152;BA.debugLine="options.Initialize";
-mostCurrent._options._initialize /*String*/ (null,mostCurrent.activityBA);
-RDebugUtils.currentLine=262153;
- //BA.debugLineNum = 262153;BA.debugLine="options.AllowMultiSelection = True";
+ //BA.debugLineNum = 133;BA.debugLine="options.Initialize";
+mostCurrent._options._initialize /*String*/ (mostCurrent.activityBA);
+ //BA.debugLineNum = 134;BA.debugLine="options.AllowMultiSelection = True";
 mostCurrent._options._allowmultiselection /*boolean*/  = anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=262154;
- //BA.debugLineNum = 262154;BA.debugLine="options.Resize(300dip,200dip)";
-mostCurrent._options._resize /*String*/ (null,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (200)));
-RDebugUtils.currentLine=262155;
- //BA.debugLineNum = 262155;BA.debugLine="InputTag.Initialize";
-mostCurrent._inputtag._initialize /*String*/ (null,mostCurrent.activityBA);
-RDebugUtils.currentLine=262157;
- //BA.debugLineNum = 262157;BA.debugLine="Activity.LoadLayout(\"main\")";
+ //BA.debugLineNum = 135;BA.debugLine="options.Resize(300dip,200dip)";
+mostCurrent._options._resize /*String*/ (anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (200)));
+ //BA.debugLineNum = 136;BA.debugLine="InputTag.Initialize";
+mostCurrent._inputtag._initialize /*String*/ (mostCurrent.activityBA);
+ //BA.debugLineNum = 138;BA.debugLine="Activity.LoadLayout(\"main\")";
 mostCurrent._activity.LoadLayout("main",mostCurrent.activityBA);
-RDebugUtils.currentLine=262164;
- //BA.debugLineNum = 262164;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_READ_EXTERNAL_S";
+ //BA.debugLineNum = 145;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_READ_EXTERNAL_S";
 mostCurrent._rp.CheckAndRequest(processBA,mostCurrent._rp.PERMISSION_READ_EXTERNAL_STORAGE);
-RDebugUtils.currentLine=262165;
- //BA.debugLineNum = 262165;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_WRITE_EXTERNAL_";
+ //BA.debugLineNum = 146;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_WRITE_EXTERNAL_";
 mostCurrent._rp.CheckAndRequest(processBA,mostCurrent._rp.PERMISSION_WRITE_EXTERNAL_STORAGE);
-RDebugUtils.currentLine=262166;
- //BA.debugLineNum = 262166;BA.debugLine="rp.GetAllSafeDirsExternal (\"\")";
+ //BA.debugLineNum = 147;BA.debugLine="rp.GetAllSafeDirsExternal (\"\")";
 mostCurrent._rp.GetAllSafeDirsExternal("");
-RDebugUtils.currentLine=262167;
- //BA.debugLineNum = 262167;BA.debugLine="If File.Exists(File.DirDefaultExternal ,\"nvwa.db";
+ //BA.debugLineNum = 148;BA.debugLine="If File.Exists(File.DirDefaultExternal ,\"nvwa.db";
 if (anywheresoftware.b4a.keywords.Common.File.Exists(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"nvwa.db")==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=262168;
- //BA.debugLineNum = 262168;BA.debugLine="Try";
-try {RDebugUtils.currentLine=262169;
- //BA.debugLineNum = 262169;BA.debugLine="File.Copy(File.DirAssets,\"nvwa.db\",File.DirDef";
+ //BA.debugLineNum = 149;BA.debugLine="Try";
+try { //BA.debugLineNum = 150;BA.debugLine="File.Copy(File.DirAssets,\"nvwa.db\",File.DirDef";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"nvwa.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"nvwa.db");
  } 
        catch (Exception e19) {
-			processBA.setLastException(e19);RDebugUtils.currentLine=262171;
- //BA.debugLineNum = 262171;BA.debugLine="Msgbox2Async(\"Copy error\", \"ERR\", \"OK\", \"\", \"\"";
+			processBA.setLastException(e19); //BA.debugLineNum = 152;BA.debugLine="Msgbox2Async(\"Copy error\", \"ERR\", \"OK\", \"\", \"\"";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Copy error"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=262173;
- //BA.debugLineNum = 262173;BA.debugLine="Msgbox2Async(\"nvwa not exits\", \"DEST\", \"OK\", \"\"";
+ //BA.debugLineNum = 154;BA.debugLine="Msgbox2Async(\"nvwa not exits\", \"DEST\", \"OK\", \"\"";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("nvwa not exits"),BA.ObjectToCharSequence("DEST"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=262176;
- //BA.debugLineNum = 262176;BA.debugLine="If SQL1.IsInitialized = False Then";
+ //BA.debugLineNum = 157;BA.debugLine="If SQL1.IsInitialized = False Then";
 if (mostCurrent._sql1.IsInitialized()==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=262177;
- //BA.debugLineNum = 262177;BA.debugLine="Try";
-try {RDebugUtils.currentLine=262178;
- //BA.debugLineNum = 262178;BA.debugLine="SQL1.Initialize(File.DirDefaultExternal, \"nvwa";
+ //BA.debugLineNum = 158;BA.debugLine="Try";
+try { //BA.debugLineNum = 159;BA.debugLine="SQL1.Initialize(File.DirDefaultExternal, \"nvwa";
 mostCurrent._sql1.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"nvwa.db",anywheresoftware.b4a.keywords.Common.False);
  } 
        catch (Exception e27) {
-			processBA.setLastException(e27);RDebugUtils.currentLine=262180;
- //BA.debugLineNum = 262180;BA.debugLine="Msgbox2Async(\"DB Init Error\", \"ERR\", \"OK\", \"\",";
+			processBA.setLastException(e27); //BA.debugLineNum = 161;BA.debugLine="Msgbox2Async(\"DB Init Error\", \"ERR\", \"OK\", \"\",";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("DB Init Error"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
  };
  };
  };
-RDebugUtils.currentLine=262194;
- //BA.debugLineNum = 262194;BA.debugLine="End Sub";
+ //BA.debugLineNum = 175;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=458752;
- //BA.debugLineNum = 458752;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=458753;
- //BA.debugLineNum = 458753;BA.debugLine="If camEx.IsInitialized Then";
+ //BA.debugLineNum = 192;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 193;BA.debugLine="If camEx.IsInitialized Then";
 if (mostCurrent._camex.IsInitialized /*boolean*/ ()) { 
-RDebugUtils.currentLine=458754;
- //BA.debugLineNum = 458754;BA.debugLine="camEx.Release";
-mostCurrent._camex._release /*String*/ (null);
+ //BA.debugLineNum = 194;BA.debugLine="camEx.Release";
+mostCurrent._camex._release /*String*/ ();
  };
-RDebugUtils.currentLine=458756;
- //BA.debugLineNum = 458756;BA.debugLine="End Sub";
+ //BA.debugLineNum = 196;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_permissionresult(String _permission,boolean _result) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_permissionresult", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_permissionresult", new Object[] {_permission,_result}));}
-RDebugUtils.currentLine=393216;
- //BA.debugLineNum = 393216;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
-RDebugUtils.currentLine=393217;
- //BA.debugLineNum = 393217;BA.debugLine="If Result=False Then";
+ //BA.debugLineNum = 182;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
+ //BA.debugLineNum = 183;BA.debugLine="If Result=False Then";
 if (_result==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=393218;
- //BA.debugLineNum = 393218;BA.debugLine="Msgbox2Async(\"Permission Denied\", \"PD\", \"OK\", \"\"";
+ //BA.debugLineNum = 184;BA.debugLine="Msgbox2Async(\"Permission Denied\", \"PD\", \"OK\", \"\"";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Permission Denied"),BA.ObjectToCharSequence("PD"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
  }else {
-RDebugUtils.currentLine=393220;
- //BA.debugLineNum = 393220;BA.debugLine="CallSubDelayed(Me, \"permission_done\")";
+ //BA.debugLineNum = 186;BA.debugLine="CallSubDelayed(Me, \"permission_done\")";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed(processBA,main.getObject(),"permission_done");
  };
-RDebugUtils.currentLine=393223;
- //BA.debugLineNum = 393223;BA.debugLine="Log(Permission)";
-anywheresoftware.b4a.keywords.Common.LogImpl("2393223",_permission,0);
-RDebugUtils.currentLine=393224;
- //BA.debugLineNum = 393224;BA.debugLine="End Sub";
+ //BA.debugLineNum = 189;BA.debugLine="Log(Permission)";
+anywheresoftware.b4a.keywords.Common.LogImpl("1393223",_permission,0);
+ //BA.debugLineNum = 190;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=327680;
- //BA.debugLineNum = 327680;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=327683;
- //BA.debugLineNum = 327683;BA.debugLine="End Sub";
+ //BA.debugLineNum = 177;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 180;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_add_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_add_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_add_click", null));}
 int _i = 0;
-RDebugUtils.currentLine=4128768;
- //BA.debugLineNum = 4128768;BA.debugLine="Private Sub add_tag_add_Click";
-RDebugUtils.currentLine=4128770;
- //BA.debugLineNum = 4128770;BA.debugLine="If add_tag_edit.Text = \"\" Then";
+ //BA.debugLineNum = 846;BA.debugLine="Private Sub add_tag_add_Click";
+ //BA.debugLineNum = 848;BA.debugLine="If add_tag_edit.Text = \"\" Then";
 if ((mostCurrent._add_tag_edit.getText()).equals("")) { 
-RDebugUtils.currentLine=4128771;
- //BA.debugLineNum = 4128771;BA.debugLine="Msgbox2Async(\"还没有填标签名称呢！！\", \"ERR\", \"OK\", \"\", \"\",";
+ //BA.debugLineNum = 849;BA.debugLine="Msgbox2Async(\"还没有填标签名称呢！！\", \"ERR\", \"OK\", \"\", \"\",";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("还没有填标签名称呢！！"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=4128772;
- //BA.debugLineNum = 4128772;BA.debugLine="Return";
+ //BA.debugLineNum = 850;BA.debugLine="Return";
 if (true) return "";
  }else {
-RDebugUtils.currentLine=4128774;
- //BA.debugLineNum = 4128774;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM tags WHE";
+ //BA.debugLineNum = 852;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM tags WHE";
 mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM tags WHERE subject = '"+mostCurrent._tag_subject+"'")));
-RDebugUtils.currentLine=4128775;
- //BA.debugLineNum = 4128775;BA.debugLine="For i = 0 To cursor1.RowCount - 1";
+ //BA.debugLineNum = 853;BA.debugLine="For i = 0 To cursor1.RowCount - 1";
 {
 final int step6 = 1;
 final int limit6 = (int) (mostCurrent._cursor1.getRowCount()-1);
 _i = (int) (0) ;
 for (;_i <= limit6 ;_i = _i + step6 ) {
-RDebugUtils.currentLine=4128776;
- //BA.debugLineNum = 4128776;BA.debugLine="cursor1.Position = i";
+ //BA.debugLineNum = 854;BA.debugLine="cursor1.Position = i";
 mostCurrent._cursor1.setPosition(_i);
-RDebugUtils.currentLine=4128777;
- //BA.debugLineNum = 4128777;BA.debugLine="If add_tag_edit.Text = cursor1.GetString(\"tag_n";
+ //BA.debugLineNum = 855;BA.debugLine="If add_tag_edit.Text = cursor1.GetString(\"tag_n";
 if ((mostCurrent._add_tag_edit.getText()).equals(mostCurrent._cursor1.GetString("tag_name"))) { 
-RDebugUtils.currentLine=4128778;
- //BA.debugLineNum = 4128778;BA.debugLine="Msgbox2Async(\"标签名重了！！\", \"ERR\", \"OK\", \"\", \"\", N";
+ //BA.debugLineNum = 856;BA.debugLine="Msgbox2Async(\"标签名重了！！\", \"ERR\", \"OK\", \"\", \"\", N";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("标签名重了！！"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=4128779;
- //BA.debugLineNum = 4128779;BA.debugLine="Return";
+ //BA.debugLineNum = 857;BA.debugLine="Return";
 if (true) return "";
  };
  }
 };
  };
-RDebugUtils.currentLine=4128783;
- //BA.debugLineNum = 4128783;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO tags (tag_name,sub";
+ //BA.debugLineNum = 861;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO tags (tag_name,sub";
 mostCurrent._sql1.ExecNonQuery("INSERT INTO tags (tag_name,subject) VALUES ('"+mostCurrent._add_tag_edit.getText()+"','"+mostCurrent._tag_subject+"')");
-RDebugUtils.currentLine=4128784;
- //BA.debugLineNum = 4128784;BA.debugLine="ToastMessageShow( tag_subject & \" label '\" & add";
+ //BA.debugLineNum = 862;BA.debugLine="ToastMessageShow( tag_subject & \" label '\" & add";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(mostCurrent._tag_subject+" label '"+mostCurrent._add_tag_edit.getText()+"' added successfully"),anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=4128785;
- //BA.debugLineNum = 4128785;BA.debugLine="add_tag_edit.Text = \"\"";
+ //BA.debugLineNum = 863;BA.debugLine="add_tag_edit.Text = \"\"";
 mostCurrent._add_tag_edit.setText(BA.ObjectToCharSequence(""));
-RDebugUtils.currentLine=4128786;
- //BA.debugLineNum = 4128786;BA.debugLine="End Sub";
+ //BA.debugLineNum = 864;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_biology_checkedchange(boolean _checked) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_biology_checkedchange", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_biology_checkedchange", new Object[] {_checked}));}
-RDebugUtils.currentLine=4063232;
- //BA.debugLineNum = 4063232;BA.debugLine="Private Sub add_tag_biology_CheckedChange(Checked";
-RDebugUtils.currentLine=4063233;
- //BA.debugLineNum = 4063233;BA.debugLine="If Checked = True Then";
+ //BA.debugLineNum = 840;BA.debugLine="Private Sub add_tag_biology_CheckedChange(Checked";
+ //BA.debugLineNum = 841;BA.debugLine="If Checked = True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=4063234;
- //BA.debugLineNum = 4063234;BA.debugLine="tag_subject = \"biology\"";
+ //BA.debugLineNum = 842;BA.debugLine="tag_subject = \"biology\"";
 mostCurrent._tag_subject = "biology";
  };
-RDebugUtils.currentLine=4063236;
- //BA.debugLineNum = 4063236;BA.debugLine="End Sub";
+ //BA.debugLineNum = 844;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_chemistry_checkedchange(boolean _checked) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_chemistry_checkedchange", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_chemistry_checkedchange", new Object[] {_checked}));}
-RDebugUtils.currentLine=3997696;
- //BA.debugLineNum = 3997696;BA.debugLine="Private Sub add_tag_chemistry_CheckedChange(Checke";
-RDebugUtils.currentLine=3997697;
- //BA.debugLineNum = 3997697;BA.debugLine="If Checked = True Then";
+ //BA.debugLineNum = 834;BA.debugLine="Private Sub add_tag_chemistry_CheckedChange(Checke";
+ //BA.debugLineNum = 835;BA.debugLine="If Checked = True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=3997698;
- //BA.debugLineNum = 3997698;BA.debugLine="tag_subject = \"chemistry\"";
+ //BA.debugLineNum = 836;BA.debugLine="tag_subject = \"chemistry\"";
 mostCurrent._tag_subject = "chemistry";
  };
-RDebugUtils.currentLine=3997700;
- //BA.debugLineNum = 3997700;BA.debugLine="End Sub";
+ //BA.debugLineNum = 838;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_chinese_checkedchange(boolean _checked) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_chinese_checkedchange", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_chinese_checkedchange", new Object[] {_checked}));}
-RDebugUtils.currentLine=3735552;
- //BA.debugLineNum = 3735552;BA.debugLine="Private Sub add_tag_chinese_CheckedChange(Checked";
-RDebugUtils.currentLine=3735553;
- //BA.debugLineNum = 3735553;BA.debugLine="If Checked = True Then";
+ //BA.debugLineNum = 810;BA.debugLine="Private Sub add_tag_chinese_CheckedChange(Checked";
+ //BA.debugLineNum = 811;BA.debugLine="If Checked = True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=3735554;
- //BA.debugLineNum = 3735554;BA.debugLine="tag_subject = \"chinese\"";
+ //BA.debugLineNum = 812;BA.debugLine="tag_subject = \"chinese\"";
 mostCurrent._tag_subject = "chinese";
  };
-RDebugUtils.currentLine=3735556;
- //BA.debugLineNum = 3735556;BA.debugLine="End Sub";
+ //BA.debugLineNum = 814;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_english_checkedchange(boolean _checked) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_english_checkedchange", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_english_checkedchange", new Object[] {_checked}));}
-RDebugUtils.currentLine=3866624;
- //BA.debugLineNum = 3866624;BA.debugLine="Private Sub add_tag_english_CheckedChange(Checked";
-RDebugUtils.currentLine=3866625;
- //BA.debugLineNum = 3866625;BA.debugLine="If Checked = True Then";
+ //BA.debugLineNum = 822;BA.debugLine="Private Sub add_tag_english_CheckedChange(Checked";
+ //BA.debugLineNum = 823;BA.debugLine="If Checked = True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=3866626;
- //BA.debugLineNum = 3866626;BA.debugLine="tag_subject = \"english\"";
+ //BA.debugLineNum = 824;BA.debugLine="tag_subject = \"english\"";
 mostCurrent._tag_subject = "english";
  };
-RDebugUtils.currentLine=3866628;
- //BA.debugLineNum = 3866628;BA.debugLine="End Sub";
+ //BA.debugLineNum = 826;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_maths_checkedchange(boolean _checked) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_maths_checkedchange", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_maths_checkedchange", new Object[] {_checked}));}
-RDebugUtils.currentLine=3801088;
- //BA.debugLineNum = 3801088;BA.debugLine="Private Sub add_tag_maths_CheckedChange(Checked As";
-RDebugUtils.currentLine=3801089;
- //BA.debugLineNum = 3801089;BA.debugLine="If Checked = True Then";
+ //BA.debugLineNum = 816;BA.debugLine="Private Sub add_tag_maths_CheckedChange(Checked As";
+ //BA.debugLineNum = 817;BA.debugLine="If Checked = True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=3801090;
- //BA.debugLineNum = 3801090;BA.debugLine="tag_subject = \"maths\"";
+ //BA.debugLineNum = 818;BA.debugLine="tag_subject = \"maths\"";
 mostCurrent._tag_subject = "maths";
  };
-RDebugUtils.currentLine=3801092;
- //BA.debugLineNum = 3801092;BA.debugLine="End Sub";
+ //BA.debugLineNum = 820;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_tag_physics_checkedchange(boolean _checked) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "add_tag_physics_checkedchange", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_tag_physics_checkedchange", new Object[] {_checked}));}
-RDebugUtils.currentLine=3932160;
- //BA.debugLineNum = 3932160;BA.debugLine="Private Sub add_tag_physics_CheckedChange(Checked";
-RDebugUtils.currentLine=3932161;
- //BA.debugLineNum = 3932161;BA.debugLine="If Checked = True Then";
+ //BA.debugLineNum = 828;BA.debugLine="Private Sub add_tag_physics_CheckedChange(Checked";
+ //BA.debugLineNum = 829;BA.debugLine="If Checked = True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=3932162;
- //BA.debugLineNum = 3932162;BA.debugLine="tag_subject = \"physics\"";
+ //BA.debugLineNum = 830;BA.debugLine="tag_subject = \"physics\"";
 mostCurrent._tag_subject = "physics";
  };
-RDebugUtils.currentLine=3932164;
- //BA.debugLineNum = 3932164;BA.debugLine="End Sub";
+ //BA.debugLineNum = 832;BA.debugLine="End Sub";
 return "";
 }
 public static String  _addtag_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "addtag_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "addtag_click", null));}
-RDebugUtils.currentLine=3670016;
- //BA.debugLineNum = 3670016;BA.debugLine="Private Sub addtag_Click";
-RDebugUtils.currentLine=3670017;
- //BA.debugLineNum = 3670017;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 798;BA.debugLine="Private Sub addtag_Click";
+ //BA.debugLineNum = 799;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=3670018;
- //BA.debugLineNum = 3670018;BA.debugLine="Activity.LoadLayout(\"add_tag\")";
+ //BA.debugLineNum = 800;BA.debugLine="Activity.LoadLayout(\"add_tag\")";
 mostCurrent._activity.LoadLayout("add_tag",mostCurrent.activityBA);
-RDebugUtils.currentLine=3670019;
- //BA.debugLineNum = 3670019;BA.debugLine="add_tag_chinese.Checked = True";
+ //BA.debugLineNum = 801;BA.debugLine="add_tag_chinese.Checked = True";
 mostCurrent._add_tag_chinese.setChecked(anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=3670020;
- //BA.debugLineNum = 3670020;BA.debugLine="add_tag_maths.Checked = False";
+ //BA.debugLineNum = 802;BA.debugLine="add_tag_maths.Checked = False";
 mostCurrent._add_tag_maths.setChecked(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3670021;
- //BA.debugLineNum = 3670021;BA.debugLine="add_tag_english.Checked = False";
+ //BA.debugLineNum = 803;BA.debugLine="add_tag_english.Checked = False";
 mostCurrent._add_tag_english.setChecked(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3670022;
- //BA.debugLineNum = 3670022;BA.debugLine="add_tag_physics.Checked = False";
+ //BA.debugLineNum = 804;BA.debugLine="add_tag_physics.Checked = False";
 mostCurrent._add_tag_physics.setChecked(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3670023;
- //BA.debugLineNum = 3670023;BA.debugLine="add_tag_chemistry.Checked = False";
+ //BA.debugLineNum = 805;BA.debugLine="add_tag_chemistry.Checked = False";
 mostCurrent._add_tag_chemistry.setChecked(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3670024;
- //BA.debugLineNum = 3670024;BA.debugLine="add_tag_biology.Checked = False";
+ //BA.debugLineNum = 806;BA.debugLine="add_tag_biology.Checked = False";
 mostCurrent._add_tag_biology.setChecked(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3670025;
- //BA.debugLineNum = 3670025;BA.debugLine="tag_subject = \"chinese\"";
+ //BA.debugLineNum = 807;BA.debugLine="tag_subject = \"chinese\"";
 mostCurrent._tag_subject = "chinese";
-RDebugUtils.currentLine=3670026;
- //BA.debugLineNum = 3670026;BA.debugLine="End Sub";
+ //BA.debugLineNum = 808;BA.debugLine="End Sub";
 return "";
 }
 public static String  _answer_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "answer_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "answer_click", null));}
-RDebugUtils.currentLine=2424832;
- //BA.debugLineNum = 2424832;BA.debugLine="Private Sub answer_Click";
-RDebugUtils.currentLine=2424833;
- //BA.debugLineNum = 2424833;BA.debugLine="A_Name = now_string";
+ //BA.debugLineNum = 579;BA.debugLine="Private Sub answer_Click";
+ //BA.debugLineNum = 580;BA.debugLine="A_Name = now_string";
 mostCurrent._a_name = _now_string();
-RDebugUtils.currentLine=2424834;
- //BA.debugLineNum = 2424834;BA.debugLine="T_Name = A_Name";
+ //BA.debugLineNum = 581;BA.debugLine="T_Name = A_Name";
 mostCurrent._t_name = mostCurrent._a_name;
-RDebugUtils.currentLine=2424835;
- //BA.debugLineNum = 2424835;BA.debugLine="camEx.TakePicture";
-mostCurrent._camex._takepicture /*String*/ (null);
-RDebugUtils.currentLine=2424836;
- //BA.debugLineNum = 2424836;BA.debugLine="End Sub";
-return "";
-}
-public static String  _now_string() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "now_string", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "now_string", null));}
-String _nows = "";
-RDebugUtils.currentLine=131072;
- //BA.debugLineNum = 131072;BA.debugLine="Private Sub now_string As String";
-RDebugUtils.currentLine=131073;
- //BA.debugLineNum = 131073;BA.debugLine="now  = DateTime.Now";
-_now = anywheresoftware.b4a.keywords.Common.DateTime.getNow();
-RDebugUtils.currentLine=131074;
- //BA.debugLineNum = 131074;BA.debugLine="Dim nows As String";
-_nows = "";
-RDebugUtils.currentLine=131075;
- //BA.debugLineNum = 131075;BA.debugLine="DateTime.DateFormat = \"YYYYMMdd.\"";
-anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("YYYYMMdd.");
-RDebugUtils.currentLine=131077;
- //BA.debugLineNum = 131077;BA.debugLine="DateTime.SetTimeZone(8)";
-anywheresoftware.b4a.keywords.Common.DateTime.SetTimeZone(8);
-RDebugUtils.currentLine=131078;
- //BA.debugLineNum = 131078;BA.debugLine="nows = DateTime.Date(now) & DateTime.Time(now)";
-_nows = anywheresoftware.b4a.keywords.Common.DateTime.Date(_now)+anywheresoftware.b4a.keywords.Common.DateTime.Time(_now);
-RDebugUtils.currentLine=131079;
- //BA.debugLineNum = 131079;BA.debugLine="Return nows";
-if (true) return _nows;
-RDebugUtils.currentLine=131080;
- //BA.debugLineNum = 131080;BA.debugLine="End Sub";
+ //BA.debugLineNum = 582;BA.debugLine="camEx.TakePicture";
+mostCurrent._camex._takepicture /*String*/ ();
+ //BA.debugLineNum = 583;BA.debugLine="End Sub";
 return "";
 }
 public static String  _back_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "back_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "back_click", null));}
-RDebugUtils.currentLine=655360;
- //BA.debugLineNum = 655360;BA.debugLine="Private Sub back_Click";
-RDebugUtils.currentLine=655361;
- //BA.debugLineNum = 655361;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 207;BA.debugLine="Private Sub back_Click";
+ //BA.debugLineNum = 208;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=655362;
- //BA.debugLineNum = 655362;BA.debugLine="Activity.LoadLayout(\"main\")";
+ //BA.debugLineNum = 209;BA.debugLine="Activity.LoadLayout(\"main\")";
 mostCurrent._activity.LoadLayout("main",mostCurrent.activityBA);
-RDebugUtils.currentLine=655363;
- //BA.debugLineNum = 655363;BA.debugLine="End Sub";
+ //BA.debugLineNum = 210;BA.debugLine="End Sub";
 return "";
 }
 public static String  _back_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "back_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "back_rev_click", null));}
-RDebugUtils.currentLine=3473408;
- //BA.debugLineNum = 3473408;BA.debugLine="Private Sub back_rev_Click";
-RDebugUtils.currentLine=3473409;
- //BA.debugLineNum = 3473409;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 760;BA.debugLine="Private Sub back_rev_Click";
+ //BA.debugLineNum = 761;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=3473410;
- //BA.debugLineNum = 3473410;BA.debugLine="Activity.LoadLayout(\"subjects_rev\")";
+ //BA.debugLineNum = 762;BA.debugLine="Activity.LoadLayout(\"subjects_rev\")";
 mostCurrent._activity.LoadLayout("subjects_rev",mostCurrent.activityBA);
-RDebugUtils.currentLine=3473411;
- //BA.debugLineNum = 3473411;BA.debugLine="End Sub";
+ //BA.debugLineNum = 763;BA.debugLine="End Sub";
 return "";
 }
 public static String  _back_rule_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "back_rule_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "back_rule_click", null));}
-RDebugUtils.currentLine=3604480;
- //BA.debugLineNum = 3604480;BA.debugLine="Private Sub back_rule_Click";
-RDebugUtils.currentLine=3604482;
- //BA.debugLineNum = 3604482;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 790;BA.debugLine="Private Sub back_rule_Click";
+ //BA.debugLineNum = 792;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=3604483;
- //BA.debugLineNum = 3604483;BA.debugLine="Activity.LoadLayout(\"review\")";
+ //BA.debugLineNum = 793;BA.debugLine="Activity.LoadLayout(\"review\")";
 mostCurrent._activity.LoadLayout("review",mostCurrent.activityBA);
-RDebugUtils.currentLine=3604484;
- //BA.debugLineNum = 3604484;BA.debugLine="End Sub";
+ //BA.debugLineNum = 794;BA.debugLine="End Sub";
 return "";
 }
 public static String  _biology_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "biology_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "biology_click", null));}
-RDebugUtils.currentLine=1310720;
- //BA.debugLineNum = 1310720;BA.debugLine="Private Sub biology_Click";
-RDebugUtils.currentLine=1310721;
- //BA.debugLineNum = 1310721;BA.debugLine="tag_subject= \"biology\"";
+ //BA.debugLineNum = 344;BA.debugLine="Private Sub biology_Click";
+ //BA.debugLineNum = 345;BA.debugLine="tag_subject= \"biology\"";
 mostCurrent._tag_subject = "biology";
-RDebugUtils.currentLine=1310722;
- //BA.debugLineNum = 1310722;BA.debugLine="CameraClick";
+ //BA.debugLineNum = 346;BA.debugLine="CameraClick";
 _cameraclick();
-RDebugUtils.currentLine=1310723;
- //BA.debugLineNum = 1310723;BA.debugLine="End Sub";
-return "";
-}
-public static String  _cameraclick() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "cameraclick", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "cameraclick", null));}
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub CameraClick";
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=917508;
- //BA.debugLineNum = 917508;BA.debugLine="Activity.LoadLayout (\"record\")";
-mostCurrent._activity.LoadLayout("record",mostCurrent.activityBA);
-RDebugUtils.currentLine=917509;
- //BA.debugLineNum = 917509;BA.debugLine="Try";
-try {RDebugUtils.currentLine=917510;
- //BA.debugLineNum = 917510;BA.debugLine="InitializeCamera";
-_initializecamera();
- } 
-       catch (Exception e6) {
-			processBA.setLastException(e6);RDebugUtils.currentLine=917512;
- //BA.debugLineNum = 917512;BA.debugLine="Msgbox2Async(\"camera init err\", \"err\", \"OK\", \"\",";
-anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("camera init err"),BA.ObjectToCharSequence("err"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
- };
-RDebugUtils.currentLine=917514;
- //BA.debugLineNum = 917514;BA.debugLine="q_count.Text = \"总题数：\" & refresh_count(tag_subject";
-mostCurrent._q_count.setText(BA.ObjectToCharSequence("总题数："+BA.NumberToString(_refresh_count(mostCurrent._tag_subject))));
-RDebugUtils.currentLine=917527;
- //BA.debugLineNum = 917527;BA.debugLine="End Sub";
+ //BA.debugLineNum = 347;BA.debugLine="End Sub";
 return "";
 }
 public static String  _biology_imp_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "biology_imp_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "biology_imp_click", null));}
-RDebugUtils.currentLine=1835008;
- //BA.debugLineNum = 1835008;BA.debugLine="Private Sub biology_imp_Click";
-RDebugUtils.currentLine=1835009;
- //BA.debugLineNum = 1835009;BA.debugLine="tag_subject= \"biology\"";
+ //BA.debugLineNum = 401;BA.debugLine="Private Sub biology_imp_Click";
+ //BA.debugLineNum = 402;BA.debugLine="tag_subject= \"biology\"";
 mostCurrent._tag_subject = "biology";
-RDebugUtils.currentLine=1835010;
- //BA.debugLineNum = 1835010;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 403;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1835011;
- //BA.debugLineNum = 1835011;BA.debugLine="Activity.LoadLayout(\"record_import\")";
+ //BA.debugLineNum = 404;BA.debugLine="Activity.LoadLayout(\"record_import\")";
 mostCurrent._activity.LoadLayout("record_import",mostCurrent.activityBA);
-RDebugUtils.currentLine=1835012;
- //BA.debugLineNum = 1835012;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 405;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=1835013;
- //BA.debugLineNum = 1835013;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 406;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=1835014;
- //BA.debugLineNum = 1835014;BA.debugLine="End Sub";
+ //BA.debugLineNum = 407;BA.debugLine="End Sub";
 return "";
 }
 public static String  _biology_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "biology_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "biology_rev_click", null));}
-RDebugUtils.currentLine=3080192;
- //BA.debugLineNum = 3080192;BA.debugLine="Private Sub biology_rev_Click";
-RDebugUtils.currentLine=3080193;
- //BA.debugLineNum = 3080193;BA.debugLine="tag_subject= \"biology\"";
+ //BA.debugLineNum = 675;BA.debugLine="Private Sub biology_rev_Click";
+ //BA.debugLineNum = 676;BA.debugLine="tag_subject= \"biology\"";
 mostCurrent._tag_subject = "biology";
-RDebugUtils.currentLine=3080194;
- //BA.debugLineNum = 3080194;BA.debugLine="RevClick";
+ //BA.debugLineNum = 677;BA.debugLine="RevClick";
 _revclick();
-RDebugUtils.currentLine=3080195;
- //BA.debugLineNum = 3080195;BA.debugLine="End Sub";
-return "";
-}
-public static String  _revclick() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "revclick", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "revclick", null));}
-String _tn = "";
-RDebugUtils.currentLine=31064064;
- //BA.debugLineNum = 31064064;BA.debugLine="Sub RevClick";
-RDebugUtils.currentLine=31064065;
- //BA.debugLineNum = 31064065;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=31064066;
- //BA.debugLineNum = 31064066;BA.debugLine="Activity.LoadLayout(\"review\")";
-mostCurrent._activity.LoadLayout("review",mostCurrent.activityBA);
-RDebugUtils.currentLine=31064067;
- //BA.debugLineNum = 31064067;BA.debugLine="Dim tn As String";
-_tn = "";
-RDebugUtils.currentLine=31064068;
- //BA.debugLineNum = 31064068;BA.debugLine="tn = select_question(tag_subject)";
-_tn = _select_question(mostCurrent._tag_subject);
-RDebugUtils.currentLine=31064069;
- //BA.debugLineNum = 31064069;BA.debugLine="If tn = \"\" Then";
-if ((_tn).equals("")) { 
-RDebugUtils.currentLine=31064070;
- //BA.debugLineNum = 31064070;BA.debugLine="Msgbox2Async(\"没题啊\", \"ERR\", \"OK\", \"\", \"\", Null, T";
-anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("没题啊"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=31064071;
- //BA.debugLineNum = 31064071;BA.debugLine="Return";
-if (true) return "";
- };
-RDebugUtils.currentLine=31064074;
- //BA.debugLineNum = 31064074;BA.debugLine="TouchImageView1.Initialize(\"TouchImageView1\")";
-mostCurrent._touchimageview1.Initialize(mostCurrent.activityBA,"TouchImageView1");
-RDebugUtils.currentLine=31064075;
- //BA.debugLineNum = 31064075;BA.debugLine="Activity.AddView(TouchImageView1, 0, 0, 100%x, 10";
-mostCurrent._activity.AddView((android.view.View)(mostCurrent._touchimageview1.getObject()),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (100),mostCurrent.activityBA));
-RDebugUtils.currentLine=31064076;
- //BA.debugLineNum = 31064076;BA.debugLine="Refresh_question(random_num)";
-_refresh_question(_random_num);
-RDebugUtils.currentLine=31064077;
- //BA.debugLineNum = 31064077;BA.debugLine="End Sub";
+ //BA.debugLineNum = 678;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnflash_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnflash_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnflash_click", null));}
 float[] _f = null;
 anywheresoftware.b4a.objects.collections.List _flashmodes = null;
 String _flash = "";
-RDebugUtils.currentLine=2293760;
- //BA.debugLineNum = 2293760;BA.debugLine="Private Sub btnFlash_Click";
-RDebugUtils.currentLine=2293761;
- //BA.debugLineNum = 2293761;BA.debugLine="Dim f() As Float = camEx.GetFocusDistances";
-_f = mostCurrent._camex._getfocusdistances /*float[]*/ (null);
-RDebugUtils.currentLine=2293762;
- //BA.debugLineNum = 2293762;BA.debugLine="Log(f(0) & \", \" & f(1) & \", \" & f(2))";
-anywheresoftware.b4a.keywords.Common.LogImpl("22293762",BA.NumberToString(_f[(int) (0)])+", "+BA.NumberToString(_f[(int) (1)])+", "+BA.NumberToString(_f[(int) (2)]),0);
-RDebugUtils.currentLine=2293763;
- //BA.debugLineNum = 2293763;BA.debugLine="Dim flashModes As List = camEx.GetSupportedFlashM";
+ //BA.debugLineNum = 559;BA.debugLine="Private Sub btnFlash_Click";
+ //BA.debugLineNum = 560;BA.debugLine="Dim f() As Float = camEx.GetFocusDistances";
+_f = mostCurrent._camex._getfocusdistances /*float[]*/ ();
+ //BA.debugLineNum = 561;BA.debugLine="Log(f(0) & \", \" & f(1) & \", \" & f(2))";
+anywheresoftware.b4a.keywords.Common.LogImpl("12293762",BA.NumberToString(_f[(int) (0)])+", "+BA.NumberToString(_f[(int) (1)])+", "+BA.NumberToString(_f[(int) (2)]),0);
+ //BA.debugLineNum = 562;BA.debugLine="Dim flashModes As List = camEx.GetSupportedFlashM";
 _flashmodes = new anywheresoftware.b4a.objects.collections.List();
-_flashmodes = mostCurrent._camex._getsupportedflashmodes /*anywheresoftware.b4a.objects.collections.List*/ (null);
-RDebugUtils.currentLine=2293764;
- //BA.debugLineNum = 2293764;BA.debugLine="If flashModes.IsInitialized = False Then";
+_flashmodes = mostCurrent._camex._getsupportedflashmodes /*anywheresoftware.b4a.objects.collections.List*/ ();
+ //BA.debugLineNum = 563;BA.debugLine="If flashModes.IsInitialized = False Then";
 if (_flashmodes.IsInitialized()==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=2293765;
- //BA.debugLineNum = 2293765;BA.debugLine="ToastMessageShow(\"Flash not supported.\", False)";
+ //BA.debugLineNum = 564;BA.debugLine="ToastMessageShow(\"Flash not supported.\", False)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Flash not supported."),anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=2293766;
- //BA.debugLineNum = 2293766;BA.debugLine="Return";
+ //BA.debugLineNum = 565;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=2293768;
- //BA.debugLineNum = 2293768;BA.debugLine="Dim flash As String = flashModes.Get((flashModes.";
-_flash = BA.ObjectToString(_flashmodes.Get((int) ((_flashmodes.IndexOf((Object)(mostCurrent._camex._getflashmode /*String*/ (null)))+1)%_flashmodes.getSize())));
-RDebugUtils.currentLine=2293769;
- //BA.debugLineNum = 2293769;BA.debugLine="camEx.SetFlashMode(flash)";
-mostCurrent._camex._setflashmode /*String*/ (null,_flash);
-RDebugUtils.currentLine=2293770;
- //BA.debugLineNum = 2293770;BA.debugLine="ToastMessageShow(flash, False)";
+ //BA.debugLineNum = 567;BA.debugLine="Dim flash As String = flashModes.Get((flashModes.";
+_flash = BA.ObjectToString(_flashmodes.Get((int) ((_flashmodes.IndexOf((Object)(mostCurrent._camex._getflashmode /*String*/ ()))+1)%_flashmodes.getSize())));
+ //BA.debugLineNum = 568;BA.debugLine="camEx.SetFlashMode(flash)";
+mostCurrent._camex._setflashmode /*String*/ (_flash);
+ //BA.debugLineNum = 569;BA.debugLine="ToastMessageShow(flash, False)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(_flash),anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=2293771;
- //BA.debugLineNum = 2293771;BA.debugLine="camEx.CommitParameters";
-mostCurrent._camex._commitparameters /*String*/ (null);
-RDebugUtils.currentLine=2293773;
- //BA.debugLineNum = 2293773;BA.debugLine="End Sub";
+ //BA.debugLineNum = 570;BA.debugLine="camEx.CommitParameters";
+mostCurrent._camex._commitparameters /*String*/ ();
+ //BA.debugLineNum = 572;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnimpans_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnimpans_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnimpans_click", null));}
 int _answ = 0;
-RDebugUtils.currentLine=1966080;
- //BA.debugLineNum = 1966080;BA.debugLine="Private Sub btnImpAns_Click";
-RDebugUtils.currentLine=1966081;
- //BA.debugLineNum = 1966081;BA.debugLine="Dim Answ As Int";
+ //BA.debugLineNum = 428;BA.debugLine="Private Sub btnImpAns_Click";
+ //BA.debugLineNum = 429;BA.debugLine="Dim Answ As Int";
 _answ = 0;
-RDebugUtils.currentLine=1966083;
- //BA.debugLineNum = 1966083;BA.debugLine="FileDialog1.FilePath = AnsFilePath";
+ //BA.debugLineNum = 431;BA.debugLine="FileDialog1.FilePath = AnsFilePath";
 mostCurrent._filedialog1.setFilePath(mostCurrent._ansfilepath);
-RDebugUtils.currentLine=1966084;
- //BA.debugLineNum = 1966084;BA.debugLine="Answ = FileDialog1.Show(\"Databases\",\"Load\",\"Cance";
+ //BA.debugLineNum = 432;BA.debugLine="Answ = FileDialog1.Show(\"Databases\",\"Load\",\"Cance";
 _answ = mostCurrent._filedialog1.Show(BA.ObjectToCharSequence("Databases"),"Load","Cancel","",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
-RDebugUtils.currentLine=1966086;
- //BA.debugLineNum = 1966086;BA.debugLine="Select Answ";
+ //BA.debugLineNum = 434;BA.debugLine="Select Answ";
 switch (BA.switchObjectToInt(_answ,anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE,anywheresoftware.b4a.keywords.Common.DialogResponse.CANCEL)) {
 case 0: {
-RDebugUtils.currentLine=1966088;
- //BA.debugLineNum = 1966088;BA.debugLine="AnsFileName = FileDialog1.ChosenName";
+ //BA.debugLineNum = 436;BA.debugLine="AnsFileName = FileDialog1.ChosenName";
 mostCurrent._ansfilename = mostCurrent._filedialog1.getChosenName();
-RDebugUtils.currentLine=1966089;
- //BA.debugLineNum = 1966089;BA.debugLine="AnsFilePath = FileDialog1.FilePath";
+ //BA.debugLineNum = 437;BA.debugLine="AnsFilePath = FileDialog1.FilePath";
 mostCurrent._ansfilepath = mostCurrent._filedialog1.getFilePath();
-RDebugUtils.currentLine=1966090;
- //BA.debugLineNum = 1966090;BA.debugLine="ScrAns.Panel.SetBackgroundImage(LoadBitmap(AnsF";
+ //BA.debugLineNum = 438;BA.debugLine="ScrAns.Panel.SetBackgroundImage(LoadBitmap(AnsF";
 mostCurrent._scrans.getPanel().SetBackgroundImageNew((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(mostCurrent._ansfilepath,mostCurrent._ansfilename).getObject()));
-RDebugUtils.currentLine=1966091;
- //BA.debugLineNum = 1966091;BA.debugLine="BitmapAns.Initialize(AnsFilePath, AnsFileName)";
+ //BA.debugLineNum = 439;BA.debugLine="BitmapAns.Initialize(AnsFilePath, AnsFileName)";
 mostCurrent._bitmapans.Initialize(mostCurrent._ansfilepath,mostCurrent._ansfilename);
-RDebugUtils.currentLine=1966092;
- //BA.debugLineNum = 1966092;BA.debugLine="ScrAns.Panel.SetBackgroundImage(BitmapAns)";
+ //BA.debugLineNum = 440;BA.debugLine="ScrAns.Panel.SetBackgroundImage(BitmapAns)";
 mostCurrent._scrans.getPanel().SetBackgroundImageNew((android.graphics.Bitmap)(mostCurrent._bitmapans.getObject()));
-RDebugUtils.currentLine=1966093;
- //BA.debugLineNum = 1966093;BA.debugLine="ScrAns.Panel.Height = Floor(BitmapAns.Height /";
+ //BA.debugLineNum = 441;BA.debugLine="ScrAns.Panel.Height = Floor(BitmapAns.Height /";
 mostCurrent._scrans.getPanel().setHeight((int) (anywheresoftware.b4a.keywords.Common.Floor(mostCurrent._bitmapans.getHeight()/(double)5)*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1))));
-RDebugUtils.currentLine=1966094;
- //BA.debugLineNum = 1966094;BA.debugLine="ScrAns.Panel.Width = Floor(BitmapAns.Width / 5)";
+ //BA.debugLineNum = 442;BA.debugLine="ScrAns.Panel.Width = Floor(BitmapAns.Width / 5)";
 mostCurrent._scrans.getPanel().setWidth((int) (anywheresoftware.b4a.keywords.Common.Floor(mostCurrent._bitmapans.getWidth()/(double)5)*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1))));
  break; }
 case 1: {
  break; }
 }
 ;
-RDebugUtils.currentLine=1966098;
- //BA.debugLineNum = 1966098;BA.debugLine="End Sub";
+ //BA.debugLineNum = 446;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnimpcomplete_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnimpcomplete_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnimpcomplete_click", null));}
 String _td = "";
 int _level = 0;
 int _newid = 0;
 String _quesfilenamenew = "";
 String _ansfilenamenew = "";
-RDebugUtils.currentLine=2031616;
- //BA.debugLineNum = 2031616;BA.debugLine="Private Sub btnImpComplete_Click";
-RDebugUtils.currentLine=2031617;
- //BA.debugLineNum = 2031617;BA.debugLine="If QuesFileName = \" \" Or AnsFileName = \" \" Then";
+ //BA.debugLineNum = 448;BA.debugLine="Private Sub btnImpComplete_Click";
+ //BA.debugLineNum = 449;BA.debugLine="If QuesFileName = \" \" Or AnsFileName = \" \" Then";
 if ((mostCurrent._quesfilename).equals(" ") || (mostCurrent._ansfilename).equals(" ")) { 
-RDebugUtils.currentLine=2031618;
- //BA.debugLineNum = 2031618;BA.debugLine="Msgbox2Async(\"没选完呢！！\", \"ERR\", \"OK\", \"\", \"\", Null";
+ //BA.debugLineNum = 450;BA.debugLine="Msgbox2Async(\"没选完呢！！\", \"ERR\", \"OK\", \"\", \"\", Null";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("没选完呢！！"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=2031619;
- //BA.debugLineNum = 2031619;BA.debugLine="Return";
+ //BA.debugLineNum = 451;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=2031621;
- //BA.debugLineNum = 2031621;BA.debugLine="Dim td As String";
+ //BA.debugLineNum = 453;BA.debugLine="Dim td As String";
 _td = "";
-RDebugUtils.currentLine=2031622;
- //BA.debugLineNum = 2031622;BA.debugLine="td = now_string";
+ //BA.debugLineNum = 454;BA.debugLine="td = now_string";
 _td = _now_string();
-RDebugUtils.currentLine=2031623;
- //BA.debugLineNum = 2031623;BA.debugLine="Dim level As Int";
+ //BA.debugLineNum = 455;BA.debugLine="Dim level As Int";
 _level = 0;
-RDebugUtils.currentLine=2031624;
- //BA.debugLineNum = 2031624;BA.debugLine="level = 1";
+ //BA.debugLineNum = 456;BA.debugLine="level = 1";
 _level = (int) (1);
-RDebugUtils.currentLine=2031625;
- //BA.debugLineNum = 2031625;BA.debugLine="Dim NewID As Int = 0";
+ //BA.debugLineNum = 457;BA.debugLine="Dim NewID As Int = 0";
 _newid = (int) (0);
-RDebugUtils.currentLine=2031626;
- //BA.debugLineNum = 2031626;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT ID FROM \" & tag_";
+ //BA.debugLineNum = 458;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT ID FROM \" & tag_";
 mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT ID FROM "+mostCurrent._tag_subject+"_bank")));
-RDebugUtils.currentLine=2031627;
- //BA.debugLineNum = 2031627;BA.debugLine="NewID = cursor1.RowCount + 1 ' add 1 to the ID nu";
+ //BA.debugLineNum = 459;BA.debugLine="NewID = cursor1.RowCount + 1 ' add 1 to the ID nu";
 _newid = (int) (mostCurrent._cursor1.getRowCount()+1);
-RDebugUtils.currentLine=2031663;
- //BA.debugLineNum = 2031663;BA.debugLine="Dim QuesFileNameNew As String = td & \"_1.\" & FT.F";
+ //BA.debugLineNum = 495;BA.debugLine="Dim QuesFileNameNew As String = td & \"_1.\" & FT.F";
 _quesfilenamenew = _td+"_1."+mostCurrent._ft._fileextension(mostCurrent._quesfilename);
-RDebugUtils.currentLine=2031664;
- //BA.debugLineNum = 2031664;BA.debugLine="Dim AnsFileNameNew As String = td & \"_2.\" & FT.Fi";
+ //BA.debugLineNum = 496;BA.debugLine="Dim AnsFileNameNew As String = td & \"_2.\" & FT.Fi";
 _ansfilenamenew = _td+"_2."+mostCurrent._ft._fileextension(mostCurrent._ansfilename);
-RDebugUtils.currentLine=2031665;
- //BA.debugLineNum = 2031665;BA.debugLine="Try";
-try {RDebugUtils.currentLine=2031666;
- //BA.debugLineNum = 2031666;BA.debugLine="File.Copy(QuesFilePath,QuesFileName,File.DirDefa";
+ //BA.debugLineNum = 497;BA.debugLine="Try";
+try { //BA.debugLineNum = 498;BA.debugLine="File.Copy(QuesFilePath,QuesFileName,File.DirDefa";
 anywheresoftware.b4a.keywords.Common.File.Copy(mostCurrent._quesfilepath,mostCurrent._quesfilename,anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),_quesfilenamenew);
-RDebugUtils.currentLine=2031667;
- //BA.debugLineNum = 2031667;BA.debugLine="File.Copy(AnsFilePath,AnsFileName,File.DirDefaul";
+ //BA.debugLineNum = 499;BA.debugLine="File.Copy(AnsFilePath,AnsFileName,File.DirDefaul";
 anywheresoftware.b4a.keywords.Common.File.Copy(mostCurrent._ansfilepath,mostCurrent._ansfilename,anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),_ansfilenamenew);
  } 
        catch (Exception e18) {
-			processBA.setLastException(e18);RDebugUtils.currentLine=2031669;
- //BA.debugLineNum = 2031669;BA.debugLine="Msgbox2Async(\"未能成功复制文件\", \"ERR\", \"OK\", \"\", \"\", Nu";
+			processBA.setLastException(e18); //BA.debugLineNum = 501;BA.debugLine="Msgbox2Async(\"未能成功复制文件\", \"ERR\", \"OK\", \"\", \"\", Nu";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("未能成功复制文件"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=2031670;
- //BA.debugLineNum = 2031670;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("22031670",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+ //BA.debugLineNum = 502;BA.debugLine="Log(LastException)";
+anywheresoftware.b4a.keywords.Common.LogImpl("12031670",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
-RDebugUtils.currentLine=2031672;
- //BA.debugLineNum = 2031672;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO \" & tag_subject &";
+ //BA.debugLineNum = 504;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO \" & tag_subject &";
 mostCurrent._sql1.ExecNonQuery("INSERT INTO "+mostCurrent._tag_subject+"_bank"+" (ID,Time_Create,Valid,Level,Question_Image,Answer_Image)  VALUES('"+BA.NumberToString(_newid)+"','"+_td+"','"+_td+"','"+BA.NumberToString(_level)+"','"+_quesfilenamenew+"','"+_ansfilenamenew+"')");
-RDebugUtils.currentLine=2031675;
- //BA.debugLineNum = 2031675;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 506;BA.debugLine="get_tags(tag_subject)'添加标签";
+_get_tags(mostCurrent._tag_subject);
+ //BA.debugLineNum = 509;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=2031676;
- //BA.debugLineNum = 2031676;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 510;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=2031677;
- //BA.debugLineNum = 2031677;BA.debugLine="QuesFileNameNew = \" \"";
+ //BA.debugLineNum = 511;BA.debugLine="QuesFileNameNew = \" \"";
 _quesfilenamenew = " ";
-RDebugUtils.currentLine=2031678;
- //BA.debugLineNum = 2031678;BA.debugLine="AnsFileNameNew = \" \"";
+ //BA.debugLineNum = 512;BA.debugLine="AnsFileNameNew = \" \"";
 _ansfilenamenew = " ";
-RDebugUtils.currentLine=2031681;
- //BA.debugLineNum = 2031681;BA.debugLine="ScrQues.Panel.SetBackgroundImage(LoadBitmap(File.";
+ //BA.debugLineNum = 515;BA.debugLine="ScrQues.Panel.SetBackgroundImage(LoadBitmap(File.";
 mostCurrent._scrques.getPanel().SetBackgroundImageNew((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"import_empty.jpg").getObject()));
-RDebugUtils.currentLine=2031682;
- //BA.debugLineNum = 2031682;BA.debugLine="ScrAns.Panel.SetBackgroundImage(LoadBitmap(File.D";
+ //BA.debugLineNum = 516;BA.debugLine="ScrAns.Panel.SetBackgroundImage(LoadBitmap(File.D";
 mostCurrent._scrans.getPanel().SetBackgroundImageNew((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"import_empty.jpg").getObject()));
-RDebugUtils.currentLine=2031683;
- //BA.debugLineNum = 2031683;BA.debugLine="ScrQues.Panel.Height = 220dip";
+ //BA.debugLineNum = 517;BA.debugLine="ScrQues.Panel.Height = 220dip";
 mostCurrent._scrques.getPanel().setHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (220)));
-RDebugUtils.currentLine=2031684;
- //BA.debugLineNum = 2031684;BA.debugLine="ScrQues.Panel.Width = 220dip";
+ //BA.debugLineNum = 518;BA.debugLine="ScrQues.Panel.Width = 220dip";
 mostCurrent._scrques.getPanel().setWidth(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (220)));
-RDebugUtils.currentLine=2031685;
- //BA.debugLineNum = 2031685;BA.debugLine="ScrAns.Panel.Height = 220dip";
+ //BA.debugLineNum = 519;BA.debugLine="ScrAns.Panel.Height = 220dip";
 mostCurrent._scrans.getPanel().setHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (220)));
-RDebugUtils.currentLine=2031686;
- //BA.debugLineNum = 2031686;BA.debugLine="ScrAns.Panel.Width = 220dip";
+ //BA.debugLineNum = 520;BA.debugLine="ScrAns.Panel.Width = 220dip";
 mostCurrent._scrans.getPanel().setWidth(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (220)));
-RDebugUtils.currentLine=2031687;
- //BA.debugLineNum = 2031687;BA.debugLine="End Sub";
+ //BA.debugLineNum = 521;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnimpques_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnimpques_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnimpques_click", null));}
 int _answ = 0;
-RDebugUtils.currentLine=1900544;
- //BA.debugLineNum = 1900544;BA.debugLine="Private Sub btnImpQues_Click";
-RDebugUtils.currentLine=1900545;
- //BA.debugLineNum = 1900545;BA.debugLine="Dim Answ As Int";
+ //BA.debugLineNum = 409;BA.debugLine="Private Sub btnImpQues_Click";
+ //BA.debugLineNum = 410;BA.debugLine="Dim Answ As Int";
 _answ = 0;
-RDebugUtils.currentLine=1900547;
- //BA.debugLineNum = 1900547;BA.debugLine="FileDialog1.FilePath = QuesFilePath '弹出选择窗口";
+ //BA.debugLineNum = 412;BA.debugLine="FileDialog1.FilePath = QuesFilePath '弹出选择窗口";
 mostCurrent._filedialog1.setFilePath(mostCurrent._quesfilepath);
-RDebugUtils.currentLine=1900548;
- //BA.debugLineNum = 1900548;BA.debugLine="Answ = FileDialog1.Show(\"Databases\",\"Load\",\"Cance";
+ //BA.debugLineNum = 413;BA.debugLine="Answ = FileDialog1.Show(\"Databases\",\"Load\",\"Cance";
 _answ = mostCurrent._filedialog1.Show(BA.ObjectToCharSequence("Databases"),"Load","Cancel","",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
-RDebugUtils.currentLine=1900550;
- //BA.debugLineNum = 1900550;BA.debugLine="Select Answ";
+ //BA.debugLineNum = 415;BA.debugLine="Select Answ";
 switch (BA.switchObjectToInt(_answ,anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE,anywheresoftware.b4a.keywords.Common.DialogResponse.CANCEL)) {
 case 0: {
-RDebugUtils.currentLine=1900552;
- //BA.debugLineNum = 1900552;BA.debugLine="QuesFileName = FileDialog1.ChosenName";
+ //BA.debugLineNum = 417;BA.debugLine="QuesFileName = FileDialog1.ChosenName";
 mostCurrent._quesfilename = mostCurrent._filedialog1.getChosenName();
-RDebugUtils.currentLine=1900553;
- //BA.debugLineNum = 1900553;BA.debugLine="QuesFilePath = FileDialog1.FilePath";
+ //BA.debugLineNum = 418;BA.debugLine="QuesFilePath = FileDialog1.FilePath";
 mostCurrent._quesfilepath = mostCurrent._filedialog1.getFilePath();
-RDebugUtils.currentLine=1900554;
- //BA.debugLineNum = 1900554;BA.debugLine="BitmapQues.Initialize(QuesFilePath, QuesFileNam";
+ //BA.debugLineNum = 419;BA.debugLine="BitmapQues.Initialize(QuesFilePath, QuesFileNam";
 mostCurrent._bitmapques.Initialize(mostCurrent._quesfilepath,mostCurrent._quesfilename);
-RDebugUtils.currentLine=1900555;
- //BA.debugLineNum = 1900555;BA.debugLine="ScrQues.Panel.SetBackgroundImage(BitmapQues)";
+ //BA.debugLineNum = 420;BA.debugLine="ScrQues.Panel.SetBackgroundImage(BitmapQues)";
 mostCurrent._scrques.getPanel().SetBackgroundImageNew((android.graphics.Bitmap)(mostCurrent._bitmapques.getObject()));
-RDebugUtils.currentLine=1900556;
- //BA.debugLineNum = 1900556;BA.debugLine="ScrQues.Panel.Height = Floor(BitmapQues.Height";
+ //BA.debugLineNum = 421;BA.debugLine="ScrQues.Panel.Height = Floor(BitmapQues.Height";
 mostCurrent._scrques.getPanel().setHeight((int) (anywheresoftware.b4a.keywords.Common.Floor(mostCurrent._bitmapques.getHeight()/(double)5)*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1))));
-RDebugUtils.currentLine=1900557;
- //BA.debugLineNum = 1900557;BA.debugLine="ScrQues.Panel.Width = Floor(BitmapQues.Width /";
+ //BA.debugLineNum = 422;BA.debugLine="ScrQues.Panel.Width = Floor(BitmapQues.Width /";
 mostCurrent._scrques.getPanel().setWidth((int) (anywheresoftware.b4a.keywords.Common.Floor(mostCurrent._bitmapques.getWidth()/(double)5)*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1))));
  break; }
 case 1: {
  break; }
 }
 ;
-RDebugUtils.currentLine=1900561;
- //BA.debugLineNum = 1900561;BA.debugLine="End Sub";
+ //BA.debugLineNum = 426;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btntakepicture_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btntakepicture_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btntakepicture_click", null));}
-RDebugUtils.currentLine=2162688;
- //BA.debugLineNum = 2162688;BA.debugLine="Sub btnTakePicture_Click";
-RDebugUtils.currentLine=2162690;
- //BA.debugLineNum = 2162690;BA.debugLine="Q_Name = now_string";
+ //BA.debugLineNum = 540;BA.debugLine="Sub btnTakePicture_Click";
+ //BA.debugLineNum = 542;BA.debugLine="Q_Name = now_string";
 mostCurrent._q_name = _now_string();
-RDebugUtils.currentLine=2162691;
- //BA.debugLineNum = 2162691;BA.debugLine="T_Name = Q_Name";
+ //BA.debugLineNum = 543;BA.debugLine="T_Name = Q_Name";
 mostCurrent._t_name = mostCurrent._q_name;
-RDebugUtils.currentLine=2162692;
- //BA.debugLineNum = 2162692;BA.debugLine="camEx.TakePicture";
-mostCurrent._camex._takepicture /*String*/ (null);
-RDebugUtils.currentLine=2162693;
- //BA.debugLineNum = 2162693;BA.debugLine="End Sub";
+ //BA.debugLineNum = 544;BA.debugLine="camEx.TakePicture";
+mostCurrent._camex._takepicture /*String*/ ();
+ //BA.debugLineNum = 545;BA.debugLine="End Sub";
 return "";
 }
 public static String  _camera1_focusdone(boolean _success) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "camera1_focusdone", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "camera1_focusdone", new Object[] {_success}));}
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub Camera1_FocusDone(Success As Boolean)";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="Msgbox2Async(\"Mamera focus down\", \"FD\", \"OK\", \"\",";
+ //BA.debugLineNum = 225;BA.debugLine="Sub Camera1_FocusDone(Success As Boolean)";
+ //BA.debugLineNum = 226;BA.debugLine="Msgbox2Async(\"Mamera focus down\", \"FD\", \"OK\", \"\",";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Mamera focus down"),BA.ObjectToCharSequence("FD"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="If Success Then";
+ //BA.debugLineNum = 227;BA.debugLine="If Success Then";
 if (_success) { 
-RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="Msgbox2Async(\"Camera focus down\", \"Focus DONE\",";
+ //BA.debugLineNum = 228;BA.debugLine="Msgbox2Async(\"Camera focus down\", \"Focus DONE\",";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Camera focus down"),BA.ObjectToCharSequence("Focus DONE"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=786437;
- //BA.debugLineNum = 786437;BA.debugLine="End Sub";
+ //BA.debugLineNum = 230;BA.debugLine="End Sub";
 return "";
 }
 public static String  _camera1_picturetaken(byte[] _data) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "camera1_picturetaken", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "camera1_picturetaken", new Object[] {_data}));}
 anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper _out = null;
-RDebugUtils.currentLine=2097152;
- //BA.debugLineNum = 2097152;BA.debugLine="Sub Camera1_PictureTaken (Data() As Byte)";
-RDebugUtils.currentLine=2097154;
- //BA.debugLineNum = 2097154;BA.debugLine="Dim out As OutputStream";
+ //BA.debugLineNum = 525;BA.debugLine="Sub Camera1_PictureTaken (Data() As Byte)";
+ //BA.debugLineNum = 527;BA.debugLine="Dim out As OutputStream";
 _out = new anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper();
-RDebugUtils.currentLine=2097157;
- //BA.debugLineNum = 2097157;BA.debugLine="camEx.SavePictureToFile(Data, File.DirDefaultExte";
-mostCurrent._camex._savepicturetofile /*String*/ (null,_data,anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._t_name+".jpg");
-RDebugUtils.currentLine=2097158;
- //BA.debugLineNum = 2097158;BA.debugLine="camEx.StartPreview 'restart preview";
-mostCurrent._camex._startpreview /*String*/ (null);
-RDebugUtils.currentLine=2097160;
- //BA.debugLineNum = 2097160;BA.debugLine="ToastMessageShow(\"Image saved: \" & File.Combine(F";
+ //BA.debugLineNum = 530;BA.debugLine="camEx.SavePictureToFile(Data, File.DirDefaultExte";
+mostCurrent._camex._savepicturetofile /*String*/ (_data,anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._t_name+".jpg");
+ //BA.debugLineNum = 531;BA.debugLine="camEx.StartPreview 'restart preview";
+mostCurrent._camex._startpreview /*String*/ ();
+ //BA.debugLineNum = 533;BA.debugLine="ToastMessageShow(\"Image saved: \" & File.Combine(F";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Image saved: "+anywheresoftware.b4a.keywords.Common.File.Combine(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._t_name+".jpg")),anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=2097161;
- //BA.debugLineNum = 2097161;BA.debugLine="btnTakePicture.Enabled = True";
+ //BA.debugLineNum = 534;BA.debugLine="btnTakePicture.Enabled = True";
 mostCurrent._btntakepicture.setEnabled(anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=2097163;
- //BA.debugLineNum = 2097163;BA.debugLine="End Sub";
+ //BA.debugLineNum = 536;BA.debugLine="End Sub";
 return "";
 }
 public static String  _camera1_ready(boolean _success) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "camera1_ready", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "camera1_ready", new Object[] {_success}));}
-RDebugUtils.currentLine=720896;
- //BA.debugLineNum = 720896;BA.debugLine="Sub Camera1_Ready (Success As Boolean)";
-RDebugUtils.currentLine=720897;
- //BA.debugLineNum = 720897;BA.debugLine="If Success Then";
+ //BA.debugLineNum = 212;BA.debugLine="Sub Camera1_Ready (Success As Boolean)";
+ //BA.debugLineNum = 213;BA.debugLine="If Success Then";
 if (_success) { 
-RDebugUtils.currentLine=720898;
- //BA.debugLineNum = 720898;BA.debugLine="camEx.SetJpegQuality(90)";
-mostCurrent._camex._setjpegquality /*String*/ (null,(int) (90));
-RDebugUtils.currentLine=720899;
- //BA.debugLineNum = 720899;BA.debugLine="camEx.SetContinuousAutoFocus";
-mostCurrent._camex._setcontinuousautofocus /*String*/ (null);
-RDebugUtils.currentLine=720900;
- //BA.debugLineNum = 720900;BA.debugLine="camEx.CommitParameters";
-mostCurrent._camex._commitparameters /*String*/ (null);
-RDebugUtils.currentLine=720901;
- //BA.debugLineNum = 720901;BA.debugLine="camEx.StartPreview";
-mostCurrent._camex._startpreview /*String*/ (null);
-RDebugUtils.currentLine=720902;
- //BA.debugLineNum = 720902;BA.debugLine="Log(camEx.GetPreviewSize)";
-anywheresoftware.b4a.keywords.Common.LogImpl("2720902",BA.ObjectToString(mostCurrent._camex._getpreviewsize /*avanue.nvwa.cameraexclass._camerasize*/ (null)),0);
+ //BA.debugLineNum = 214;BA.debugLine="camEx.SetJpegQuality(90)";
+mostCurrent._camex._setjpegquality /*String*/ ((int) (90));
+ //BA.debugLineNum = 215;BA.debugLine="camEx.SetContinuousAutoFocus";
+mostCurrent._camex._setcontinuousautofocus /*String*/ ();
+ //BA.debugLineNum = 216;BA.debugLine="camEx.CommitParameters";
+mostCurrent._camex._commitparameters /*String*/ ();
+ //BA.debugLineNum = 217;BA.debugLine="camEx.StartPreview";
+mostCurrent._camex._startpreview /*String*/ ();
+ //BA.debugLineNum = 218;BA.debugLine="Log(camEx.GetPreviewSize)";
+anywheresoftware.b4a.keywords.Common.LogImpl("1720902",BA.ObjectToString(mostCurrent._camex._getpreviewsize /*avanue.nvwa.cameraexclass._camerasize*/ ()),0);
  }else {
-RDebugUtils.currentLine=720904;
- //BA.debugLineNum = 720904;BA.debugLine="ToastMessageShow(\"Cannot open camera.\", True)";
+ //BA.debugLineNum = 220;BA.debugLine="ToastMessageShow(\"Cannot open camera.\", True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Cannot open camera."),anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=720906;
- //BA.debugLineNum = 720906;BA.debugLine="End Sub";
+ //BA.debugLineNum = 222;BA.debugLine="End Sub";
 return "";
 }
-public static void  _initializecamera() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "initializecamera", false))
-	 {Debug.delegate(mostCurrent.activityBA, "initializecamera", null); return;}
-ResumableSub_InitializeCamera rsub = new ResumableSub_InitializeCamera(null);
-rsub.resume(processBA, null);
-}
-public static class ResumableSub_InitializeCamera extends BA.ResumableSub {
-public ResumableSub_InitializeCamera(avanue.nvwa.main parent) {
-this.parent = parent;
-}
-avanue.nvwa.main parent;
-String _permission = "";
-boolean _result = false;
-
-@Override
-public void resume(BA ba, Object[] result) throws Exception{
-RDebugUtils.currentModule="main";
-
-    while (true) {
-        switch (state) {
-            case -1:
-return;
-
-case 0:
-//C
-this.state = 1;
-RDebugUtils.currentLine=2228225;
- //BA.debugLineNum = 2228225;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_CAMERA)";
-parent.mostCurrent._rp.CheckAndRequest(processBA,parent.mostCurrent._rp.PERMISSION_CAMERA);
-RDebugUtils.currentLine=2228226;
- //BA.debugLineNum = 2228226;BA.debugLine="Wait For Activity_PermissionResult (Permission As";
-anywheresoftware.b4a.keywords.Common.WaitFor("activity_permissionresult", processBA, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "main", "initializecamera"), null);
-this.state = 7;
-return;
-case 7:
-//C
-this.state = 1;
-_permission = (String) result[0];
-_result = (Boolean) result[1];
-;
-RDebugUtils.currentLine=2228227;
- //BA.debugLineNum = 2228227;BA.debugLine="If Result Then";
-if (true) break;
-
-case 1:
-//if
-this.state = 6;
-if (_result) { 
-this.state = 3;
-}else {
-this.state = 5;
-}if (true) break;
-
-case 3:
-//C
-this.state = 6;
-RDebugUtils.currentLine=2228228;
- //BA.debugLineNum = 2228228;BA.debugLine="camEx.Initialize(Panel1, frontCamera, Me, \"Camer";
-parent.mostCurrent._camex._initialize /*String*/ (null,mostCurrent.activityBA,parent.mostCurrent._panel1,parent._frontcamera,main.getObject(),"Camera1");
-RDebugUtils.currentLine=2228229;
- //BA.debugLineNum = 2228229;BA.debugLine="frontCamera = camEx.Front";
-parent._frontcamera = parent.mostCurrent._camex._front /*boolean*/ ;
- if (true) break;
-
-case 5:
-//C
-this.state = 6;
-RDebugUtils.currentLine=2228231;
- //BA.debugLineNum = 2228231;BA.debugLine="ToastMessageShow(\"No permission!!!\", True)";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("No permission!!!"),anywheresoftware.b4a.keywords.Common.True);
- if (true) break;
-
-case 6:
-//C
-this.state = -1;
-;
-RDebugUtils.currentLine=2228233;
- //BA.debugLineNum = 2228233;BA.debugLine="End Sub";
-if (true) break;
-
-            }
-        }
-    }
-}
-public static int  _refresh_count(String _subs) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "refresh_count", false))
-	 {return ((Integer) Debug.delegate(mostCurrent.activityBA, "refresh_count", new Object[] {_subs}));}
-RDebugUtils.currentLine=2359296;
- //BA.debugLineNum = 2359296;BA.debugLine="Private Sub refresh_count(subs As String) As Int";
-RDebugUtils.currentLine=2359297;
- //BA.debugLineNum = 2359297;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & subs";
-mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM "+_subs+"_bank")));
-RDebugUtils.currentLine=2359298;
- //BA.debugLineNum = 2359298;BA.debugLine="Return cursor1.RowCount";
-if (true) return mostCurrent._cursor1.getRowCount();
-RDebugUtils.currentLine=2359299;
- //BA.debugLineNum = 2359299;BA.debugLine="End Sub";
-return 0;
+public static String  _cameraclick() throws Exception{
+ //BA.debugLineNum = 294;BA.debugLine="Sub CameraClick";
+ //BA.debugLineNum = 296;BA.debugLine="Activity.RemoveAllViews";
+mostCurrent._activity.RemoveAllViews();
+ //BA.debugLineNum = 298;BA.debugLine="Activity.LoadLayout (\"record\")";
+mostCurrent._activity.LoadLayout("record",mostCurrent.activityBA);
+ //BA.debugLineNum = 299;BA.debugLine="Try";
+try { //BA.debugLineNum = 300;BA.debugLine="InitializeCamera";
+_initializecamera();
+ } 
+       catch (Exception e6) {
+			processBA.setLastException(e6); //BA.debugLineNum = 302;BA.debugLine="Msgbox2Async(\"camera init err\", \"err\", \"OK\", \"\",";
+anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("camera init err"),BA.ObjectToCharSequence("err"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
+ };
+ //BA.debugLineNum = 304;BA.debugLine="q_count.Text = \"总题数：\" & refresh_count(tag_subject";
+mostCurrent._q_count.setText(BA.ObjectToCharSequence("总题数："+BA.NumberToString(_refresh_count(mostCurrent._tag_subject))));
+ //BA.debugLineNum = 317;BA.debugLine="End Sub";
+return "";
 }
 public static String  _cancel_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "cancel_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "cancel_click", null));}
-RDebugUtils.currentLine=2555904;
- //BA.debugLineNum = 2555904;BA.debugLine="Private Sub cancel_Click";
-RDebugUtils.currentLine=2555905;
- //BA.debugLineNum = 2555905;BA.debugLine="A_Name = \"\"";
+ //BA.debugLineNum = 619;BA.debugLine="Private Sub cancel_Click";
+ //BA.debugLineNum = 620;BA.debugLine="A_Name = \"\"";
 mostCurrent._a_name = "";
-RDebugUtils.currentLine=2555906;
- //BA.debugLineNum = 2555906;BA.debugLine="Q_Name = \"\"";
+ //BA.debugLineNum = 621;BA.debugLine="Q_Name = \"\"";
 mostCurrent._q_name = "";
-RDebugUtils.currentLine=2555907;
- //BA.debugLineNum = 2555907;BA.debugLine="End Sub";
+ //BA.debugLineNum = 622;BA.debugLine="End Sub";
 return "";
 }
 public static String  _change_rules_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "change_rules_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "change_rules_click", null));}
-RDebugUtils.currentLine=3538944;
- //BA.debugLineNum = 3538944;BA.debugLine="Private Sub change_rules_Click";
-RDebugUtils.currentLine=3538945;
- //BA.debugLineNum = 3538945;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & tag_s";
+ //BA.debugLineNum = 769;BA.debugLine="Private Sub change_rules_Click";
+ //BA.debugLineNum = 770;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & tag_s";
 mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM "+mostCurrent._tag_subject+"_bank")));
-RDebugUtils.currentLine=3538947;
- //BA.debugLineNum = 3538947;BA.debugLine="If cursor1.RowCount < 1 Then";
+ //BA.debugLineNum = 772;BA.debugLine="If cursor1.RowCount < 1 Then";
 if (mostCurrent._cursor1.getRowCount()<1) { 
-RDebugUtils.currentLine=3538948;
- //BA.debugLineNum = 3538948;BA.debugLine="Msgbox2Async(\"找不到题目呢\", \"ERR\", \"OK\", \"\", \"\", Null";
+ //BA.debugLineNum = 773;BA.debugLine="Msgbox2Async(\"找不到题目呢\", \"ERR\", \"OK\", \"\", \"\", Null";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("找不到题目呢"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=3538949;
- //BA.debugLineNum = 3538949;BA.debugLine="Return (\"\")";
+ //BA.debugLineNum = 774;BA.debugLine="Return (\"\")";
 if (true) return ("");
  };
-RDebugUtils.currentLine=3538952;
- //BA.debugLineNum = 3538952;BA.debugLine="random_num = Rnd(0,cursor1.RowCount)";
+ //BA.debugLineNum = 777;BA.debugLine="random_num = Rnd(0,cursor1.RowCount)";
 _random_num = anywheresoftware.b4a.keywords.Common.Rnd((int) (0),mostCurrent._cursor1.getRowCount());
-RDebugUtils.currentLine=3538953;
- //BA.debugLineNum = 3538953;BA.debugLine="cursor1.Position = random_num";
+ //BA.debugLineNum = 778;BA.debugLine="cursor1.Position = random_num";
 mostCurrent._cursor1.setPosition(_random_num);
-RDebugUtils.currentLine=3538955;
- //BA.debugLineNum = 3538955;BA.debugLine="Current_ID = cursor1.GetInt(\"ID\")";
+ //BA.debugLineNum = 780;BA.debugLine="Current_ID = cursor1.GetInt(\"ID\")";
 _current_id = mostCurrent._cursor1.GetInt("ID");
-RDebugUtils.currentLine=3538956;
- //BA.debugLineNum = 3538956;BA.debugLine="Current_Correct_Times = cursor1.GetInt(\"Correct_T";
+ //BA.debugLineNum = 781;BA.debugLine="Current_Correct_Times = cursor1.GetInt(\"Correct_T";
 _current_correct_times = mostCurrent._cursor1.GetInt("Correct_Times");
-RDebugUtils.currentLine=3538957;
- //BA.debugLineNum = 3538957;BA.debugLine="Current_Last_Time = cursor1.GetString(\"Last_Time\"";
+ //BA.debugLineNum = 782;BA.debugLine="Current_Last_Time = cursor1.GetString(\"Last_Time\"";
 mostCurrent._current_last_time = mostCurrent._cursor1.GetString("Last_Time");
-RDebugUtils.currentLine=3538959;
- //BA.debugLineNum = 3538959;BA.debugLine="Return(cursor1.GetString(\"Question_Image\"))";
+ //BA.debugLineNum = 784;BA.debugLine="Return(cursor1.GetString(\"Question_Image\"))";
 if (true) return (mostCurrent._cursor1.GetString("Question_Image"));
-RDebugUtils.currentLine=3538960;
- //BA.debugLineNum = 3538960;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 785;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=3538961;
- //BA.debugLineNum = 3538961;BA.debugLine="Activity.LoadLayout(\"select_rule\")";
+ //BA.debugLineNum = 786;BA.debugLine="Activity.LoadLayout(\"select_rule\")";
 mostCurrent._activity.LoadLayout("select_rule",mostCurrent.activityBA);
-RDebugUtils.currentLine=3538963;
- //BA.debugLineNum = 3538963;BA.debugLine="End Sub";
+ //BA.debugLineNum = 788;BA.debugLine="End Sub";
 return "";
 }
 public static String  _chemistry_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "chemistry_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "chemistry_click", null));}
-RDebugUtils.currentLine=1245184;
- //BA.debugLineNum = 1245184;BA.debugLine="Private Sub chemistry_Click";
-RDebugUtils.currentLine=1245185;
- //BA.debugLineNum = 1245185;BA.debugLine="tag_subject= \"chemistry\"";
+ //BA.debugLineNum = 339;BA.debugLine="Private Sub chemistry_Click";
+ //BA.debugLineNum = 340;BA.debugLine="tag_subject= \"chemistry\"";
 mostCurrent._tag_subject = "chemistry";
-RDebugUtils.currentLine=1245186;
- //BA.debugLineNum = 1245186;BA.debugLine="CameraClick";
+ //BA.debugLineNum = 341;BA.debugLine="CameraClick";
 _cameraclick();
-RDebugUtils.currentLine=1245187;
- //BA.debugLineNum = 1245187;BA.debugLine="End Sub";
+ //BA.debugLineNum = 342;BA.debugLine="End Sub";
 return "";
 }
 public static String  _chemistry_imp_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "chemistry_imp_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "chemistry_imp_click", null));}
-RDebugUtils.currentLine=1769472;
- //BA.debugLineNum = 1769472;BA.debugLine="Private Sub chemistry_imp_Click";
-RDebugUtils.currentLine=1769473;
- //BA.debugLineNum = 1769473;BA.debugLine="tag_subject= \"chemistry\"";
+ //BA.debugLineNum = 393;BA.debugLine="Private Sub chemistry_imp_Click";
+ //BA.debugLineNum = 394;BA.debugLine="tag_subject= \"chemistry\"";
 mostCurrent._tag_subject = "chemistry";
-RDebugUtils.currentLine=1769474;
- //BA.debugLineNum = 1769474;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 395;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1769475;
- //BA.debugLineNum = 1769475;BA.debugLine="Activity.LoadLayout(\"record_import\")";
+ //BA.debugLineNum = 396;BA.debugLine="Activity.LoadLayout(\"record_import\")";
 mostCurrent._activity.LoadLayout("record_import",mostCurrent.activityBA);
-RDebugUtils.currentLine=1769476;
- //BA.debugLineNum = 1769476;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 397;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=1769477;
- //BA.debugLineNum = 1769477;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 398;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=1769478;
- //BA.debugLineNum = 1769478;BA.debugLine="End Sub";
+ //BA.debugLineNum = 399;BA.debugLine="End Sub";
 return "";
 }
 public static String  _chemistry_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "chemistry_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "chemistry_rev_click", null));}
-RDebugUtils.currentLine=3014656;
- //BA.debugLineNum = 3014656;BA.debugLine="Private Sub chemistry_rev_Click";
-RDebugUtils.currentLine=3014657;
- //BA.debugLineNum = 3014657;BA.debugLine="tag_subject= \"chemistry\"";
+ //BA.debugLineNum = 670;BA.debugLine="Private Sub chemistry_rev_Click";
+ //BA.debugLineNum = 671;BA.debugLine="tag_subject= \"chemistry\"";
 mostCurrent._tag_subject = "chemistry";
-RDebugUtils.currentLine=3014658;
- //BA.debugLineNum = 3014658;BA.debugLine="RevClick";
+ //BA.debugLineNum = 672;BA.debugLine="RevClick";
 _revclick();
-RDebugUtils.currentLine=3014659;
- //BA.debugLineNum = 3014659;BA.debugLine="End Sub";
+ //BA.debugLineNum = 673;BA.debugLine="End Sub";
 return "";
 }
 public static String  _chinese_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "chinese_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "chinese_click", null));}
-RDebugUtils.currentLine=983040;
- //BA.debugLineNum = 983040;BA.debugLine="Private Sub chinese_Click";
-RDebugUtils.currentLine=983041;
- //BA.debugLineNum = 983041;BA.debugLine="tag_subject= \"chinese\"";
+ //BA.debugLineNum = 319;BA.debugLine="Private Sub chinese_Click";
+ //BA.debugLineNum = 320;BA.debugLine="tag_subject= \"chinese\"";
 mostCurrent._tag_subject = "chinese";
-RDebugUtils.currentLine=983042;
- //BA.debugLineNum = 983042;BA.debugLine="CameraClick";
+ //BA.debugLineNum = 321;BA.debugLine="CameraClick";
 _cameraclick();
-RDebugUtils.currentLine=983043;
- //BA.debugLineNum = 983043;BA.debugLine="End Sub";
+ //BA.debugLineNum = 322;BA.debugLine="End Sub";
 return "";
 }
 public static String  _chinese_imp_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "chinese_imp_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "chinese_imp_click", null));}
-RDebugUtils.currentLine=1507328;
- //BA.debugLineNum = 1507328;BA.debugLine="Private Sub chinese_imp_Click";
-RDebugUtils.currentLine=1507329;
- //BA.debugLineNum = 1507329;BA.debugLine="tag_subject= \"chinese\"";
+ //BA.debugLineNum = 361;BA.debugLine="Private Sub chinese_imp_Click";
+ //BA.debugLineNum = 362;BA.debugLine="tag_subject= \"chinese\"";
 mostCurrent._tag_subject = "chinese";
-RDebugUtils.currentLine=1507330;
- //BA.debugLineNum = 1507330;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 363;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1507331;
- //BA.debugLineNum = 1507331;BA.debugLine="Activity.LoadLayout(\"record_import\")";
+ //BA.debugLineNum = 364;BA.debugLine="Activity.LoadLayout(\"record_import\")";
 mostCurrent._activity.LoadLayout("record_import",mostCurrent.activityBA);
-RDebugUtils.currentLine=1507332;
- //BA.debugLineNum = 1507332;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 365;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=1507333;
- //BA.debugLineNum = 1507333;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 366;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=1507334;
- //BA.debugLineNum = 1507334;BA.debugLine="End Sub";
+ //BA.debugLineNum = 367;BA.debugLine="End Sub";
 return "";
 }
 public static String  _chinese_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "chinese_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "chinese_rev_click", null));}
-RDebugUtils.currentLine=2752512;
- //BA.debugLineNum = 2752512;BA.debugLine="Private Sub chinese_rev_Click";
-RDebugUtils.currentLine=2752513;
- //BA.debugLineNum = 2752513;BA.debugLine="tag_subject= \"chinese\"";
+ //BA.debugLineNum = 650;BA.debugLine="Private Sub chinese_rev_Click";
+ //BA.debugLineNum = 651;BA.debugLine="tag_subject= \"chinese\"";
 mostCurrent._tag_subject = "chinese";
-RDebugUtils.currentLine=2752514;
- //BA.debugLineNum = 2752514;BA.debugLine="RevClick";
+ //BA.debugLineNum = 652;BA.debugLine="RevClick";
 _revclick();
-RDebugUtils.currentLine=2752515;
- //BA.debugLineNum = 2752515;BA.debugLine="End Sub";
+ //BA.debugLineNum = 653;BA.debugLine="End Sub";
 return "";
 }
 public static String  _correct_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "correct_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "correct_click", null));}
 String _tn = "";
 String _table_name = "";
-RDebugUtils.currentLine=3145728;
- //BA.debugLineNum = 3145728;BA.debugLine="Private Sub correct_Click";
-RDebugUtils.currentLine=3145729;
- //BA.debugLineNum = 3145729;BA.debugLine="Dim tn As String";
+ //BA.debugLineNum = 680;BA.debugLine="Private Sub correct_Click";
+ //BA.debugLineNum = 681;BA.debugLine="Dim tn As String";
 _tn = "";
-RDebugUtils.currentLine=3145730;
- //BA.debugLineNum = 3145730;BA.debugLine="Dim table_name As String";
+ //BA.debugLineNum = 682;BA.debugLine="Dim table_name As String";
 _table_name = "";
-RDebugUtils.currentLine=3145731;
- //BA.debugLineNum = 3145731;BA.debugLine="table_name = tag_subject & \"_bank\"";
+ //BA.debugLineNum = 683;BA.debugLine="table_name = tag_subject & \"_bank\"";
 _table_name = mostCurrent._tag_subject+"_bank";
-RDebugUtils.currentLine=3145734;
- //BA.debugLineNum = 3145734;BA.debugLine="Current_Correct_Times = Current_Correct_Times +1";
+ //BA.debugLineNum = 686;BA.debugLine="Current_Correct_Times = Current_Correct_Times +1";
 _current_correct_times = (int) (_current_correct_times+1);
-RDebugUtils.currentLine=3145735;
- //BA.debugLineNum = 3145735;BA.debugLine="SQL1.ExecNonQuery(\"UPDATE '\"& table_name &\"' SET";
+ //BA.debugLineNum = 687;BA.debugLine="SQL1.ExecNonQuery(\"UPDATE '\"& table_name &\"' SET";
 mostCurrent._sql1.ExecNonQuery("UPDATE '"+_table_name+"' SET Correct_Times = '"+BA.NumberToString(_current_correct_times)+"' WHERE  ID = '"+BA.NumberToString(_current_id)+"' ");
-RDebugUtils.currentLine=3145736;
- //BA.debugLineNum = 3145736;BA.debugLine="tn = select_question(tag_subject)";
+ //BA.debugLineNum = 688;BA.debugLine="tn = select_question(tag_subject)";
 _tn = _select_question(mostCurrent._tag_subject);
-RDebugUtils.currentLine=3145738;
- //BA.debugLineNum = 3145738;BA.debugLine="If tn = \"\" Then";
+ //BA.debugLineNum = 690;BA.debugLine="If tn = \"\" Then";
 if ((_tn).equals("")) { 
-RDebugUtils.currentLine=3145739;
- //BA.debugLineNum = 3145739;BA.debugLine="Return";
+ //BA.debugLineNum = 691;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=3145741;
- //BA.debugLineNum = 3145741;BA.debugLine="Refresh_question(random_num)";
+ //BA.debugLineNum = 693;BA.debugLine="Refresh_question(random_num)";
 _refresh_question(_random_num);
-RDebugUtils.currentLine=3145742;
- //BA.debugLineNum = 3145742;BA.debugLine="End Sub";
-return "";
-}
-public static String  _select_question(String _subject) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "select_question", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "select_question", new Object[] {_subject}));}
-String _table_name = "";
-RDebugUtils.currentLine=3211264;
- //BA.debugLineNum = 3211264;BA.debugLine="private Sub select_question(subject As String) As";
-RDebugUtils.currentLine=3211265;
- //BA.debugLineNum = 3211265;BA.debugLine="Dim table_name As String";
-_table_name = "";
-RDebugUtils.currentLine=3211266;
- //BA.debugLineNum = 3211266;BA.debugLine="table_name = subject & \"_bank\"";
-_table_name = _subject+"_bank";
-RDebugUtils.currentLine=3211267;
- //BA.debugLineNum = 3211267;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & table";
-mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM "+_table_name)));
-RDebugUtils.currentLine=3211269;
- //BA.debugLineNum = 3211269;BA.debugLine="If cursor1.RowCount < 1 Then";
-if (mostCurrent._cursor1.getRowCount()<1) { 
-RDebugUtils.currentLine=3211270;
- //BA.debugLineNum = 3211270;BA.debugLine="Msgbox2Async(\"找不到题目呢\", \"ERR\", \"OK\", \"\", \"\", Null";
-anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("找不到题目呢"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=3211271;
- //BA.debugLineNum = 3211271;BA.debugLine="Return (\"\")";
-if (true) return ("");
- };
-RDebugUtils.currentLine=3211273;
- //BA.debugLineNum = 3211273;BA.debugLine="random_num = Rnd(0,cursor1.RowCount)";
-_random_num = anywheresoftware.b4a.keywords.Common.Rnd((int) (0),mostCurrent._cursor1.getRowCount());
-RDebugUtils.currentLine=3211274;
- //BA.debugLineNum = 3211274;BA.debugLine="cursor1.Position = random_num";
-mostCurrent._cursor1.setPosition(_random_num);
-RDebugUtils.currentLine=3211276;
- //BA.debugLineNum = 3211276;BA.debugLine="Current_ID = cursor1.GetInt(\"ID\")";
-_current_id = mostCurrent._cursor1.GetInt("ID");
-RDebugUtils.currentLine=3211277;
- //BA.debugLineNum = 3211277;BA.debugLine="Current_Correct_Times = cursor1.GetInt(\"Correct_T";
-_current_correct_times = mostCurrent._cursor1.GetInt("Correct_Times");
-RDebugUtils.currentLine=3211278;
- //BA.debugLineNum = 3211278;BA.debugLine="Current_Last_Time = cursor1.GetString(\"Last_Time\"";
-mostCurrent._current_last_time = mostCurrent._cursor1.GetString("Last_Time");
-RDebugUtils.currentLine=3211280;
- //BA.debugLineNum = 3211280;BA.debugLine="Return(cursor1.GetString(\"Question_Image\"))";
-if (true) return (mostCurrent._cursor1.GetString("Question_Image"));
-RDebugUtils.currentLine=3211282;
- //BA.debugLineNum = 3211282;BA.debugLine="End Sub";
-return "";
-}
-public static String  _refresh_question(int _cn) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "refresh_question", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "refresh_question", new Object[] {_cn}));}
-String _question_file = "";
-anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _bitmap1 = null;
-RDebugUtils.currentLine=3276800;
- //BA.debugLineNum = 3276800;BA.debugLine="Private Sub Refresh_question(cn As Int)";
-RDebugUtils.currentLine=3276801;
- //BA.debugLineNum = 3276801;BA.debugLine="Dim Question_file As String";
-_question_file = "";
-RDebugUtils.currentLine=3276803;
- //BA.debugLineNum = 3276803;BA.debugLine="TouchImageView1.MinScale=0.25			'	default is 0.5";
-mostCurrent._touchimageview1.setMinScale((float) (0.25));
-RDebugUtils.currentLine=3276804;
- //BA.debugLineNum = 3276804;BA.debugLine="TouchImageView1.MaxScale=2				'	default is 1.5";
-mostCurrent._touchimageview1.setMaxScale((float) (2));
-RDebugUtils.currentLine=3276805;
- //BA.debugLineNum = 3276805;BA.debugLine="TouchImageView1.TranslatePadding=128dip	'	default";
-mostCurrent._touchimageview1.setTranslatePadding(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (128)));
-RDebugUtils.currentLine=3276807;
- //BA.debugLineNum = 3276807;BA.debugLine="Question_file = File.Combine(File.DirDefaultExter";
-_question_file = anywheresoftware.b4a.keywords.Common.File.Combine(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._cursor1.GetString("Question_Image"));
-RDebugUtils.currentLine=3276810;
- //BA.debugLineNum = 3276810;BA.debugLine="Dim Bitmap1 As Bitmap";
-_bitmap1 = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
-RDebugUtils.currentLine=3276811;
- //BA.debugLineNum = 3276811;BA.debugLine="Bitmap1.Initialize(File.DirDefaultExternal,cursor";
-_bitmap1.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._cursor1.GetString("Question_Image"));
-RDebugUtils.currentLine=3276813;
- //BA.debugLineNum = 3276813;BA.debugLine="TouchImageView1.SetBitmap(Bitmap1)";
-mostCurrent._touchimageview1.SetBitmap(mostCurrent.activityBA,(android.graphics.Bitmap)(_bitmap1.getObject()));
-RDebugUtils.currentLine=3276815;
- //BA.debugLineNum = 3276815;BA.debugLine="QA_S = 0";
-_qa_s = (int) (0);
-RDebugUtils.currentLine=3276816;
- //BA.debugLineNum = 3276816;BA.debugLine="End Sub";
+ //BA.debugLineNum = 694;BA.debugLine="End Sub";
 return "";
 }
 public static String  _dbload() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "dbload", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "dbload", null));}
-RDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Sub DBload";
-RDebugUtils.currentLine=196611;
- //BA.debugLineNum = 196611;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & tag_s";
+ //BA.debugLineNum = 111;BA.debugLine="Sub DBload";
+ //BA.debugLineNum = 114;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & tag_s";
 mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM "+mostCurrent._tag_subject+"_bank")));
-RDebugUtils.currentLine=196620;
- //BA.debugLineNum = 196620;BA.debugLine="End Sub";
+ //BA.debugLineNum = 123;BA.debugLine="End Sub";
 return "";
 }
 public static String  _english_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "english_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "english_click", null));}
-RDebugUtils.currentLine=1114112;
- //BA.debugLineNum = 1114112;BA.debugLine="Private Sub english_Click";
-RDebugUtils.currentLine=1114113;
- //BA.debugLineNum = 1114113;BA.debugLine="tag_subject= \"english\"";
+ //BA.debugLineNum = 329;BA.debugLine="Private Sub english_Click";
+ //BA.debugLineNum = 330;BA.debugLine="tag_subject= \"english\"";
 mostCurrent._tag_subject = "english";
-RDebugUtils.currentLine=1114114;
- //BA.debugLineNum = 1114114;BA.debugLine="CameraClick";
+ //BA.debugLineNum = 331;BA.debugLine="CameraClick";
 _cameraclick();
-RDebugUtils.currentLine=1114115;
- //BA.debugLineNum = 1114115;BA.debugLine="End Sub";
+ //BA.debugLineNum = 332;BA.debugLine="End Sub";
 return "";
 }
 public static String  _english_imp_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "english_imp_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "english_imp_click", null));}
-RDebugUtils.currentLine=1638400;
- //BA.debugLineNum = 1638400;BA.debugLine="Private Sub english_imp_Click";
-RDebugUtils.currentLine=1638401;
- //BA.debugLineNum = 1638401;BA.debugLine="tag_subject= \"english\"";
+ //BA.debugLineNum = 377;BA.debugLine="Private Sub english_imp_Click";
+ //BA.debugLineNum = 378;BA.debugLine="tag_subject= \"english\"";
 mostCurrent._tag_subject = "english";
-RDebugUtils.currentLine=1638402;
- //BA.debugLineNum = 1638402;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 379;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1638403;
- //BA.debugLineNum = 1638403;BA.debugLine="Activity.LoadLayout(\"record_import\")";
+ //BA.debugLineNum = 380;BA.debugLine="Activity.LoadLayout(\"record_import\")";
 mostCurrent._activity.LoadLayout("record_import",mostCurrent.activityBA);
-RDebugUtils.currentLine=1638404;
- //BA.debugLineNum = 1638404;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 381;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=1638405;
- //BA.debugLineNum = 1638405;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 382;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=1638406;
- //BA.debugLineNum = 1638406;BA.debugLine="End Sub";
+ //BA.debugLineNum = 383;BA.debugLine="End Sub";
 return "";
 }
 public static String  _english_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "english_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "english_rev_click", null));}
-RDebugUtils.currentLine=2883584;
- //BA.debugLineNum = 2883584;BA.debugLine="Private Sub english_rev_Click";
-RDebugUtils.currentLine=2883585;
- //BA.debugLineNum = 2883585;BA.debugLine="tag_subject= \"english\"";
+ //BA.debugLineNum = 660;BA.debugLine="Private Sub english_rev_Click";
+ //BA.debugLineNum = 661;BA.debugLine="tag_subject= \"english\"";
 mostCurrent._tag_subject = "english";
-RDebugUtils.currentLine=2883586;
- //BA.debugLineNum = 2883586;BA.debugLine="RevClick";
+ //BA.debugLineNum = 662;BA.debugLine="RevClick";
 _revclick();
-RDebugUtils.currentLine=2883587;
- //BA.debugLineNum = 2883587;BA.debugLine="End Sub";
+ //BA.debugLineNum = 663;BA.debugLine="End Sub";
 return "";
 }
 public static void  _get_tags(String _subject) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "get_tags", false))
-	 {Debug.delegate(mostCurrent.activityBA, "get_tags", new Object[] {_subject}); return;}
 ResumableSub_get_tags rsub = new ResumableSub_get_tags(null,_subject);
 rsub.resume(processBA, null);
 }
@@ -1842,7 +1128,6 @@ int limit33;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
-RDebugUtils.currentModule="main";
 
     while (true) {
         switch (state) {
@@ -1852,8 +1137,7 @@ return;
 case 0:
 //C
 this.state = 1;
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="Do While True";
+ //BA.debugLineNum = 233;BA.debugLine="Do While True '添加tag会保持循环，选择完tag会退出循环";
 if (true) break;
 
 case 1:
@@ -1868,14 +1152,11 @@ if (true) break;
 case 3:
 //C
 this.state = 4;
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="Dim DuplicateTest As Boolean = False";
+ //BA.debugLineNum = 234;BA.debugLine="Dim DuplicateTest As Boolean = False";
 _duplicatetest = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=851971;
- //BA.debugLineNum = 851971;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM tags wher";
+ //BA.debugLineNum = 235;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM tags wher";
 parent.mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(parent.mostCurrent._sql1.ExecQuery("SELECT * FROM tags where Subject =  '"+_subject+"' ")));
-RDebugUtils.currentLine=851973;
- //BA.debugLineNum = 851973;BA.debugLine="If cursor1.RowCount < 1 Then";
+ //BA.debugLineNum = 237;BA.debugLine="If cursor1.RowCount < 1 Then";
 if (true) break;
 
 case 4:
@@ -1888,24 +1169,20 @@ this.state = 6;
 case 6:
 //C
 this.state = 7;
-RDebugUtils.currentLine=851974;
- //BA.debugLineNum = 851974;BA.debugLine="Msgbox2Async(\"当前科目还没有任何tag\", \"Warning\", \"OK\", \"\"";
-anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("当前科目还没有任何tag"),BA.ObjectToCharSequence("Warning"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 238;BA.debugLine="Msgbox2Async(\"当前科目还没有任何tag\", \"INFO\", \"OK\", \"\", \"";
+anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("当前科目还没有任何tag"),BA.ObjectToCharSequence("INFO"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
  if (true) break;
 
 case 7:
 //C
 this.state = 8;
 ;
-RDebugUtils.currentLine=851976;
- //BA.debugLineNum = 851976;BA.debugLine="Dim i As Int";
+ //BA.debugLineNum = 240;BA.debugLine="Dim i As Int";
 _i = 0;
-RDebugUtils.currentLine=851977;
- //BA.debugLineNum = 851977;BA.debugLine="Dim tag(cursor1.RowCount) As String";
+ //BA.debugLineNum = 241;BA.debugLine="Dim tag(cursor1.RowCount) As String";
 _tag = new String[parent.mostCurrent._cursor1.getRowCount()];
 java.util.Arrays.fill(_tag,"");
-RDebugUtils.currentLine=851978;
- //BA.debugLineNum = 851978;BA.debugLine="For i = 0 To cursor1.RowCount - 1";
+ //BA.debugLineNum = 242;BA.debugLine="For i = 0 To cursor1.RowCount - 1";
 if (true) break;
 
 case 8:
@@ -1932,11 +1209,9 @@ if (true) break;
 case 10:
 //C
 this.state = 43;
-RDebugUtils.currentLine=851979;
- //BA.debugLineNum = 851979;BA.debugLine="cursor1.Position = i";
+ //BA.debugLineNum = 243;BA.debugLine="cursor1.Position = i";
 parent.mostCurrent._cursor1.setPosition(_i);
-RDebugUtils.currentLine=851980;
- //BA.debugLineNum = 851980;BA.debugLine="tag(i) = cursor1.GetString(\"tag_name\")";
+ //BA.debugLineNum = 244;BA.debugLine="tag(i) = cursor1.GetString(\"tag_name\")";
 _tag[_i] = parent.mostCurrent._cursor1.GetString("tag_name");
  if (true) break;
 if (true) break;
@@ -1945,21 +1220,16 @@ case 11:
 //C
 this.state = 12;
 ;
-RDebugUtils.currentLine=851983;
- //BA.debugLineNum = 851983;BA.debugLine="options.Initialize";
-parent.mostCurrent._options._initialize /*String*/ (null,mostCurrent.activityBA);
-RDebugUtils.currentLine=851984;
- //BA.debugLineNum = 851984;BA.debugLine="options.AllowMultiSelection = True";
+ //BA.debugLineNum = 247;BA.debugLine="options.Initialize";
+parent.mostCurrent._options._initialize /*String*/ (mostCurrent.activityBA);
+ //BA.debugLineNum = 248;BA.debugLine="options.AllowMultiSelection = True";
 parent.mostCurrent._options._allowmultiselection /*boolean*/  = anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=851985;
- //BA.debugLineNum = 851985;BA.debugLine="options.Resize(300dip,200dip)";
-parent.mostCurrent._options._resize /*String*/ (null,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (200)));
-RDebugUtils.currentLine=851986;
- //BA.debugLineNum = 851986;BA.debugLine="options.Options = tag";
+ //BA.debugLineNum = 249;BA.debugLine="options.Resize(300dip,200dip)";
+parent.mostCurrent._options._resize /*String*/ (anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (200)));
+ //BA.debugLineNum = 250;BA.debugLine="options.Options = tag";
 parent.mostCurrent._options._options /*anywheresoftware.b4a.objects.collections.List*/  = anywheresoftware.b4a.keywords.Common.ArrayToList(_tag);
-RDebugUtils.currentLine=851988;
- //BA.debugLineNum = 851988;BA.debugLine="Wait For (TagDialog.ShowTemplate(options, \"OK\", \"";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "main", "get_tags"), parent.mostCurrent._tagdialog._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ (null,(Object)(parent.mostCurrent._options),(Object)("OK"),(Object)("ADD"),(Object)("CANCEL")));
+ //BA.debugLineNum = 252;BA.debugLine="Wait For (TagDialog.ShowTemplate(options, \"OK\", \"";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._tagdialog._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(parent.mostCurrent._options),(Object)("OK"),(Object)("ADD"),(Object)("CANCEL")));
 this.state = 44;
 return;
 case 44:
@@ -1967,8 +1237,7 @@ case 44:
 this.state = 12;
 _result = (Integer) result[0];
 ;
-RDebugUtils.currentLine=851989;
- //BA.debugLineNum = 851989;BA.debugLine="Select Result";
+ //BA.debugLineNum = 253;BA.debugLine="Select Result";
 if (true) break;
 
 case 12:
@@ -1993,14 +1262,11 @@ if (true) break;
 case 14:
 //C
 this.state = 40;
-RDebugUtils.currentLine=851991;
- //BA.debugLineNum = 851991;BA.debugLine="TagDialog.Show($\"选择的类别： ${options.SelectedItems}";
-parent.mostCurrent._tagdialog._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ (null,(Object)(("选择的类别： "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(parent.mostCurrent._options._selecteditems /*anywheresoftware.b4a.objects.collections.List*/ .getObject()))+"")),(Object)("OK"),(Object)(""),(Object)(""));
-RDebugUtils.currentLine=851992;
- //BA.debugLineNum = 851992;BA.debugLine="Return";
+ //BA.debugLineNum = 255;BA.debugLine="TagDialog.Show($\"选择的类别： ${options.SelectedItems}";
+parent.mostCurrent._tagdialog._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(("选择的类别： "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(parent.mostCurrent._options._selecteditems /*anywheresoftware.b4a.objects.collections.List*/ .getObject()))+"")),(Object)("OK"),(Object)(""),(Object)(""));
+ //BA.debugLineNum = 256;BA.debugLine="Return";
 if (true) return ;
-RDebugUtils.currentLine=851993;
- //BA.debugLineNum = 851993;BA.debugLine="Exit";
+ //BA.debugLineNum = 258;BA.debugLine="Exit";
 this.state = 40;
 if (true) break;
  if (true) break;
@@ -2008,15 +1274,12 @@ if (true) break;
 case 16:
 //C
 this.state = 17;
-RDebugUtils.currentLine=851995;
- //BA.debugLineNum = 851995;BA.debugLine="InputTag.Initialize";
-parent.mostCurrent._inputtag._initialize /*String*/ (null,mostCurrent.activityBA);
-RDebugUtils.currentLine=851996;
- //BA.debugLineNum = 851996;BA.debugLine="InputTag.lblTitle.Text = \"添加标签\"";
+ //BA.debugLineNum = 260;BA.debugLine="InputTag.Initialize";
+parent.mostCurrent._inputtag._initialize /*String*/ (mostCurrent.activityBA);
+ //BA.debugLineNum = 261;BA.debugLine="InputTag.lblTitle.Text = \"添加标签\"";
 parent.mostCurrent._inputtag._lbltitle /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setText(BA.ObjectToCharSequence("添加标签"));
-RDebugUtils.currentLine=851997;
- //BA.debugLineNum = 851997;BA.debugLine="Wait For (TagDialog.ShowTemplate(InputTag, \"OK\",";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "main", "get_tags"), parent.mostCurrent._tagdialog._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ (null,(Object)(parent.mostCurrent._inputtag),(Object)("OK"),(Object)(""),(Object)("CANCEL")));
+ //BA.debugLineNum = 262;BA.debugLine="Wait For (TagDialog.ShowTemplate(InputTag, \"OK\",";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._tagdialog._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(parent.mostCurrent._inputtag),(Object)("OK"),(Object)(""),(Object)("CANCEL")));
 this.state = 45;
 return;
 case 45:
@@ -2024,8 +1287,7 @@ case 45:
 this.state = 17;
 _result = (Integer) result[0];
 ;
-RDebugUtils.currentLine=851998;
- //BA.debugLineNum = 851998;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 263;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 17:
@@ -2038,8 +1300,7 @@ this.state = 19;
 case 19:
 //C
 this.state = 20;
-RDebugUtils.currentLine=851999;
- //BA.debugLineNum = 851999;BA.debugLine="If InputTag.Text = \"\" Then";
+ //BA.debugLineNum = 264;BA.debugLine="If InputTag.Text = \"\" Then";
 if (true) break;
 
 case 20:
@@ -2054,23 +1315,19 @@ this.state = 24;
 case 22:
 //C
 this.state = 33;
-RDebugUtils.currentLine=852000;
- //BA.debugLineNum = 852000;BA.debugLine="Msgbox2Async(\"还没有填标签名称呢！！\", \"ERR\", \"OK\", \"\", \"";
+ //BA.debugLineNum = 265;BA.debugLine="Msgbox2Async(\"还没有填标签名称呢！！\", \"ERR\", \"OK\", \"\", \"";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("还没有填标签名称呢！！"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=852001;
- //BA.debugLineNum = 852001;BA.debugLine="Continue";
+ //BA.debugLineNum = 266;BA.debugLine="Exit";
 this.state = 40;
-if (true) break;;
+if (true) break;
  if (true) break;
 
 case 24:
 //C
 this.state = 25;
-RDebugUtils.currentLine=852003;
- //BA.debugLineNum = 852003;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM tags W";
+ //BA.debugLineNum = 268;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM tags W";
 parent.mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(parent.mostCurrent._sql1.ExecQuery("SELECT * FROM tags WHERE subject = '"+parent.mostCurrent._tag_subject+"'")));
-RDebugUtils.currentLine=852004;
- //BA.debugLineNum = 852004;BA.debugLine="For i = 0 To cursor1.RowCount - 1";
+ //BA.debugLineNum = 269;BA.debugLine="For i = 0 To cursor1.RowCount - 1";
 if (true) break;
 
 case 25:
@@ -2097,11 +1354,9 @@ if (true) break;
 case 27:
 //C
 this.state = 28;
-RDebugUtils.currentLine=852005;
- //BA.debugLineNum = 852005;BA.debugLine="cursor1.Position = i";
+ //BA.debugLineNum = 270;BA.debugLine="cursor1.Position = i";
 parent.mostCurrent._cursor1.setPosition(_i);
-RDebugUtils.currentLine=852006;
- //BA.debugLineNum = 852006;BA.debugLine="If InputTag.Text = cursor1.GetString(\"tag_nam";
+ //BA.debugLineNum = 271;BA.debugLine="If InputTag.Text = cursor1.GetString(\"tag_nam";
 if (true) break;
 
 case 28:
@@ -2114,16 +1369,13 @@ this.state = 30;
 case 30:
 //C
 this.state = 31;
-RDebugUtils.currentLine=852007;
- //BA.debugLineNum = 852007;BA.debugLine="Msgbox2Async(\"标签名重了！！\", \"ERR\", \"OK\", \"\", \"\",";
+ //BA.debugLineNum = 272;BA.debugLine="Msgbox2Async(\"标签名重了！！\", \"ERR\", \"OK\", \"\", \"\",";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("标签名重了！！"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=852008;
- //BA.debugLineNum = 852008;BA.debugLine="DuplicateTest = True";
+ //BA.debugLineNum = 273;BA.debugLine="DuplicateTest = True";
 _duplicatetest = anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=852009;
- //BA.debugLineNum = 852009;BA.debugLine="Continue";
-this.state = 47;
-if (true) break;;
+ //BA.debugLineNum = 274;BA.debugLine="Exit";
+this.state = 32;
+if (true) break;
  if (true) break;
 
 case 31:
@@ -2139,8 +1391,7 @@ this.state = 33;
 ;
  if (true) break;
 ;
-RDebugUtils.currentLine=852013;
- //BA.debugLineNum = 852013;BA.debugLine="If Not(DuplicateTest) Then";
+ //BA.debugLineNum = 278;BA.debugLine="If Not(DuplicateTest) Then";
 
 case 33:
 //if
@@ -2152,11 +1403,9 @@ this.state = 35;
 case 35:
 //C
 this.state = 36;
-RDebugUtils.currentLine=852014;
- //BA.debugLineNum = 852014;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO tags (tag_name,";
+ //BA.debugLineNum = 279;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO tags (tag_name,";
 parent.mostCurrent._sql1.ExecNonQuery("INSERT INTO tags (tag_name,subject) VALUES ('"+parent.mostCurrent._inputtag._text /*String*/ +"','"+parent.mostCurrent._tag_subject+"')");
-RDebugUtils.currentLine=852015;
- //BA.debugLineNum = 852015;BA.debugLine="ToastMessageShow( tag_subject & \" label '\" & I";
+ //BA.debugLineNum = 280;BA.debugLine="ToastMessageShow( tag_subject & \" label '\" & I";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(parent.mostCurrent._tag_subject+" label '"+parent.mostCurrent._inputtag._text /*String*/ +"' added successfully"),anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
@@ -2175,11 +1424,9 @@ this.state = 40;
 case 39:
 //C
 this.state = 40;
-RDebugUtils.currentLine=852019;
- //BA.debugLineNum = 852019;BA.debugLine="Return";
+ //BA.debugLineNum = 284;BA.debugLine="Return";
 if (true) return ;
-RDebugUtils.currentLine=852020;
- //BA.debugLineNum = 852020;BA.debugLine="Exit";
+ //BA.debugLineNum = 285;BA.debugLine="Exit";
 this.state = 40;
 if (true) break;
  if (true) break;
@@ -2194,352 +1441,555 @@ case 41:
 //C
 this.state = -1;
 ;
-RDebugUtils.currentLine=852023;
- //BA.debugLineNum = 852023;BA.debugLine="End Sub";
+ //BA.debugLineNum = 288;BA.debugLine="End Sub";
 if (true) break;
 
             }
         }
     }
 }
-public static String  _incorrect_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "incorrect_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "incorrect_click", null));}
-String _tn = "";
-String _table_name = "";
-RDebugUtils.currentLine=3342336;
- //BA.debugLineNum = 3342336;BA.debugLine="Private Sub incorrect_Click";
-RDebugUtils.currentLine=3342337;
- //BA.debugLineNum = 3342337;BA.debugLine="Dim tn As String";
-_tn = "";
-RDebugUtils.currentLine=3342338;
- //BA.debugLineNum = 3342338;BA.debugLine="Dim table_name As String";
-_table_name = "";
-RDebugUtils.currentLine=3342339;
- //BA.debugLineNum = 3342339;BA.debugLine="table_name = tag_subject & \"_bank\"";
-_table_name = mostCurrent._tag_subject+"_bank";
-RDebugUtils.currentLine=3342341;
- //BA.debugLineNum = 3342341;BA.debugLine="Current_Incorrect_Times = Current_Incorrect_Times";
-_current_incorrect_times = (int) (_current_incorrect_times+1);
-RDebugUtils.currentLine=3342342;
- //BA.debugLineNum = 3342342;BA.debugLine="SQL1.ExecNonQuery(\"UPDATE '\"& table_name &\"' SET";
-mostCurrent._sql1.ExecNonQuery("UPDATE '"+_table_name+"' SET Incorrect_Times = '"+BA.NumberToString(_current_incorrect_times)+"' WHERE  ID = '"+BA.NumberToString(_current_id)+"' ");
-RDebugUtils.currentLine=3342344;
- //BA.debugLineNum = 3342344;BA.debugLine="tn = select_question(tag_subject)";
-_tn = _select_question(mostCurrent._tag_subject);
-RDebugUtils.currentLine=3342346;
- //BA.debugLineNum = 3342346;BA.debugLine="Refresh_question(random_num)";
-_refresh_question(_random_num);
-RDebugUtils.currentLine=3342347;
- //BA.debugLineNum = 3342347;BA.debugLine="End Sub";
+public static void  _complete(int _result) throws Exception{
+}
+public static String  _globals() throws Exception{
+ //BA.debugLineNum = 24;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 26;BA.debugLine="Private camEx As CameraExClass";
+mostCurrent._camex = new avanue.nvwa.cameraexclass();
+ //BA.debugLineNum = 27;BA.debugLine="Dim TouchImageView1 As TouchImageView";
+mostCurrent._touchimageview1 = new uk.co.martinpearman.b4a.touchimageview.TouchImageViewWrapper();
+ //BA.debugLineNum = 28;BA.debugLine="Dim ID As String";
+mostCurrent._id = "";
+ //BA.debugLineNum = 29;BA.debugLine="Dim SQL1 As SQL";
+mostCurrent._sql1 = new anywheresoftware.b4a.sql.SQL();
+ //BA.debugLineNum = 30;BA.debugLine="Dim cursor1 As Cursor";
+mostCurrent._cursor1 = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
+ //BA.debugLineNum = 31;BA.debugLine="Dim now As Long";
+_now = 0L;
+ //BA.debugLineNum = 32;BA.debugLine="Public rp As RuntimePermissions";
+mostCurrent._rp = new anywheresoftware.b4a.objects.RuntimePermissions();
+ //BA.debugLineNum = 33;BA.debugLine="Public tag_subject As String";
+mostCurrent._tag_subject = "";
+ //BA.debugLineNum = 35;BA.debugLine="Dim Panel1 As Panel";
+mostCurrent._panel1 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 36;BA.debugLine="Dim btnTakePicture As Button";
+mostCurrent._btntakepicture = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 38;BA.debugLine="Private MyTaskIndex As Int";
+_mytaskindex = 0;
+ //BA.debugLineNum = 39;BA.debugLine="Public rp As RuntimePermissions";
+mostCurrent._rp = new anywheresoftware.b4a.objects.RuntimePermissions();
+ //BA.debugLineNum = 40;BA.debugLine="Dim q_count As Label";
+mostCurrent._q_count = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 41;BA.debugLine="Dim Q_Name , A_Name,T_Name  As String";
+mostCurrent._q_name = "";
+mostCurrent._a_name = "";
+mostCurrent._t_name = "";
+ //BA.debugLineNum = 42;BA.debugLine="Dim random_num  As Int";
+_random_num = 0;
+ //BA.debugLineNum = 43;BA.debugLine="Dim ImageView1 As ImageView";
+mostCurrent._imageview1 = new anywheresoftware.b4a.objects.ImageViewWrapper();
+ //BA.debugLineNum = 44;BA.debugLine="Dim Current_ID As Int";
+_current_id = 0;
+ //BA.debugLineNum = 45;BA.debugLine="Dim Current_Time_Create As String";
+mostCurrent._current_time_create = "";
+ //BA.debugLineNum = 46;BA.debugLine="Dim Current_Time_Modify As String";
+mostCurrent._current_time_modify = "";
+ //BA.debugLineNum = 47;BA.debugLine="Dim Current_Time_Delete As String";
+mostCurrent._current_time_delete = "";
+ //BA.debugLineNum = 48;BA.debugLine="Dim Current_Valid As Int";
+_current_valid = 0;
+ //BA.debugLineNum = 49;BA.debugLine="Dim Current_Subject As String";
+mostCurrent._current_subject = "";
+ //BA.debugLineNum = 50;BA.debugLine="Dim Current_Leval As Int";
+_current_leval = 0;
+ //BA.debugLineNum = 51;BA.debugLine="Dim Current_Grade As Int";
+_current_grade = 0;
+ //BA.debugLineNum = 52;BA.debugLine="Dim Current_Tags As String";
+mostCurrent._current_tags = "";
+ //BA.debugLineNum = 53;BA.debugLine="Dim Current_Question_Image As String";
+mostCurrent._current_question_image = "";
+ //BA.debugLineNum = 54;BA.debugLine="Dim Current_Answer_Image As String";
+mostCurrent._current_answer_image = "";
+ //BA.debugLineNum = 55;BA.debugLine="Dim Current_Correct_Times As Int";
+_current_correct_times = 0;
+ //BA.debugLineNum = 56;BA.debugLine="Dim Current_Incorrect_Times As Int";
+_current_incorrect_times = 0;
+ //BA.debugLineNum = 57;BA.debugLine="Dim Current_Last_Time As String";
+mostCurrent._current_last_time = "";
+ //BA.debugLineNum = 58;BA.debugLine="Dim QA_S As Int";
+_qa_s = 0;
+ //BA.debugLineNum = 59;BA.debugLine="Dim rule_never_do As Int = 1";
+_rule_never_do = (int) (1);
+ //BA.debugLineNum = 60;BA.debugLine="Dim rule_correct As Int = 0";
+_rule_correct = (int) (0);
+ //BA.debugLineNum = 61;BA.debugLine="Dim rule_incorrect As Int =1";
+_rule_incorrect = (int) (1);
+ //BA.debugLineNum = 62;BA.debugLine="Dim tags As String";
+mostCurrent._tags = "";
+ //BA.debugLineNum = 65;BA.debugLine="Dim FileDialog1 As FileDialog";
+mostCurrent._filedialog1 = new anywheresoftware.b4a.agraham.dialogs2.InputDialog.FileDialog();
+ //BA.debugLineNum = 66;BA.debugLine="Dim QuesFilePath As String = File.DirRootExternal";
+mostCurrent._quesfilepath = anywheresoftware.b4a.keywords.Common.File.getDirRootExternal();
+ //BA.debugLineNum = 67;BA.debugLine="Dim QuesFileName As String = \" \"";
+mostCurrent._quesfilename = " ";
+ //BA.debugLineNum = 68;BA.debugLine="Dim AnsFilePath As String = File.DirRootExternal";
+mostCurrent._ansfilepath = anywheresoftware.b4a.keywords.Common.File.getDirRootExternal();
+ //BA.debugLineNum = 69;BA.debugLine="Dim AnsFileName As String = \" \"";
+mostCurrent._ansfilename = " ";
+ //BA.debugLineNum = 70;BA.debugLine="Dim BitmapQues As Bitmap";
+mostCurrent._bitmapques = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
+ //BA.debugLineNum = 71;BA.debugLine="Dim BitmapAns As Bitmap";
+mostCurrent._bitmapans = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
+ //BA.debugLineNum = 74;BA.debugLine="Private ScrAns As ScrollView2D";
+mostCurrent._scrans = new flm.b4a.scrollview2d.ScrollView2DWrapper();
+ //BA.debugLineNum = 75;BA.debugLine="Private ScrQues As ScrollView2D";
+mostCurrent._scrques = new flm.b4a.scrollview2d.ScrollView2DWrapper();
+ //BA.debugLineNum = 78;BA.debugLine="Private btnImpAns As Button";
+mostCurrent._btnimpans = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 79;BA.debugLine="Private btnImpComplete As Button";
+mostCurrent._btnimpcomplete = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 80;BA.debugLine="Private btnImpQues As Button";
+mostCurrent._btnimpques = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 83;BA.debugLine="Private add_tag_biology As RadioButton";
+mostCurrent._add_tag_biology = new anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper();
+ //BA.debugLineNum = 84;BA.debugLine="Private add_tag_chemistry As RadioButton";
+mostCurrent._add_tag_chemistry = new anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper();
+ //BA.debugLineNum = 85;BA.debugLine="Private add_tag_chinese As RadioButton";
+mostCurrent._add_tag_chinese = new anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper();
+ //BA.debugLineNum = 86;BA.debugLine="Private add_tag_english As RadioButton";
+mostCurrent._add_tag_english = new anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper();
+ //BA.debugLineNum = 87;BA.debugLine="Private add_tag_maths As RadioButton";
+mostCurrent._add_tag_maths = new anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper();
+ //BA.debugLineNum = 88;BA.debugLine="Private add_tag_physics As RadioButton";
+mostCurrent._add_tag_physics = new anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper();
+ //BA.debugLineNum = 90;BA.debugLine="Private add_tag_edit As EditText";
+mostCurrent._add_tag_edit = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 92;BA.debugLine="Dim FT As FileTools";
+mostCurrent._ft = new com.mathew.mmtools.filetools();
+ //BA.debugLineNum = 94;BA.debugLine="Dim options As B4XListTemplate";
+mostCurrent._options = new avanue.nvwa.b4xlisttemplate();
+ //BA.debugLineNum = 95;BA.debugLine="Private TagDialog As B4XDialog";
+mostCurrent._tagdialog = new avanue.nvwa.b4xdialog();
+ //BA.debugLineNum = 96;BA.debugLine="Private Base As B4XView";
+mostCurrent._base = new anywheresoftware.b4a.objects.B4XViewWrapper();
+ //BA.debugLineNum = 97;BA.debugLine="Private InputTag As B4XInputTemplate";
+mostCurrent._inputtag = new avanue.nvwa.b4xinputtemplate();
+ //BA.debugLineNum = 99;BA.debugLine="End Sub";
 return "";
 }
+public static String  _incorrect_click() throws Exception{
+String _tn = "";
+String _table_name = "";
+ //BA.debugLineNum = 735;BA.debugLine="Private Sub incorrect_Click";
+ //BA.debugLineNum = 736;BA.debugLine="Dim tn As String";
+_tn = "";
+ //BA.debugLineNum = 737;BA.debugLine="Dim table_name As String";
+_table_name = "";
+ //BA.debugLineNum = 738;BA.debugLine="table_name = tag_subject & \"_bank\"";
+_table_name = mostCurrent._tag_subject+"_bank";
+ //BA.debugLineNum = 740;BA.debugLine="Current_Incorrect_Times = Current_Incorrect_Times";
+_current_incorrect_times = (int) (_current_incorrect_times+1);
+ //BA.debugLineNum = 741;BA.debugLine="SQL1.ExecNonQuery(\"UPDATE '\"& table_name &\"' SET";
+mostCurrent._sql1.ExecNonQuery("UPDATE '"+_table_name+"' SET Incorrect_Times = '"+BA.NumberToString(_current_incorrect_times)+"' WHERE  ID = '"+BA.NumberToString(_current_id)+"' ");
+ //BA.debugLineNum = 743;BA.debugLine="tn = select_question(tag_subject)";
+_tn = _select_question(mostCurrent._tag_subject);
+ //BA.debugLineNum = 745;BA.debugLine="Refresh_question(random_num)";
+_refresh_question(_random_num);
+ //BA.debugLineNum = 746;BA.debugLine="End Sub";
+return "";
+}
+public static void  _initializecamera() throws Exception{
+ResumableSub_InitializeCamera rsub = new ResumableSub_InitializeCamera(null);
+rsub.resume(processBA, null);
+}
+public static class ResumableSub_InitializeCamera extends BA.ResumableSub {
+public ResumableSub_InitializeCamera(avanue.nvwa.main parent) {
+this.parent = parent;
+}
+avanue.nvwa.main parent;
+String _permission = "";
+boolean _result = false;
+
+@Override
+public void resume(BA ba, Object[] result) throws Exception{
+
+    while (true) {
+        switch (state) {
+            case -1:
+return;
+
+case 0:
+//C
+this.state = 1;
+ //BA.debugLineNum = 549;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_CAMERA)";
+parent.mostCurrent._rp.CheckAndRequest(processBA,parent.mostCurrent._rp.PERMISSION_CAMERA);
+ //BA.debugLineNum = 550;BA.debugLine="Wait For Activity_PermissionResult (Permission As";
+anywheresoftware.b4a.keywords.Common.WaitFor("activity_permissionresult", processBA, this, null);
+this.state = 7;
+return;
+case 7:
+//C
+this.state = 1;
+_permission = (String) result[0];
+_result = (Boolean) result[1];
+;
+ //BA.debugLineNum = 551;BA.debugLine="If Result Then";
+if (true) break;
+
+case 1:
+//if
+this.state = 6;
+if (_result) { 
+this.state = 3;
+}else {
+this.state = 5;
+}if (true) break;
+
+case 3:
+//C
+this.state = 6;
+ //BA.debugLineNum = 552;BA.debugLine="camEx.Initialize(Panel1, frontCamera, Me, \"Camer";
+parent.mostCurrent._camex._initialize /*String*/ (mostCurrent.activityBA,parent.mostCurrent._panel1,parent._frontcamera,main.getObject(),"Camera1");
+ //BA.debugLineNum = 553;BA.debugLine="frontCamera = camEx.Front";
+parent._frontcamera = parent.mostCurrent._camex._front /*boolean*/ ;
+ if (true) break;
+
+case 5:
+//C
+this.state = 6;
+ //BA.debugLineNum = 555;BA.debugLine="ToastMessageShow(\"No permission!!!\", True)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("No permission!!!"),anywheresoftware.b4a.keywords.Common.True);
+ if (true) break;
+
+case 6:
+//C
+this.state = -1;
+;
+ //BA.debugLineNum = 557;BA.debugLine="End Sub";
+if (true) break;
+
+            }
+        }
+    }
+}
 public static String  _maths_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "maths_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "maths_click", null));}
-RDebugUtils.currentLine=1048576;
- //BA.debugLineNum = 1048576;BA.debugLine="Private Sub maths_Click";
-RDebugUtils.currentLine=1048577;
- //BA.debugLineNum = 1048577;BA.debugLine="tag_subject= \"maths\"";
+ //BA.debugLineNum = 324;BA.debugLine="Private Sub maths_Click";
+ //BA.debugLineNum = 325;BA.debugLine="tag_subject= \"maths\"";
 mostCurrent._tag_subject = "maths";
-RDebugUtils.currentLine=1048578;
- //BA.debugLineNum = 1048578;BA.debugLine="CameraClick";
+ //BA.debugLineNum = 326;BA.debugLine="CameraClick";
 _cameraclick();
-RDebugUtils.currentLine=1048579;
- //BA.debugLineNum = 1048579;BA.debugLine="End Sub";
+ //BA.debugLineNum = 327;BA.debugLine="End Sub";
 return "";
 }
 public static String  _maths_imp_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "maths_imp_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "maths_imp_click", null));}
-RDebugUtils.currentLine=1572864;
- //BA.debugLineNum = 1572864;BA.debugLine="Private Sub maths_imp_Click";
-RDebugUtils.currentLine=1572865;
- //BA.debugLineNum = 1572865;BA.debugLine="tag_subject= \"maths\"";
+ //BA.debugLineNum = 369;BA.debugLine="Private Sub maths_imp_Click";
+ //BA.debugLineNum = 370;BA.debugLine="tag_subject= \"maths\"";
 mostCurrent._tag_subject = "maths";
-RDebugUtils.currentLine=1572866;
- //BA.debugLineNum = 1572866;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 371;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1572867;
- //BA.debugLineNum = 1572867;BA.debugLine="Activity.LoadLayout(\"record_import\")";
+ //BA.debugLineNum = 372;BA.debugLine="Activity.LoadLayout(\"record_import\")";
 mostCurrent._activity.LoadLayout("record_import",mostCurrent.activityBA);
-RDebugUtils.currentLine=1572868;
- //BA.debugLineNum = 1572868;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 373;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=1572869;
- //BA.debugLineNum = 1572869;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 374;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=1572870;
- //BA.debugLineNum = 1572870;BA.debugLine="End Sub";
+ //BA.debugLineNum = 375;BA.debugLine="End Sub";
 return "";
 }
 public static String  _maths_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "maths_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "maths_rev_click", null));}
-RDebugUtils.currentLine=2818048;
- //BA.debugLineNum = 2818048;BA.debugLine="Private Sub maths_rev_Click";
-RDebugUtils.currentLine=2818049;
- //BA.debugLineNum = 2818049;BA.debugLine="tag_subject= \"maths\"";
+ //BA.debugLineNum = 655;BA.debugLine="Private Sub maths_rev_Click";
+ //BA.debugLineNum = 656;BA.debugLine="tag_subject= \"maths\"";
 mostCurrent._tag_subject = "maths";
-RDebugUtils.currentLine=2818050;
- //BA.debugLineNum = 2818050;BA.debugLine="RevClick";
+ //BA.debugLineNum = 657;BA.debugLine="RevClick";
 _revclick();
-RDebugUtils.currentLine=2818051;
- //BA.debugLineNum = 2818051;BA.debugLine="End Sub";
+ //BA.debugLineNum = 658;BA.debugLine="End Sub";
+return "";
+}
+public static String  _now_string() throws Exception{
+String _nows = "";
+ //BA.debugLineNum = 101;BA.debugLine="Private Sub now_string As String";
+ //BA.debugLineNum = 102;BA.debugLine="now  = DateTime.Now";
+_now = anywheresoftware.b4a.keywords.Common.DateTime.getNow();
+ //BA.debugLineNum = 103;BA.debugLine="Dim nows As String";
+_nows = "";
+ //BA.debugLineNum = 104;BA.debugLine="DateTime.DateFormat = \"YYYYMMdd.\"";
+anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("YYYYMMdd.");
+ //BA.debugLineNum = 106;BA.debugLine="DateTime.SetTimeZone(8)";
+anywheresoftware.b4a.keywords.Common.DateTime.SetTimeZone(8);
+ //BA.debugLineNum = 107;BA.debugLine="nows = DateTime.Date(now) & DateTime.Time(now)";
+_nows = anywheresoftware.b4a.keywords.Common.DateTime.Date(_now)+anywheresoftware.b4a.keywords.Common.DateTime.Time(_now);
+ //BA.debugLineNum = 108;BA.debugLine="Return nows";
+if (true) return _nows;
+ //BA.debugLineNum = 109;BA.debugLine="End Sub";
 return "";
 }
 public static String  _physics_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "physics_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "physics_click", null));}
-RDebugUtils.currentLine=1179648;
- //BA.debugLineNum = 1179648;BA.debugLine="Private Sub physics_Click";
-RDebugUtils.currentLine=1179649;
- //BA.debugLineNum = 1179649;BA.debugLine="tag_subject= \"physics\"";
+ //BA.debugLineNum = 334;BA.debugLine="Private Sub physics_Click";
+ //BA.debugLineNum = 335;BA.debugLine="tag_subject= \"physics\"";
 mostCurrent._tag_subject = "physics";
-RDebugUtils.currentLine=1179650;
- //BA.debugLineNum = 1179650;BA.debugLine="CameraClick";
+ //BA.debugLineNum = 336;BA.debugLine="CameraClick";
 _cameraclick();
-RDebugUtils.currentLine=1179651;
- //BA.debugLineNum = 1179651;BA.debugLine="End Sub";
+ //BA.debugLineNum = 337;BA.debugLine="End Sub";
 return "";
 }
 public static String  _physics_imp_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "physics_imp_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "physics_imp_click", null));}
-RDebugUtils.currentLine=1703936;
- //BA.debugLineNum = 1703936;BA.debugLine="Private Sub physics_imp_Click";
-RDebugUtils.currentLine=1703937;
- //BA.debugLineNum = 1703937;BA.debugLine="tag_subject= \"physics\"";
+ //BA.debugLineNum = 385;BA.debugLine="Private Sub physics_imp_Click";
+ //BA.debugLineNum = 386;BA.debugLine="tag_subject= \"physics\"";
 mostCurrent._tag_subject = "physics";
-RDebugUtils.currentLine=1703938;
- //BA.debugLineNum = 1703938;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 387;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1703939;
- //BA.debugLineNum = 1703939;BA.debugLine="Activity.LoadLayout(\"record_import\")";
+ //BA.debugLineNum = 388;BA.debugLine="Activity.LoadLayout(\"record_import\")";
 mostCurrent._activity.LoadLayout("record_import",mostCurrent.activityBA);
-RDebugUtils.currentLine=1703940;
- //BA.debugLineNum = 1703940;BA.debugLine="QuesFileName = \" \"";
+ //BA.debugLineNum = 389;BA.debugLine="QuesFileName = \" \"";
 mostCurrent._quesfilename = " ";
-RDebugUtils.currentLine=1703941;
- //BA.debugLineNum = 1703941;BA.debugLine="AnsFileName = \" \"";
+ //BA.debugLineNum = 390;BA.debugLine="AnsFileName = \" \"";
 mostCurrent._ansfilename = " ";
-RDebugUtils.currentLine=1703942;
- //BA.debugLineNum = 1703942;BA.debugLine="End Sub";
+ //BA.debugLineNum = 391;BA.debugLine="End Sub";
 return "";
 }
 public static String  _physics_rev_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "physics_rev_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "physics_rev_click", null));}
-RDebugUtils.currentLine=2949120;
- //BA.debugLineNum = 2949120;BA.debugLine="Private Sub physics_rev_Click";
-RDebugUtils.currentLine=2949121;
- //BA.debugLineNum = 2949121;BA.debugLine="tag_subject= \"physics\"";
+ //BA.debugLineNum = 665;BA.debugLine="Private Sub physics_rev_Click";
+ //BA.debugLineNum = 666;BA.debugLine="tag_subject= \"physics\"";
 mostCurrent._tag_subject = "physics";
-RDebugUtils.currentLine=2949122;
- //BA.debugLineNum = 2949122;BA.debugLine="RevClick";
+ //BA.debugLineNum = 667;BA.debugLine="RevClick";
 _revclick();
-RDebugUtils.currentLine=2949123;
- //BA.debugLineNum = 2949123;BA.debugLine="End Sub";
+ //BA.debugLineNum = 668;BA.debugLine="End Sub";
+return "";
+}
+
+public static void initializeProcessGlobals() {
+    
+    if (main.processGlobalsRun == false) {
+	    main.processGlobalsRun = true;
+		try {
+		        b4a.example.dateutils._process_globals();
+main._process_globals();
+starter._process_globals();
+xuiviewsutils._process_globals();
+		
+        } catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+    }
+}public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 15;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 18;BA.debugLine="Private xui As XUI";
+_xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
+ //BA.debugLineNum = 19;BA.debugLine="Private frontCamera As Boolean = False";
+_frontcamera = anywheresoftware.b4a.keywords.Common.False;
+ //BA.debugLineNum = 20;BA.debugLine="Private Storage As ExternalStorage";
+_storage = new avanue.nvwa.externalstorage();
+ //BA.debugLineNum = 21;BA.debugLine="Private Parents_Dir As ExternalFile";
+_parents_dir = new avanue.nvwa.externalstorage._externalfile();
+ //BA.debugLineNum = 22;BA.debugLine="End Sub";
 return "";
 }
 public static String  _quit_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "quit_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "quit_click", null));}
-RDebugUtils.currentLine=524288;
- //BA.debugLineNum = 524288;BA.debugLine="Private Sub quit_Click";
-RDebugUtils.currentLine=524289;
- //BA.debugLineNum = 524289;BA.debugLine="ExitApplication";
+ //BA.debugLineNum = 198;BA.debugLine="Private Sub quit_Click";
+ //BA.debugLineNum = 199;BA.debugLine="ExitApplication";
 anywheresoftware.b4a.keywords.Common.ExitApplication();
-RDebugUtils.currentLine=524290;
- //BA.debugLineNum = 524290;BA.debugLine="End Sub";
+ //BA.debugLineNum = 200;BA.debugLine="End Sub";
 return "";
 }
 public static String  _r_return_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "r_return_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "r_return_click", null));}
-RDebugUtils.currentLine=2621440;
- //BA.debugLineNum = 2621440;BA.debugLine="Private Sub r_return_Click";
-RDebugUtils.currentLine=2621441;
- //BA.debugLineNum = 2621441;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 624;BA.debugLine="Private Sub r_return_Click";
+ //BA.debugLineNum = 625;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=2621442;
- //BA.debugLineNum = 2621442;BA.debugLine="Activity.LoadLayout(\"subjects\")";
+ //BA.debugLineNum = 626;BA.debugLine="Activity.LoadLayout(\"subjects\")";
 mostCurrent._activity.LoadLayout("subjects",mostCurrent.activityBA);
-RDebugUtils.currentLine=2621443;
- //BA.debugLineNum = 2621443;BA.debugLine="End Sub";
+ //BA.debugLineNum = 627;BA.debugLine="End Sub";
 return "";
 }
 public static String  _record_camera_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "record_camera_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "record_camera_click", null));}
-RDebugUtils.currentLine=1376256;
- //BA.debugLineNum = 1376256;BA.debugLine="Private Sub record_camera_Click";
-RDebugUtils.currentLine=1376257;
- //BA.debugLineNum = 1376257;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 351;BA.debugLine="Private Sub record_camera_Click";
+ //BA.debugLineNum = 352;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1376258;
- //BA.debugLineNum = 1376258;BA.debugLine="Activity.LoadLayout (\"subjects\")";
+ //BA.debugLineNum = 353;BA.debugLine="Activity.LoadLayout (\"subjects\")";
 mostCurrent._activity.LoadLayout("subjects",mostCurrent.activityBA);
-RDebugUtils.currentLine=1376259;
- //BA.debugLineNum = 1376259;BA.debugLine="End Sub";
+ //BA.debugLineNum = 354;BA.debugLine="End Sub";
 return "";
 }
 public static String  _record_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "record_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "record_click", null));}
-RDebugUtils.currentLine=589824;
- //BA.debugLineNum = 589824;BA.debugLine="Private Sub record_Click";
-RDebugUtils.currentLine=589825;
- //BA.debugLineNum = 589825;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 202;BA.debugLine="Private Sub record_Click";
+ //BA.debugLineNum = 203;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=589826;
- //BA.debugLineNum = 589826;BA.debugLine="Activity.LoadLayout(\"record_choice\")";
+ //BA.debugLineNum = 204;BA.debugLine="Activity.LoadLayout(\"record_choice\")";
 mostCurrent._activity.LoadLayout("record_choice",mostCurrent.activityBA);
-RDebugUtils.currentLine=589827;
- //BA.debugLineNum = 589827;BA.debugLine="End Sub";
+ //BA.debugLineNum = 205;BA.debugLine="End Sub";
 return "";
 }
 public static String  _record_import_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "record_import_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "record_import_click", null));}
-RDebugUtils.currentLine=1441792;
- //BA.debugLineNum = 1441792;BA.debugLine="Private Sub record_import_Click";
-RDebugUtils.currentLine=1441793;
- //BA.debugLineNum = 1441793;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 356;BA.debugLine="Private Sub record_import_Click";
+ //BA.debugLineNum = 357;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1441794;
- //BA.debugLineNum = 1441794;BA.debugLine="Activity.LoadLayout(\"subjects_imp\")";
+ //BA.debugLineNum = 358;BA.debugLine="Activity.LoadLayout(\"subjects_imp\")";
 mostCurrent._activity.LoadLayout("subjects_imp",mostCurrent.activityBA);
-RDebugUtils.currentLine=1441795;
- //BA.debugLineNum = 1441795;BA.debugLine="End Sub";
+ //BA.debugLineNum = 359;BA.debugLine="End Sub";
+return "";
+}
+public static int  _refresh_count(String _subs) throws Exception{
+ //BA.debugLineNum = 574;BA.debugLine="Private Sub refresh_count(subs As String) As Int";
+ //BA.debugLineNum = 575;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & subs";
+mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM "+_subs+"_bank")));
+ //BA.debugLineNum = 576;BA.debugLine="Return cursor1.RowCount";
+if (true) return mostCurrent._cursor1.getRowCount();
+ //BA.debugLineNum = 577;BA.debugLine="End Sub";
+return 0;
+}
+public static String  _refresh_question(int _cn) throws Exception{
+String _question_file = "";
+anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _bitmap1 = null;
+ //BA.debugLineNum = 716;BA.debugLine="Private Sub Refresh_question(cn As Int)";
+ //BA.debugLineNum = 717;BA.debugLine="Dim Question_file As String";
+_question_file = "";
+ //BA.debugLineNum = 719;BA.debugLine="TouchImageView1.MinScale=0.25			'	default is 0.5";
+mostCurrent._touchimageview1.setMinScale((float) (0.25));
+ //BA.debugLineNum = 720;BA.debugLine="TouchImageView1.MaxScale=2				'	default is 1.5";
+mostCurrent._touchimageview1.setMaxScale((float) (2));
+ //BA.debugLineNum = 721;BA.debugLine="TouchImageView1.TranslatePadding=128dip	'	default";
+mostCurrent._touchimageview1.setTranslatePadding(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (128)));
+ //BA.debugLineNum = 723;BA.debugLine="Question_file = File.Combine(File.DirDefaultExter";
+_question_file = anywheresoftware.b4a.keywords.Common.File.Combine(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._cursor1.GetString("Question_Image"));
+ //BA.debugLineNum = 726;BA.debugLine="Dim Bitmap1 As Bitmap";
+_bitmap1 = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
+ //BA.debugLineNum = 727;BA.debugLine="Bitmap1.Initialize(File.DirDefaultExternal,cursor";
+_bitmap1.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._cursor1.GetString("Question_Image"));
+ //BA.debugLineNum = 729;BA.debugLine="TouchImageView1.SetBitmap(Bitmap1)";
+mostCurrent._touchimageview1.SetBitmap(mostCurrent.activityBA,(android.graphics.Bitmap)(_bitmap1.getObject()));
+ //BA.debugLineNum = 731;BA.debugLine="QA_S = 0";
+_qa_s = (int) (0);
+ //BA.debugLineNum = 732;BA.debugLine="End Sub";
+return "";
+}
+public static String  _revclick() throws Exception{
+String _tn = "";
+ //BA.debugLineNum = 635;BA.debugLine="Sub RevClick";
+ //BA.debugLineNum = 636;BA.debugLine="Activity.RemoveAllViews";
+mostCurrent._activity.RemoveAllViews();
+ //BA.debugLineNum = 637;BA.debugLine="Activity.LoadLayout(\"review\")";
+mostCurrent._activity.LoadLayout("review",mostCurrent.activityBA);
+ //BA.debugLineNum = 638;BA.debugLine="Dim tn As String";
+_tn = "";
+ //BA.debugLineNum = 639;BA.debugLine="tn = select_question(tag_subject)";
+_tn = _select_question(mostCurrent._tag_subject);
+ //BA.debugLineNum = 640;BA.debugLine="If tn = \"\" Then";
+if ((_tn).equals("")) { 
+ //BA.debugLineNum = 641;BA.debugLine="Msgbox2Async(\"没题啊\", \"ERR\", \"OK\", \"\", \"\", Null, T";
+anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("没题啊"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 642;BA.debugLine="Return";
+if (true) return "";
+ };
+ //BA.debugLineNum = 645;BA.debugLine="TouchImageView1.Initialize(\"TouchImageView1\")";
+mostCurrent._touchimageview1.Initialize(mostCurrent.activityBA,"TouchImageView1");
+ //BA.debugLineNum = 646;BA.debugLine="Activity.AddView(TouchImageView1, 0, 0, 100%x, 10";
+mostCurrent._activity.AddView((android.view.View)(mostCurrent._touchimageview1.getObject()),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (100),mostCurrent.activityBA));
+ //BA.debugLineNum = 647;BA.debugLine="Refresh_question(random_num)";
+_refresh_question(_random_num);
+ //BA.debugLineNum = 648;BA.debugLine="End Sub";
 return "";
 }
 public static String  _review_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "review_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "review_click", null));}
-RDebugUtils.currentLine=2686976;
- //BA.debugLineNum = 2686976;BA.debugLine="Private Sub review_Click";
-RDebugUtils.currentLine=2686977;
- //BA.debugLineNum = 2686977;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 629;BA.debugLine="Private Sub review_Click";
+ //BA.debugLineNum = 630;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=2686978;
- //BA.debugLineNum = 2686978;BA.debugLine="Activity.LoadLayout(\"subjects_rev\")";
+ //BA.debugLineNum = 631;BA.debugLine="Activity.LoadLayout(\"subjects_rev\")";
 mostCurrent._activity.LoadLayout("subjects_rev",mostCurrent.activityBA);
-RDebugUtils.currentLine=2686980;
- //BA.debugLineNum = 2686980;BA.debugLine="End Sub";
+ //BA.debugLineNum = 633;BA.debugLine="End Sub";
+return "";
+}
+public static String  _select_question(String _subject) throws Exception{
+String _table_name = "";
+ //BA.debugLineNum = 696;BA.debugLine="private Sub select_question(subject As String) As";
+ //BA.debugLineNum = 697;BA.debugLine="Dim table_name As String";
+_table_name = "";
+ //BA.debugLineNum = 698;BA.debugLine="table_name = subject & \"_bank\"";
+_table_name = _subject+"_bank";
+ //BA.debugLineNum = 699;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT * FROM \" & table";
+mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT * FROM "+_table_name)));
+ //BA.debugLineNum = 701;BA.debugLine="If cursor1.RowCount < 1 Then";
+if (mostCurrent._cursor1.getRowCount()<1) { 
+ //BA.debugLineNum = 702;BA.debugLine="Msgbox2Async(\"找不到题目呢\", \"ERR\", \"OK\", \"\", \"\", Null";
+anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("找不到题目呢"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 703;BA.debugLine="Return (\"\")";
+if (true) return ("");
+ };
+ //BA.debugLineNum = 705;BA.debugLine="random_num = Rnd(0,cursor1.RowCount)";
+_random_num = anywheresoftware.b4a.keywords.Common.Rnd((int) (0),mostCurrent._cursor1.getRowCount());
+ //BA.debugLineNum = 706;BA.debugLine="cursor1.Position = random_num";
+mostCurrent._cursor1.setPosition(_random_num);
+ //BA.debugLineNum = 708;BA.debugLine="Current_ID = cursor1.GetInt(\"ID\")";
+_current_id = mostCurrent._cursor1.GetInt("ID");
+ //BA.debugLineNum = 709;BA.debugLine="Current_Correct_Times = cursor1.GetInt(\"Correct_T";
+_current_correct_times = mostCurrent._cursor1.GetInt("Correct_Times");
+ //BA.debugLineNum = 710;BA.debugLine="Current_Last_Time = cursor1.GetString(\"Last_Time\"";
+mostCurrent._current_last_time = mostCurrent._cursor1.GetString("Last_Time");
+ //BA.debugLineNum = 712;BA.debugLine="Return(cursor1.GetString(\"Question_Image\"))";
+if (true) return (mostCurrent._cursor1.GetString("Question_Image"));
+ //BA.debugLineNum = 714;BA.debugLine="End Sub";
 return "";
 }
 public static String  _submit_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "submit_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "submit_click", null));}
 String _table_name = "";
 String _td = "";
 int _level = 0;
 int _newid = 0;
-RDebugUtils.currentLine=2490368;
- //BA.debugLineNum = 2490368;BA.debugLine="Private Sub submit_Click";
-RDebugUtils.currentLine=2490369;
- //BA.debugLineNum = 2490369;BA.debugLine="If  A_Name = \"\" Or Q_Name = \"\" Then";
+ //BA.debugLineNum = 585;BA.debugLine="Private Sub submit_Click";
+ //BA.debugLineNum = 586;BA.debugLine="If  A_Name = \"\" Or Q_Name = \"\" Then";
 if ((mostCurrent._a_name).equals("") || (mostCurrent._q_name).equals("")) { 
-RDebugUtils.currentLine=2490370;
- //BA.debugLineNum = 2490370;BA.debugLine="Msgbox2Async(\"请先拍题目再拍答案\", \"ERR\", \"OK\", \"\", \"\", N";
+ //BA.debugLineNum = 587;BA.debugLine="Msgbox2Async(\"请先拍题目再拍答案\", \"ERR\", \"OK\", \"\", \"\", N";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("请先拍题目再拍答案"),BA.ObjectToCharSequence("ERR"),"OK","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=2490371;
- //BA.debugLineNum = 2490371;BA.debugLine="Return";
+ //BA.debugLineNum = 588;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=2490373;
- //BA.debugLineNum = 2490373;BA.debugLine="Dim table_name As String";
+ //BA.debugLineNum = 590;BA.debugLine="Dim table_name As String";
 _table_name = "";
-RDebugUtils.currentLine=2490374;
- //BA.debugLineNum = 2490374;BA.debugLine="table_name = tag_subject & \"_bank\"";
+ //BA.debugLineNum = 591;BA.debugLine="table_name = tag_subject & \"_bank\"";
 _table_name = mostCurrent._tag_subject+"_bank";
-RDebugUtils.currentLine=2490375;
- //BA.debugLineNum = 2490375;BA.debugLine="Dim td As String";
+ //BA.debugLineNum = 592;BA.debugLine="Dim td As String";
 _td = "";
-RDebugUtils.currentLine=2490376;
- //BA.debugLineNum = 2490376;BA.debugLine="td = now_string";
+ //BA.debugLineNum = 593;BA.debugLine="td = now_string";
 _td = _now_string();
-RDebugUtils.currentLine=2490377;
- //BA.debugLineNum = 2490377;BA.debugLine="Dim level As Int";
+ //BA.debugLineNum = 594;BA.debugLine="Dim level As Int";
 _level = 0;
-RDebugUtils.currentLine=2490378;
- //BA.debugLineNum = 2490378;BA.debugLine="level = 1";
+ //BA.debugLineNum = 595;BA.debugLine="level = 1";
 _level = (int) (1);
-RDebugUtils.currentLine=2490379;
- //BA.debugLineNum = 2490379;BA.debugLine="Dim NewID As Int = 0";
+ //BA.debugLineNum = 596;BA.debugLine="Dim NewID As Int = 0";
 _newid = (int) (0);
-RDebugUtils.currentLine=2490380;
- //BA.debugLineNum = 2490380;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT ID FROM \" & tabl";
+ //BA.debugLineNum = 597;BA.debugLine="cursor1 = SQL1.ExecQuery(\"SELECT ID FROM \" & tabl";
 mostCurrent._cursor1 = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._sql1.ExecQuery("SELECT ID FROM "+_table_name)));
-RDebugUtils.currentLine=2490390;
- //BA.debugLineNum = 2490390;BA.debugLine="NewID = cursor1.RowCount + 1 ' add 1 to the ID nu";
+ //BA.debugLineNum = 607;BA.debugLine="NewID = cursor1.RowCount + 1 ' add 1 to the ID nu";
 _newid = (int) (mostCurrent._cursor1.getRowCount()+1);
-RDebugUtils.currentLine=2490391;
- //BA.debugLineNum = 2490391;BA.debugLine="get_tags(tag_subject)";
-_get_tags(mostCurrent._tag_subject);
-RDebugUtils.currentLine=2490394;
- //BA.debugLineNum = 2490394;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO \" & table_name &\"";
+ //BA.debugLineNum = 609;BA.debugLine="SQL1.ExecNonQuery(\"INSERT INTO \" & table_name &\"";
 mostCurrent._sql1.ExecNonQuery("INSERT INTO "+_table_name+"  (ID,Time_Create,Valid,Level,Question_Image,Answer_Image)  VALUES('"+BA.NumberToString(_newid)+"','"+_td+"','"+_td+"','"+BA.NumberToString(_level)+"','"+mostCurrent._q_name+".jpg"+"','"+mostCurrent._a_name+".jpg"+"')");
-RDebugUtils.currentLine=2490395;
- //BA.debugLineNum = 2490395;BA.debugLine="A_Name = \"\"";
+ //BA.debugLineNum = 611;BA.debugLine="get_tags(tag_subject)'添加标签";
+_get_tags(mostCurrent._tag_subject);
+ //BA.debugLineNum = 613;BA.debugLine="A_Name = \"\"";
 mostCurrent._a_name = "";
-RDebugUtils.currentLine=2490396;
- //BA.debugLineNum = 2490396;BA.debugLine="Q_Name = \"\"";
+ //BA.debugLineNum = 614;BA.debugLine="Q_Name = \"\"";
 mostCurrent._q_name = "";
-RDebugUtils.currentLine=2490398;
- //BA.debugLineNum = 2490398;BA.debugLine="q_count.Text = \"总题数：\" & refresh_count(tag_subject";
+ //BA.debugLineNum = 616;BA.debugLine="q_count.Text = \"总题数：\" & refresh_count(tag_subject";
 mostCurrent._q_count.setText(BA.ObjectToCharSequence("总题数："+BA.NumberToString(_refresh_count(mostCurrent._tag_subject))));
-RDebugUtils.currentLine=2490399;
- //BA.debugLineNum = 2490399;BA.debugLine="End Sub";
+ //BA.debugLineNum = 617;BA.debugLine="End Sub";
 return "";
 }
 public static String  _switch_qa_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "switch_qa_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "switch_qa_click", null));}
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _bitmap1 = null;
-RDebugUtils.currentLine=3407872;
- //BA.debugLineNum = 3407872;BA.debugLine="Private Sub switch_qa_Click";
-RDebugUtils.currentLine=3407873;
- //BA.debugLineNum = 3407873;BA.debugLine="Dim Bitmap1 As Bitmap";
+ //BA.debugLineNum = 748;BA.debugLine="Private Sub switch_qa_Click";
+ //BA.debugLineNum = 749;BA.debugLine="Dim Bitmap1 As Bitmap";
 _bitmap1 = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
-RDebugUtils.currentLine=3407874;
- //BA.debugLineNum = 3407874;BA.debugLine="If QA_S =0 Then";
+ //BA.debugLineNum = 750;BA.debugLine="If QA_S =0 Then";
 if (_qa_s==0) { 
-RDebugUtils.currentLine=3407875;
- //BA.debugLineNum = 3407875;BA.debugLine="QA_S = 1";
+ //BA.debugLineNum = 751;BA.debugLine="QA_S = 1";
 _qa_s = (int) (1);
-RDebugUtils.currentLine=3407876;
- //BA.debugLineNum = 3407876;BA.debugLine="Bitmap1.Initialize(File.DirDefaultExternal,curso";
+ //BA.debugLineNum = 752;BA.debugLine="Bitmap1.Initialize(File.DirDefaultExternal,curso";
 _bitmap1.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._cursor1.GetString("Answer_Image"));
  }else {
-RDebugUtils.currentLine=3407878;
- //BA.debugLineNum = 3407878;BA.debugLine="QA_S = 0";
+ //BA.debugLineNum = 754;BA.debugLine="QA_S = 0";
 _qa_s = (int) (0);
-RDebugUtils.currentLine=3407879;
- //BA.debugLineNum = 3407879;BA.debugLine="Bitmap1.Initialize(File.DirDefaultExternal,curso";
+ //BA.debugLineNum = 755;BA.debugLine="Bitmap1.Initialize(File.DirDefaultExternal,curso";
 _bitmap1.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),mostCurrent._cursor1.GetString("Question_Image"));
  };
-RDebugUtils.currentLine=3407881;
- //BA.debugLineNum = 3407881;BA.debugLine="TouchImageView1.SetBitmap(Bitmap1)";
+ //BA.debugLineNum = 757;BA.debugLine="TouchImageView1.SetBitmap(Bitmap1)";
 mostCurrent._touchimageview1.SetBitmap(mostCurrent.activityBA,(android.graphics.Bitmap)(_bitmap1.getObject()));
-RDebugUtils.currentLine=3407882;
- //BA.debugLineNum = 3407882;BA.debugLine="End Sub";
+ //BA.debugLineNum = 758;BA.debugLine="End Sub";
 return "";
 }
 }
